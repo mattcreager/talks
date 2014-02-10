@@ -8,7 +8,9 @@ angular
   return {
     get: function(id) {
       return unitService.get(id).then(function(units) {
-        units = _.isArray(units) ? units : [units];
+        if (!_.isArray(units)) {
+          return new UnitModel(unitService, units);
+        }
 
         return _.map(units, function(unit) {
           return new UnitModel(unitService, unit);
@@ -20,8 +22,7 @@ angular
 
 function UnitModel(unitService, unit) {
   _.extend(this, {
-    $$service: unitService,
-    $id: unit.id
+    $$service: unitService
   });
 
   _.merge(this, unit);
