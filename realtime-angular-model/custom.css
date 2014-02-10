@@ -154,11 +154,15 @@ body {
   height: 174px;
   background: url("img/df-motif.png") no-repeat -1px top; }
 
-.df-logo {
+.logo {
   float: right;
-  width: 209px;
-  height: 174px;
-  background: url("img/sf-logo.png") no-repeat left -10px; }
+  width: 194px;
+  height: 76px;
+  background: url("img/mvc-logo.png") no-repeat center;
+  background-color: rgba(255, 255, 255, 0.95);
+  margin: 2em;
+  border-radius: 3px;
+  box-shadow: 0 0 10px 1px rgba(0, 39, 109, 0.45); }
 
 .reveal .progress {
   height: 8px;
@@ -276,3 +280,7 @@ ul.box-set {
   color: #92c13a; }
 .reveal .blue {
   color: #44bcff; }
+
+.subtitle {
+  position: fixed;
+}
