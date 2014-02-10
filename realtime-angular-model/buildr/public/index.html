@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="Buildr">
+<head>
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/theme.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+  <section class="container" ng-controller="UnitCtrl">
+    <h1>Welcome to Buildr!</h1>
+    <ul>
+      <li ng-repeat="unit in units">
+        {{ unit.name }} <a ng-click='unit.$remove()'>remove</a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- bower:js -->
+  <script src="bower_components/jquery/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+  <script src="bower_components/q/q.js"></script>
+  <script src="bower_components/eventEmitter/EventEmitter.js"></script>
+  <!-- endbower -->
+
+  <script src="dpd.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Units -->
+  <script src="js/units/unit_service.js"></script>
+  <script src="js/units/unit_model.js"></script>
+  <script src="js/units/unit_controller.js"></script>
+</body>
+</html>

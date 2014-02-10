@@ -1,0 +1,69 @@
+{
+	"type": "Collection",
+	"properties": {
+		"name": {
+			"name": "name",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "name",
+			"order": 0
+		},
+		"description": {
+			"name": "description",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "description",
+			"order": 1
+		},
+		"type": {
+			"name": "type",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "type",
+			"order": 2
+		},
+		"points": {
+			"name": "points",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "points",
+			"order": 3
+		},
+		"image": {
+			"name": "image",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "image",
+			"order": 4
+		},
+		"cost": {
+			"name": "cost",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "cost",
+			"order": 5
+		},
+		"limit": {
+			"name": "limit",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "limit",
+			"order": 6
+		},
+		"enhancements": {
+			"name": "enhancements",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "enhancements",
+			"order": 7
+		}
+	}
+}

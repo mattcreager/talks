@@ -1,0 +1,26 @@
+{
+  "name": "buildr",
+  "version": "0.0.0",
+  "homepage": "https://github.com/mattcreager/talks",
+  "authors": [
+    "Matt Creager <mattcreager@goinstant.com>"
+  ],
+  "description": "Warhammer Fantasy Army Builder",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "bower_components"
+  ],
+  "dependencies": {
+    "angular": "~1.2.12",
+    "bootstrap": "~3.1.0",
+    "lodash": "~2.4.1",
+    "q": "~1.0.0",
+    "eventEmitter": "~4.2.7"
+  }
+}

@@ -45,7 +45,7 @@
       <div class="slides">
         <section>
           <!-- <h1><img src="img/gi-logo.png"></h1> -->
-          <h1>Rescuing Angular's <br> MIA Model <br><span class="green">and Making it Real-Time</span></h1>
+          <h1>Rescuing the MIA Angular Model<br><span class="green">and Making it <em>Real-Time</em></span></h1>
         </section>
 
         <section id="slide-location" class="box" data-background="img/halifax.png">
@@ -143,16 +143,42 @@
         </section>
 
         <section>
-          <h3>Models, the <span class="blue">stuff on $scope</span> right ?</h3>
-          <h2><pre><code>$scope.model = stuff;</code></pre></h2>
+          <h3>Anything on <span class="blue">$scope</span> is a model right ?</h3>
+          <h2><pre><code>$scope.model = data;</code></pre></h2>
         </section>
 
-        <section data-background="#012943">
+        <section>
+          <h3>The first attempt, <span class="blue"><em>sans</em> Model</span></h3>
           <img src="img/goangular-todo-v1.png">
+        </section>
+
+        <section>
+          <h3 class="blue">So very, <em>very</em>, <strong>bad</strong></h3>
+          <ul>
+            <li class="fragment">Data is <strong>married to the life-cycle</strong> of a controller</li>
+            <li class="fragment">Code is <strong>self obfuscating</strong></li>
+            <li class="fragment">Extend <strong>what ?</strong></li>
+            <li class="fragment">Go <strong>directly to storage</strong>; do not pass go, do not collect $200</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Anything on <span class="blue">$scope</span> is a model right ?</h3>
+          <h3><strong><span class="fragment">Not</span> <span class="fragment">so</span> <span class="fragment">much</span></strong></h3>
         </section>
 
         <section data-background="#012943">
           <img src="img/death-scope.jpg">
+        </section>
+
+        <section>
+          <h2><strong>2</strong></h1>
+          <h2 class="yellow">Take the M out of MIA <br> and <strong>put it back in <em>M</em>VC</strong></h2>
+        </section>
+
+        <section>
+          <h2><strong>3</strong></h2>
+          <h2 class="green">Make it <strong>real-time</strong></h2>
         </section>
 
         <section>
