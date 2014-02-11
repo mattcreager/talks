@@ -175,28 +175,237 @@
           <h2 class="yellow">Take the M out of MIA <br> and <strong>put it back in <em>M</em>VC</strong></h2>
         </section>
 
+        <section data-background="img/orc.jpg" class="box" style="padding-top: 45px;">
+          <h2>Today's <strong>Todo Application</strong></h2>
+        </section>
+
+        <section data-background="img/onions.jpg" class="box">
+          <h2><strong>The Onion</strong></h2>
+          <h3 class="fragment">Let's <span class="yellow">attack</span> the <strong>architecture</strong></h3>
+          <h3 class="fragment"><span class="yellow">Visit</span> the <strong>view</strong></h3>
+          <h3 class="fragment">Come into <span class="yellow">contact</span> with the <strong>controller</strong></span></h3>
+          <h3 class="fragment"><span class="yellow">Meet</span> the <strong>Model</strong></h3>
+          <h3 class="fragment"><span class="yellow">Finale</span> with the <strong>Data Layer</strong></h3>
+        </section>
+
+        <section>
+          <h5><strong>Current landscape; acceptable for <span class="yellow">small projects.</span></strong></h5>
+          <img src="img/angular-seed.png">
+          <h5>Architecture</h5>
+        </section>
+
+        <section>
+          <img src="img/architecture.png">
+          <h5><strong>Up &amp; coming architecture for <span class="yellow"><strong>everything else</strong>.</span></strong></h5>
+        </section>
+
+        <section>
+          <h3 class="yellow">So very, <em>very</em>, <strong>sensible</strong></h3>
+          <ul>
+            <li class="fragment">It's <strong>how we <em>think</em></strong></li>
+            <li class="fragment">How we <strong>work</strong></li>
+            <li class="fragment">How we <strong>version control</strong></li>
+          </ul>
+        </section>
+
+        <section>
+        <h5>A <em>View</em> with a <span class="yellow">solid foundation</span></h5>
+<pre><code><div ng-controller="UnitCtrl">
+  <div ng-repeat="unit in units">
+    <img ng-src="{{ unit.image }}">
+    <details>
+      <span>{{ unit.name }}</span>
+      <span>{{ unit.points }} points</span>
+      <span>{{ unit.cost | currency }}</span>
+      <description>{{ unit.description | words:15  }}</description>
+      <button type="button" ng-click="unit.$remove()">Remove</button>
+      <button type="button" ng-click="roster.$add(unit)">Add</button>
+      <button type="button" ng-click="editUnit(unit)">Edit</button>
+    </details>
+  </div>
+</div></code></pre>
+<h5>Is about <strong>presentation</strong> and <strong>interaction</strong></h5>
+        </section>
+
+        <section>
+        <h5>A <em>Controller</em> with a <span class="yellow">solid foundation</span></h5>
+<pre><code>.controller('UnitCtrl', [
+  '$scope',
+  '$editUnitModal',
+  'unitFactory',
+  function($scope, $editUnitModal, unitFactory) {
+
+  $scope.units = unitFactory();
+  $scope.units.initialize().then(function() {
+    // Units are loaded!
+  }).finally($scope.$apply.bind($scope));
+
+  $scope.editUnit = function(unit) {
+     $editUnitModal.open(unit);
+  };
+}]);</code></pre>
+<h5><strong>Communicates</strong> what your application is <strong>doing</strong></h5>
+        </section>
+
+        <section data-background="img/unicorn.jpg">
+          <h2 style="color: purple;"><strong>FINALLY THE MODEL</strong></h2>
+        </section>
+
+        <section>
+        <h5>Brief <em>aside</em>: The <strong>Factory</strong></h5>
+<pre><code>.factory('rosterFactory', [
+  '$timeout',
+  'rosterService',
+  function($timeout, RosterService) {
+    return function rosterFactory(id) {
+      var service = new RosterService(id);
+
+      return new RosterModel(service);
+    };
+}]);</code></pre>
+<h5>because Models <span class="yellow">don't make themselves!</span></h5>
+        </section>
+
+        <section data-background="img/unicorn.jpg">
+          <h2 style="color: purple;"><strong>MUCH SUSPENSE</strong></h2>
+        </section>
+
+        <section>
+        <h5>The <strong>MISSING MODEL !</strong></h5>
+<pre><code>.factory('rosterFactory', [
+  '$timeout',
+  'rosterService',
+  function($timeout, RosterService) {
+    return function rosterFactory(id) {
+      var service = new RosterService(id);
+
+      return new RosterModel(service);
+    };
+}]);</code></pre>
+        <h5>such dissapointment, <span class="yellow">too easy.</span></h5>
+        </section>
+
+                <section id="slide-access-control">
+          <h2 class="text-uppercase">API Storm</h2>
+          <ul>
+            <li class="fragment"><span>extend</span></li>
+            <li class="fragment"><span>initialize</span></li>
+            <li class="fragment"><span>get</span></li>
+            <li class="fragment"><span>sync</span></li>
+            <li class="fragment"><span>set</span></li>
+            <li class="fragment"><span>key/child</span></li>
+            <li class="fragment"><span>omit</span></li>
+          </ul>
+        </section>
+
+        <section>
+        <h5>The <em>service</em>, because <strong>every foundation</strong> <em>starts</em></h5>
+<pre><code>.factory('rosterFactory', [
+  '$timeout',
+  'rosterService',
+  function($timeout, RosterService) {
+    return function rosterFactory(id) {
+      var service = new RosterService(id);
+
+      return new RosterModel(service);
+    };
+}]);</code></pre>
+  <h5>with a ... <span class="yellow">solid foundation</span></h5>
+        </section>
+
         <section>
           <h2><strong>3</strong></h2>
           <h2 class="green">Make it <strong>real-time</strong></h2>
         </section>
 
         <section>
-          <h3>GoAngular &amp; Examples on GitHub</h3>
-          <ul style="list-style: none">
-            <li><code class="orange">github.com/goinstant/goangular</code></li>
-            <li><code class="orange">github.com/mattcreager/goangular-todo-example</code></li>
-            <li><code class="orange">github.com/mattcreager/todo-example</code></li>
+          <h3>First <span class="green">Register event bindings</span></h3>
+          <ul>
+            <li class="fragment"><strong>Set:</strong> Existing property receives new value</li>
+            <li class="fragment"><strong>Add:</strong> New property</li>
+            <li class="fragment"><strong>Remove:</strong> Removed property</li>
           </ul>
         </section>
 
         <section>
-          <h1 class="text-uppercase">Q&amp;A</h1>
-          <h3><span class="blue">@matt_creager & <span class="blue">@ian_livingstone</h3>
+          <h3>Recognize that you need the <em>right</em> information to maintain a local Representation of your remote data and <span class="green">that requires the <strong>right events.</strong></span></h3>
         </section>
 
-        <section data-background="img/tia.jpg">
+        <section>
+          <h3>Second <span class="green">Fetch Everything</span></h3>
+          <ul>
+            <li class="fragment">Prime the Model</li>
+            <li class="fragment">Resolve, emit or callback When Complete</li>
+          </ul>
         </section>
 
+        <section>
+          <h3>Return an object,  <span class="green">populate it <em>later</em><span class="green"></h3>
+        </section>
+
+        <section>
+          <h3><strong>Promises</strong> (Q) for the <em>one-hit wonders</em>, <strong>events</strong> for the <em>other stuff</em></h3>
+        </section>
+
+        <section>
+          <h3>Third (if you <em>must</em>) <span class="green">Persist Local Changes</span></h3>
+          <ul>
+            <li class="fragment">Monitor local object</li>
+            <li class="fragment">Calculate the diff</li>
+            <li class="fragment">Push changes upstream</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Kiss your error <span class="green">locality, performance</span> and <strong>sanity</strong> good-bye and create an audit log</h3>
+        </section>
+
+        <section>
+          <h1>Conclusion</h1>
+        </section>
+
+        <section>
+          <h3>Models provide an API for <span class="blue">accessing</span> and <span class="blue">manipulating</span> data</h3>
+        </section>
+
+        <section>
+          <h3><span class="blue">Data encapsulation</span> is important, especially in Angular</h3>
+        </section>
+
+        <section>
+          <h3>Make a model real-time by:</h3>
+          <ul>
+            <li class="fragment">1. Monitoring remote
+            events</li>
+            <li class="fragment">2. Performing an initial
+            fetch</li>
+            <li class="fragment">3. Monitoring and persisting local state</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Signs you’re doing it right:</h3>
+          <ul>
+            <li class="fragment">Your model is easy to unit &amp; intergration test</li>
+            <li class="fragment">Your model is easy to extend</li>
+            <li class="fragment">Your model is portable</li>
+            <li class="fragment">Your controllers are skinny</li>
+            <li class="fragment">"A place for everything, everything in its place." - Benjamin Franklin</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>GoAngular &amp; Examples on GitHub</h3>
+          <ul style="list-style: none">
+            <li><code class="orange">/goinstant/goangular</code></li>
+            <li><code class="orange">/mattcreager/talks/realtime-angular-model</code></li>
+            <li><code class="orange">/mattcreager/todo-example</code></li>
+          </ul>
+        </section>
+
+        <section>
+          <h1 class="text-uppercase">Q&amp;A  <span class="blue">@matt_creager</span></h1>
+        </section>
       </div>
     </div>
 

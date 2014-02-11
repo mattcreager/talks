@@ -1,1 +1,5 @@
-angular.module('Buildr', []);
+/* global angular */
+
+angular.module('Buildr', [
+  'truncate'
+]);
