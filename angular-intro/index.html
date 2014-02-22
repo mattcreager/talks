@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Rescuing Angular's Missing Model &amp; and Making it Real-Time</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="/sub_modules/reveal/css/reveal.min.css">
+    <link rel="stylesheet" href="reveal-theme.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="highlight-theme.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="/sub_modules/reveal/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="/sub_modules/reveal/lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="//use.typekit.net/jop5wss.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  </head>
+
+  <body>
+
+<!--     <div class="df-frame">
+      <div class="df-bar"></div>
+      <div class="logo"></div>
+    </div> -->
+
+    <div class="reveal">
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+
+
+          <!-- <img src="img/goangular-logo.png"> -->
+        <section data-background="img/space.jpg">
+          <h1>The hackers guide to the <br><strong class="green">Angular <em>Universe</em></strong></h1>
+        </section>
+
+        <section id="slide-location" class="box" data-background="img/halifax.png">
+          <h1 style="text-align: center;">Matthew Creager</h1>
+          <h4><a href="http://twitter.com/matt_creager" target="_blank">@matt_creager</a></h4>
+        </section>
+
+        <section data-background="white">
+          <img src="img/blackberry.png">
+        </section>
+
+        <section data-background="img/blackberry-crash.png"></section>
+
+        <section>
+          <img src="img/gi-logo.png">
+        </section>
+
+        <section>
+          <img src="img/goinstant-team.jpg">
+        </section>
+
+        <section>
+          <img src="img/AngularJS-medium.png">
+        </section>
+
+        <section>
+          <h4 class="red"><em>In 20 of the most <strong>action packed</strong> minutes of your life...</em></h4>
+          <ol>
+            <li><h3 class="fragment"><strong class="yellow">4 Reasons</strong> you should Hack on Angular</h3></li>
+            <li><h3 class="fragment">Hacking with Angular <strong class="blue">like a boss</strong></h3></li>
+            <li><h3 class="fragment">Adding the <strong class="green">GoAngular Secret Sauce</strong></h3></li>
+          </ol>
+        </section>
+
+        <section data-background="#B0372C">
+          <img src="img/brucelee.png" style="width:400px; display: block; margin-left: -50px;">
+          <blockquote style="position: absolute; right: 0; top: 10%;">"Absorb what is useful<br> discard what is not<br> add what is uniquely your own"</blockquote>
+        </section>
+
+        <section data-background="white">
+          <img src="img/count.jpeg">
+          <h2 class="grey"><strong class="yellow">4 Reasons</strong> <span >you should Hack on Angular</span></h2>
+        </section>
+
+        <section>
+          <h2><strong>Community</strong></h2>
+          <h4 class="red">Reason <strong>Number One</strong></h4>
+        </section>
+
+        <section>
+          <p>Stack<strong>Overflow</strong> has over <strong class="yellow">25,000</strong> AngularJS questions</p>
+        </section>
+
+        <section>
+          <p>#<span class="yellow">angularjs</span> has like <em>a whole bunch of active users</em></p>
+          <aside class="muted">Way too many to count</aside>
+        </section>
+
+        <section>
+          <img src="img/ng-conf-logo.svg" style="width:30%">
+          <h3>January 16, 2014</h3>
+        </section>
+
+        <section>
+          <h3>Look who's <strong class="yellow">Mr. Popularity</strong></h3>
+          <img src="img/angular-interest.png" style="width:100%">
+        </section>
+
+        <section>
+          <h2><strong>Architecture</strong></h2>
+          <h4 class="red">Reason <strong>Number Two</strong></h4>
+        </section>
+
+        <section class="box" data-background="img/rocky.jpg">
+          <h3>MVC (Model View Controller)</h3>
+          <br>
+          <ul>
+            <li><h4>"Divides a given software application into three interconnected parts, so as to <strong class="yellow">separate internal representations of information</strong> from the <strong class="yellow">ways that information is presented</strong> to or accepted from the user." <em>- wikipedia</em></h4></li>
+            <li><h4>"A <strong class="yellow">software pattern</strong> for implementing user interfaces." <em>- also wikipedia</em></h4></li>
+            <li><h4>Introduced in Smalltalk-76, so 38 years, <strong>38 years</strong>... of <strong class="yellow">real-world use</strong></h4></li>
+          </ul>
+        </section>
+
+        <section>
+          <img src="img/angular-mvc.svg">
+        </section>
+
+        <section>
+          <h2><strong>Data-Binding</strong></h2>
+          <h4 class="red">Reason <strong>Number Three</strong></h4>
+        </section>
+
+        <section>
+          <blockquote>"Data-binding in Angular web apps is the automatic synchronization of data between the model and view components."</blockquote>
+          <br>
+          <p style="text-align: right">- Thar be <strike>dragons</strike> <span class="yellow">documentation</span></p>
+        </section>
+
+        <section>
+          <img src="img/model-view.svg">
+        </section>
+
+        <section>
+          <h2>So DRY, it's <strong>Parched</strong></h2>
+          <h4 class="red">Reason <strong>Number Four</strong></h4>
+        </section>
+
+        <section>
+          <h3>You will <strong class="yellow">write <em>dramatically</em> less code</strong>. <span class="muted">Period.</span></h3>
+        </section>
+
+        <section>
+          <h3><strong class="yellow">4 Reasons</strong> <span>you should Hack on Angular</span></h2>
+          <br>
+          <ul>
+            <li class="fragment"><h4><strong style="text-decoration: underline;">Community:</strong> <strong class="yellow">Large, active,</strong> and <strong class="yellow">friendly</strong> support group</h4><li>
+            <li class="fragment"><h4><strong style="text-decoration: underline;">Architecture:</strong> <strong class="yellow">Well established</strong> MVC design pattern</h4><li>
+            <li class="fragment"><h4><strong style="text-decoration: underline;">Data-Binding:</strong> <strong class="yellow">Eliminates</strong> bucket loads of <strong class="yellow">boiler plate</strong></h4><li>
+            <li class="fragment"><h4><strong style="text-decoration: underline;">Parched:</strong> All adds up to you getting <strong class="yellow">more app</strong> for <strong class="yellow">less code</strong></h4><li>
+          </ul>
+        </section>
+
+        <section data-background="#4C6094">
+          <img src="img/boss.png" width="25%">
+          <h2 style="line-height: 1.2em;"><strong>Hacking with Angular</strong><br> <strong class="blue" style="background: white;">like a boss</strong></h2>
+        </section>
+
+        <section>
+          <h3>The <strong class="blue">Nuts &amp; Bolts</strong> of Angular</h3>
+          <h4><span class="fragment">Directives,</span> <span class="fragment">filters,</span> <span class="fragment">data-binding, <span class="fragment">modules,</binding,> <span class="fragment">controllers,</span> <span class="fragment">routes,</span> <span class="fragment">services</span></h4>
+          <h3 class="fragment blue">blah, blah, blah</h3>
+        </section>
+
+        <section>
+          <h3><em>Soo many words...</em> Les just <strong class="blue">make an application functional</strong> in <em>under</em> 5 minutes with Angular, mmKay?</h3>
+        </section>
+
+        <section>
+          <h3 class="muted" style="font-size: 1.1em">Live Coding Intermission</h3>
+        </section>
+
+        <section data-background="white">
+            <img src="img/like-a-boss.jpg">
+        </section>
+
+        <section data-background="black">
+          <img src="img/jquery-angular.jpg">
+        </section>
+
+        <section>
+          <h3><code>$timeout</code> <em class="blue">all the things</em></h3>
+        </section>
+
+        <section>
+          <h4>"<code>$apply</code> <span class="blue">already in progress</span>" got you down?</h4>
+<pre><code>$scope.safeApply = function(fn) {
+  var phase = this.$root.$$phase;
+
+  if(phase == '$apply' || phase == '$digest') {
+    if(fn && (typeof(fn) === 'function')) {
+      fn();
+    }
+  } else {
+    this.$apply(fn);
+  }
+};</code></pre>
+        </section>
+
+        <section>
+          <video data-autoplay preload="auto" width="1024" height="550">
+            <source src="img/goangular-animated.mp4" type="video/mp4">
+          </video>
+          <h2>Prepare for the <strong>Secret Sauce</strong></h2>
+        </section>
+
+        <section>
+          <h3>So ya, <strong class="green">we're all like</strong></h3>
+          <img src="img/toddler.jpg" height="450px;">
+          <h3>with <strong class="green">Angular</strong></h3>
+        </section>
+
+        <section>
+          <h3 class="muted" style="font-size: 1.1em">Live Coding Intermission</h3>
+        </section>
+
+        <section data-background="white">
+          <img src="img/seth-godin.png">
+          <blockquote style="background: #0E7E46">"I intentionally abandoned the hard stuff early on because not only do I think it's useless, I think it's a distraction." - Seth Godin</blockquote>
+        </section>
+
+        <section>
+          <h2><strong class="red">Conclusion</strong></h2>
+        </section>
+
+        <section>
+          <h3><strong class="yellow">Invest</strong> in learning Angular; you'll <strong class="yellow">build better</strong> client-side applications <strong class="yellow">faster</strong></h3>
+        </section>
+
+        <section>
+          <h3>Angular has lots of <strong>bits and pieces</strong>, so what? It's still <strong class="yellow">remarkably EZ</strong> to get started</h3>
+        </section>
+
+        <section>
+          <h3>In short: <strong class="yellow">Angular</strong> is <strong class="yellow">the sh^t</strong></h3>
+        </section>
+
+        <section>
+          <h3>If the hack allows:<br> Use <strong class="green">GoInstant</strong> && <strong class="green">GoAngular</strong></h3>
+        </section>
+
+        <section>
+          <h3><strong>Resources</strong></h3>
+          <ul style="list-style: none">
+            <li><code class="red">javascriptjabber.com</code></li>
+            <li><code class="red">egghead.io</code></li>
+            <li><code class="red">#goinstant</code> &amp;&amp; <code class="red">#angularjs</code> on freenode (IRC)</li>
+            <li><code class="red">goangular.org</code></li>
+            <li><code class="red">goinstant.com</code></li>
+            <li><code class="red">youtube.com/user/ngconfvideos</code></li>
+            <li><code class="red">github/goinstant/goangular</code></li>
+            <li><code class="red">github/mattcreager/talks</code></li>
+            <li><code class="red">github/mattcreager/goangular-chat-example</code></li>
+          </ul>
+        </section>
+
+        <section>
+          <quote>“Live as if you were to die tomorrow. Learn as if you were to live forever.”  - Mahatma Gandhi</quote>
+          <hr>
+          <h1 style="text-align: left;" class="text-uppercase">Q&amp;A  <span class="blue">@matt_creager</span></h1>
+          <hr>
+          <h5 style="text-align: left;" class="blue">https://goinstant.com/signup?src=mchacks</h5>
+        </section>
+      </div>
+    </div>
+
+    <script src="/sub_modules/reveal/lib/js/head.min.js"></script>
+    <script src="/sub_modules/reveal/js/reveal.min.js"></script>
+
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: false,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '/sub_modules/reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '/sub_modules/reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'js/custom-highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '/sub_modules/reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '/sub_modules/reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+  </body>
+</html>

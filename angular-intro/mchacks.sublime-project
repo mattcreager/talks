@@ -1,0 +1,13 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "/Users/mcreager/git/talks"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "/Users/mcreager/git/goinstant/examples/goangular-chat-example"
+		}
+	]
+}
