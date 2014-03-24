@@ -144,9 +144,9 @@ body {
   width: 100%; }
   .df-frame .df-bar {
     position: absolute;
-    height: 60px;
+    height: 80px;
     width: 100%;
-    bottom: 0;
+    bottom: 10px;
     left: 0;
     background-color: #666666;
     box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.2);
@@ -303,4 +303,23 @@ color: #333333; }
 
 .subtitle {
   position: fixed;
+}
+
+#section-title {
+  font-family: "proxima-nova", sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  margin: 0 auto;
+  width: 960px;
+  color: #333333;
+}
+
+#nutshells span {
+  text-transform: uppercase;
+  background: #5F78BA;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 68px;
+  padding: 3px 8px;
 }
