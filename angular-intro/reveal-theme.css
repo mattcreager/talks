@@ -305,10 +305,11 @@ color: #333333; }
   position: fixed;
 }
 
-#section-title {
+.df-bar h2 {
+  line-height: 90px;
   font-family: "proxima-nova", sans-serif;
-  font-size: 20px;
-  font-weight: 200;
+  font-size: 30px;
+  font-weight: 700;
   letter-spacing: -0.02em;
   margin: 0 auto;
   width: 960px;

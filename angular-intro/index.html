@@ -34,10 +34,13 @@
 
   <body>
 
-    <div class="df-frame">
-      <div class="df-bar"><div id="section-title"><h2></h2></div></div>
-      <div class="logo"></div>
+    <!-- Section Title -->
+    <div class="df-frame" >
+      <div class="df-bar">
+        <h2 id="section-title"></h2>
+      </div>
     </div>
+    <!-- / Section Title -->
 
     <div class="reveal">
       <!-- Any section element inside of this container is displayed as a slide -->
@@ -58,14 +61,15 @@
           <img src="img/blackberry.png">
         </section>
 
-        <section data-background="img/blackberry-crash.png"></section>
-
-        <section>
-          <img src="img/gi-logo.png">
-        </section>
+        <section data-background="img/titanic.jpg"></section>
 
         <section>
           <img src="img/goinstant-team.jpg">
+        </section>
+
+        <section>
+          <img src="img/gi-logo.png">
+          <h3>You don’t need a server or backend infrastructure, you need GoInstant</h3>
         </section>
 
         <section>
@@ -108,7 +112,7 @@
         </section>
 
         <section data-title="5 Reasons You Should Hack on Angular">
-          <h3>You will <strong class="yellow">write <em>dramatically</em> less code</strong>. <span class="muted">Period.</span></h3>
+          <h3>You will write <strong class="yellow"><em>dramatically</em></strong><br>less boilerplate</h3>
         </section>
 
         <section data-title="5 Reasons You Should Hack on Angular">
@@ -120,6 +124,10 @@
           <blockquote>"Data-binding in Angular web apps is the automatic synchronization of data between the model and view components."</blockquote>
           <br>
           <p style="text-align: right">- Thar be <strike>dragons</strike> <span class="yellow">documentation</span></p>
+        </section>
+
+        <section data-title="5 Reasons You Should Hack on Angular">
+          <img src="img/model-view.svg">
         </section>
 
         <section data-title="5 Reasons You Should Hack on Angular">
@@ -139,10 +147,6 @@
 
         <section data-title="5 Reasons You Should Hack on Angular">
           <img src="img/angular-mvc.svg">
-        </section>
-
-        <section data-title="5 Reasons You Should Hack on Angular">
-          <img src="img/model-view.svg">
         </section>
 
         <section data-title="5 Reasons You Should Hack on Angular">
@@ -203,10 +207,10 @@
             <span class="fragment">Models</span>
             <span class="fragment">Controllers</span>
             <span class="fragment">Views</span>
-            <span class="fragment">Filters</span>
-            <span class="fragment">Routes</span>
             <span class="fragment">Data-binding</span>
             <span class="fragment">Services</span>
+            <span class="fragment">Filters</span>
+            <span class="fragment">Routes</span>
             <span class="fragment">Templating</span>
             <span class="fragment">Testing</span>
             <span class="fragment">Animation</span>
@@ -214,11 +218,30 @@
         </section>
 
         <section data-title="Hacking with Angular in a Bag of Nutshells">
-          <h3><em>Soo many words...</em> Les just <strong class="blue">make an application functional</strong> in <em>under</em> 5 minutes with Angular, mmKay?</h3>
+          <img src="img/highlvl.png">
+        </section>
+
+        <section data-title="Hacking with Angular in a Bag of Nutshells">
+          <h3><strong class="blue">Services</strong></h3>
+<pre><code>angular.module('theModuleName', [])
+  .factory('sectionTitleService', function() {
+    var section = { title: 'Default Title' };
+
+    return {
+      setTitle: function(newTitle) {
+        section.title = newTitle;
+      },
+      getTitle: function() {
+        return section.title;
+      }
+    }
+  })
+  .controller('SectionTitleCtrl', function(titleService) { ...</code></pre>
+          <h5>because Models <span class="blue">shouldn't make themselves!</span></h5>
         </section>
 
         <section>
-          <h3 class="muted" style="font-size: 1.1em">Live Coding Intermission</h3>
+          <img src="img/return.jpg">
         </section>
 
         <section data-background="#0E7E46">
@@ -227,6 +250,14 @@
 
         <section data-background="black">
           <img src="img/jquery-angular.jpg">
+        </section>
+
+        <section>
+          <h4>Need nested views? Multiple named views? <strong class="green">Roll UI-Router</strong></h4>
+        </section>
+
+        <section>
+          <h3>Don't like the extended dependency specification syntax?<br> <strong class="green">Roll NG-Min</strong></h3>
         </section>
 
         <section>
@@ -249,25 +280,7 @@
         </section>
 
         <section>
-          <video data-autoplay preload="auto" width="1024" height="550">
-            <source src="img/goangular-animated.mp4" type="video/mp4">
-          </video>
-          <h2>Prepare for the <strong>Secret Sauce</strong></h2>
-        </section>
-
-        <section>
-          <h3>So ya, <strong class="green">we're all like</strong></h3>
-          <img src="img/toddler.jpg" height="450px;">
-          <h3>with <strong class="green">Angular</strong></h3>
-        </section>
-
-        <section>
-          <h3 class="muted" style="font-size: 1.1em">Live Coding Intermission</h3>
-        </section>
-
-        <section data-background="white">
-          <img src="img/seth-godin.png">
-          <blockquote style="background: #0E7E46">"I intentionally abandoned the hard stuff early on because not only do I think it's useless, I think it's a distraction." - Seth Godin</blockquote>
+          <h3>Break up your Angular application into <strong class="green">components using modules</strong>, rather than filters, models, etc.</h3>
         </section>
 
         <section>
@@ -316,7 +329,8 @@
     <script src="/sub_modules/reveal/lib/js/head.min.js"></script>
     <script src="/sub_modules/reveal/js/reveal.min.js"></script>
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="js/slide-title.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="js/main.js"></script>
 
     <script>
       // Full list of configuration options available here:
