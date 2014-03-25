@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
   <head>
     <meta charset="utf-8">
 
@@ -35,7 +34,7 @@
   <body>
 
     <!-- Section Title -->
-    <div class="df-frame" >
+    <div class="df-frame">
       <div class="df-bar">
         <h2 id="section-title"></h2>
       </div>
@@ -112,7 +111,7 @@
         </section>
 
         <section data-title="5 Reasons You Should Hack on Angular">
-          <h3>You will write <strong class="yellow"><em>dramatically</em></strong><br>less boilerplate</h3>
+          <h3><strong class="yellow"><em>Dramatically</em></strong><br>less boilerplate?</h3>Hurahh!
         </section>
 
         <section data-title="5 Reasons You Should Hack on Angular">
@@ -163,14 +162,14 @@
           <h3>January 16, 2014 <em>|</em> 29 Sessions</h3>
         </section>
 
-        <section data-title="5 Reasons You Should Hack on Angular">
-          <img width="250px" src="img/bford.jpeg" >
-          <blockquote>"I really <strong class="yellow">don't want to encourage developers to wrap up all the cool stuff they do into strictly AngularJS modules</strong> so it's only available to developers using AngularJS". - Brian Ford</blockquote>
-        </section>
-
         <section data-background="#F3B41B" data-title="5 Reasons You Should Hack on Angular">
           <img src="img/brucelee.png" style="width:400px; display: block; margin-left: -50px;">
           <blockquote style="position: absolute; right: 0; top: 10%;">"Absorb what is useful discard what is not<br> add what is uniquely your own"</blockquote>
+        </section>
+
+        <section data-title="5 Reasons You Should Hack on Angular">
+          <img width="250px" src="img/bford.jpeg" >
+          <blockquote>"I really <strong class="yellow">don't want to encourage developers to wrap up all the cool stuff they do into strictly AngularJS modules</strong> so it's only available to developers using AngularJS". - Brian Ford</blockquote>
         </section>
 
         <section data-title="5 Reasons You Should Hack on Angular">
@@ -221,25 +220,6 @@
           <img src="img/highlvl.png">
         </section>
 
-        <section data-title="Hacking with Angular in a Bag of Nutshells">
-          <h3><strong class="blue">Services</strong></h3>
-<pre><code>angular.module('theModuleName', [])
-  .factory('sectionTitleService', function() {
-    var section = { title: 'Default Title' };
-
-    return {
-      setTitle: function(newTitle) {
-        section.title = newTitle;
-      },
-      getTitle: function() {
-        return section.title;
-      }
-    }
-  })
-  .controller('SectionTitleCtrl', function(titleService) { ...</code></pre>
-          <h5>because Models <span class="blue">shouldn't make themselves!</span></h5>
-        </section>
-
         <section>
           <img src="img/return.jpg">
         </section>
@@ -248,39 +228,37 @@
             <img src="img/boss.png">
         </section>
 
-        <section data-background="black">
+        <section data-title="Angular Like a Boss">
+          <h4>Use <code>$watch</code> in your custom directives, <strong class="green">avoid them in your controllers</strong></h4>
+        </section>
+
+        <section data-title="Angular Like a Boss">
+          <h4>Use <code>$apply</code> to <strong class="green">let Angular that you've made changes</strong> after an asynchronous operation</h4>
+        </section>
+
+
+        <section data-title="Angular Like a Boss">
+          <h4>Building a complex app with nested views?<br> <strong class="green">Investigate UI-Router</strong></h4>
+        </section>
+
+        <section data-title="Angular Like a Boss">
+          <h4>Don't like the extended dependency specification syntax?<br> <strong class="green">Investigate NG-Min</strong></h4>
+        </section>
+
+        <section data-title="Angular Like a Boss">
+          <h4><em>"<code>$apply</code> already in progress"</em> got you down?<br> <strong class="green">Investigate `safeApply()`</strong></h4>
+        </section>
+
+        <section data-title="Angular Like a Boss">
+          <h4>Break up your Angular application into <strong class="green">components using modules</strong>, rather than filters, models, etc.</h4>
+        </section>
+
+        <section data-title="Angular Like a Boss">
+          <h4>Looking for a directory of Angular modules? <br> <strong class="green">ngmodules.org</strong></h4>
+        </section>
+
+        <section data-title="Angular Like a Boss" data-background="black">
           <img src="img/jquery-angular.jpg">
-        </section>
-
-        <section>
-          <h4>Need nested views? Multiple named views? <strong class="green">Roll UI-Router</strong></h4>
-        </section>
-
-        <section>
-          <h3>Don't like the extended dependency specification syntax?<br> <strong class="green">Roll NG-Min</strong></h3>
-        </section>
-
-        <section>
-          <h3><code>$timeout</code> <em class="blue">all the things</em></h3>
-        </section>
-
-        <section>
-          <h4>"<code>$apply</code> <span class="blue">already in progress</span>" got you down?</h4>
-<pre><code>$scope.safeApply = function(fn) {
-  var phase = this.$root.$$phase;
-
-  if(phase == '$apply' || phase == '$digest') {
-    if(fn && (typeof(fn) === 'function')) {
-      fn();
-    }
-  } else {
-    this.$apply(fn);
-  }
-};</code></pre>
-        </section>
-
-        <section>
-          <h3>Break up your Angular application into <strong class="green">components using modules</strong>, rather than filters, models, etc.</h3>
         </section>
 
         <section>
@@ -300,19 +278,12 @@
         </section>
 
         <section>
-          <h3>If the hack allows:<br> Use <strong class="green">GoInstant</strong> && <strong class="green">GoAngular</strong></h3>
-        </section>
-
-        <section>
           <h3><strong>Resources</strong></h3>
           <ul style="list-style: none">
             <li><code class="red">javascriptjabber.com</code></li>
             <li><code class="red">egghead.io</code></li>
-            <li><code class="red">#goinstant</code> &amp;&amp; <code class="red">#angularjs</code> on freenode (IRC)</li>
-            <li><code class="red">goangular.org</code></li>
-            <li><code class="red">goinstant.com</code></li>
+            <li><code class="red">#angularjs</code> on freenode (IRC)</li>
             <li><code class="red">youtube.com/user/ngconfvideos</code></li>
-            <li><code class="red">github/goinstant/goangular</code></li>
             <li><code class="red">github/mattcreager/talks</code></li>
             <li><code class="red">github/mattcreager/goangular-chat-example</code></li>
           </ul>
@@ -329,7 +300,6 @@
     <script src="/sub_modules/reveal/lib/js/head.min.js"></script>
     <script src="/sub_modules/reveal/js/reveal.min.js"></script>
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="/bower_components/angular/angular.js"></script>
     <script src="js/main.js"></script>
 
     <script>

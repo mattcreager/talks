@@ -1,9 +1,9 @@
 /* jshint browser:true */
-/* global Reveal, jQuery */
+/* global angular, Reveal */
+
+'use strict';
 
 (function($, Reveal) {
-  'use strict';
-
   Reveal.addEventListener('slidechanged', function(e) {
     var slideNumber = Reveal.getIndices().h;
 
@@ -19,12 +19,11 @@
 
     var currentTitle = $(e.currentSlide).data('title');
 
-    if (previousTitle === currentTitle) return;
-
     if (!currentTitle) {
       $('.df-frame').hide();
       return;
     }
+    if (previousTitle === currentTitle) return;
 
     $('.df-frame').show();
     $('#section-title').text(currentTitle);
