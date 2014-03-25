@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="AngularIntro">
   <head>
     <meta charset="utf-8">
 
@@ -34,9 +34,9 @@
   <body>
 
     <!-- Section Title -->
-    <div class="df-frame">
-      <div class="df-bar">
-        <h2 id="section-title"></h2>
+    <div ng-controller="SectionTitleCtrl" class="df-frame">
+      <div class="df-bar" ng-hide="!section.title">
+        <h2>{{ section.title }}</h2>
       </div>
     </div>
     <!-- / Section Title -->
@@ -164,7 +164,7 @@
 
         <section data-background="#F3B41B" data-title="5 Reasons You Should Hack on Angular">
           <img src="img/brucelee.png" style="width:400px; display: block; margin-left: -50px;">
-          <blockquote style="position: absolute; right: 0; top: 10%;">"Absorb what is useful discard what is not<br> add what is uniquely your own"</blockquote>
+          <blockquote style="position: absolute; right: 0; top: 10%;">"Absorb what is useful<br> discard what is not<br> add what is uniquely your own"</blockquote>
         </section>
 
         <section data-title="5 Reasons You Should Hack on Angular">
@@ -233,7 +233,7 @@
         </section>
 
         <section data-title="Angular Like a Boss">
-          <h4>Use <code>$apply</code> to <strong class="green">let Angular that you've made changes</strong> after an asynchronous operation</h4>
+          <h4>Use <code>$apply</code> to <strong class="green">let Angular know that you've made changes</strong> after an asynchronous operation</h4>
         </section>
 
 
@@ -299,7 +299,7 @@
 
     <script src="/sub_modules/reveal/lib/js/head.min.js"></script>
     <script src="/sub_modules/reveal/js/reveal.min.js"></script>
-    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
     <script src="js/main.js"></script>
 
     <script>
