@@ -38,7 +38,6 @@
       <div class="df-bar"></div>
       <div class="logo"></div>
     </div>
-
     <div class="reveal">
       <!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
@@ -100,6 +99,10 @@
           <h2 class="green">Make it <strong>real-time</strong></h2>
         </section>
 
+        <section data-background="img/wh.jpg" class="box" >
+          <h3 style="padding-top: 25px;"><strong>Todays Todo Application</strong></h3>
+        </section>
+
         <section data-background="img/start.jpg"></section>
 
         <section>
@@ -109,7 +112,15 @@
         </section>
 
         <section>
-          <h3><strong>The <span class="blue">Magic</span></strong></h3>
+          <h3><strong>The <span class="blue">Power</span></strong></h3>
+        </section>
+
+        <section data-transition="fade">
+          <img src="img/angular_mvc.png">
+        </section>
+
+        <section data-transition="fade">
+          <img src="img/angular_mvc_2.png">
         </section>
 
         <section>
@@ -124,42 +135,26 @@
           <h3>++ a <span class="blue">home</span> for <span class="blue">business logic</span>
         </section>
 
-         <section data-background="img/cocoon.jpg" class="box" style="padding-top:1.2em;">
+         <section>
           <h3>++ data <span class="blue">encapsulation</span></h3>
         </section>
 
         <section>
-          <h3><strong>The <span class="blue">Mystery</span></strong></h3>
-        </section>
-
-        <section data-background="white">
-          <img src="img/mvc-0.jpg">
-        </section>
-
-        <section data-background="white">
-          <img src="img/mvc-1.png">
-        </section>
-
-        <section data-background="white">
-          <img src="img/mvc-2.png">
-        </section>
-
-        <section data-background="white">
-          <img src="img/mvc-3.png">
+          <h3><strong>The <span class="blue">Responsibility</span></strong></h3>
         </section>
 
         <section>
-          <h3>Anything on <span class="blue">$scope</span> is a model right ?</h3>
+          <h3>If it's on <span class="blue">$scope</span>, it's a model</h3>
           <h2><pre><code>$scope.model = data;</code></pre></h2>
         </section>
 
         <section>
-          <h3>The first attempt, <span class="blue"><em>sans</em> Model</span></h3>
+          <h3>A <strong>first</strong> attempt</h3>
           <img src="img/goangular-todo-v1.png">
         </section>
 
         <section>
-          <h3 class="blue">So very, <em>very</em>, <strong>bad</strong></h3>
+          <h3 class="blue">face<strong>palm</strong></h3>
           <ul>
             <li class="fragment">Data is <strong>married to the life-cycle</strong> of a controller</li>
             <li class="fragment">Code is <strong>self obfuscating</strong></li>
@@ -169,54 +164,16 @@
         </section>
 
         <section>
-          <h3>Anything on <span class="blue">$scope</span> is a model right ?</h3>
-          <h3><strong><span class="fragment">Not</span> <span class="fragment">so</span> <span class="fragment">much</span></strong></h3>
-        </section>
-
-        <section data-background="#012943">
-          <img src="img/death-scope.jpg">
+          <h3>If it's on <span class="blue">$scope</span>, it's a model?</h3>
+          <h3><strong><span class="fragment">Not</span> <span class="fragment">so</span> <span class="fragment">much.</span></strong></h3>
         </section>
 
         <section>
-          <h2><strong>2</strong></h1>
-          <h2 class="yellow">Take the M out of MIA <br> and <strong>put it back in <em>M</em>VC</strong></h2>
+          <img src="img/foot.png">
         </section>
 
-        <section data-background="img/orc.jpg" class="box" style="padding-top: 45px;">
-          <h2>Today's <strong>Todo Application</strong></h2>
-        </section>
-
-        <section data-background="img/onions.jpg" class="box">
-          <h2><strong>The Onion</strong></h2>
-          <h3 class="fragment">Let's <span class="yellow">attack</span> the <strong>architecture</strong></h3>
-          <h3 class="fragment"><span class="yellow">Visit</span> the <strong>view</strong></h3>
-          <h3 class="fragment">Come into <span class="yellow">contact</span> with the <strong>controller</strong></span></h3>
-          <h3 class="fragment"><span class="yellow">Meet</span> the <strong>Model</strong></h3>
-          <h3 class="fragment"><span class="yellow">Finale</span> with the <strong>Data Layer</strong></h3>
-        </section>
-
-        <section>
-          <h5><strong>Current landscape; acceptable for <span class="yellow">small projects.</span></strong></h5>
-          <img src="img/angular-seed.png">
-          <h5>Architecture</h5>
-        </section>
-
-        <section>
-          <img src="img/architecture.png">
-          <h5><strong>Up &amp; coming architecture for <span class="yellow"><strong>everything else</strong>.</span></strong></h5>
-        </section>
-
-        <section>
-          <h3 class="yellow">So very, <em>very</em>, <strong>sensible</strong></h3>
-          <ul>
-            <li class="fragment">It's <strong>how we <em>think</em></strong></li>
-            <li class="fragment">How we <strong>work</strong></li>
-            <li class="fragment">How we <strong>version control</strong></li>
-          </ul>
-        </section>
-
-        <section>
-        <h5>A <em>View</em> with a <span class="yellow">solid foundation</span></h5>
+         <section data-transition="zoom">
+        <h5>A <em>View</em> with a <span class="blue">solid foundation</span></h5>
 <pre><code><div ng-controller="UnitCtrl">
   <div ng-repeat="unit in units">
     <img ng-src="{{ unit.image }}">
@@ -234,8 +191,8 @@
 <h5>Is about <strong>presentation</strong> and <strong>interaction</strong></h5>
         </section>
 
-        <section>
-        <h5>A <em>Controller</em> with a <span class="yellow">solid foundation</span></h5>
+<section data-transition="zoom">
+        <h5>A <em>Controller</em> with a <span class="blue">solid foundation</span></h5>
 <pre><code>.controller('UnitCtrl', [
   '$scope',
   '$editUnitModal',
@@ -251,7 +208,34 @@
      $editUnitModal.open(unit);
   };
 }]);</code></pre>
-<h5><strong>Communicates</strong> what your application is <strong>doing</strong></h5>
+<h5>Communicates <strong>behaviour</strong></h5>
+        </section>
+
+        <section data-transition="fade">
+          <img src="img/m-angular.png">
+        </section>
+
+        <section data-transition="fade">
+          <img src="img/m-angular-2.png">
+        </section>
+
+       <!--  <section>
+          <h2><strong>2</strong></h1>
+          <h2 class="yellow">Take the M out of MIA <br> and <strong>put it back in <em>M</em>VC</strong></h2>
+        </section>
+
+        <section>
+          <img src="img/architecture.png">
+          <h5><strong>Up &amp; coming architecture for <span class="yellow"><strong>everything else</strong>.</span></strong></h5>
+        </section>
+
+        <section>
+          <h3 class="yellow">So very, <em>very</em>, <strong>sensible</strong></h3>
+          <ul>
+            <li class="fragment">It's <strong>how we <em>think</em></strong></li>
+            <li class="fragment">How we <strong>work</strong></li>
+            <li class="fragment">How we <strong>version control</strong></li>
+          </ul>
         </section>
 
         <section data-background="img/unicorn.jpg">
@@ -412,7 +396,7 @@
 
         <section>
           <h1 class="text-uppercase">Q&amp;A  <span class="blue">@matt_creager</span></h1>
-        </section>
+        </section> -->
       </div>
     </div>
 
