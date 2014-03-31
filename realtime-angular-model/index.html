@@ -195,21 +195,17 @@
 
 <section data-transition="zoom">
         <h5>A <em>Controller</em> with a <span class="blue">solid foundation</span></h5>
-<pre><code>.controller('UnitCtrl', [
+<pre><code>angular.module('Buildr').controller('UnitCtrl', [
   '$scope',
-  '$editUnitModal',
   'unitFactory',
-  function($scope, $editUnitModal, unitFactory) {
+  function($scope, unitFactory) {
+    $scope.units = unitFactory();
+    $scope.units.$initialize();
 
-  $scope.units = unitFactory();
-  $scope.units.initialize().then(function() {
-    // Units are loaded!
-  }).finally($scope.$apply.bind($scope));
-
-  $scope.editUnit = function(unit) {
-     $editUnitModal.open(unit);
-  };
-}]);</code></pre>
+    $scope.editUnit = function(unit) {
+       $scope.editUnitModal.open(unit);
+    };
+  }]);</code></pre>
 <h5>Communicates <strong>behaviour</strong></h5>
         </section>
 
@@ -284,68 +280,50 @@
         </section>
 
         <section>
-          <h3><strong>The <span class="yellow">Model Family</span></strong></h3>
-        </section>
-
-       <!--  <section>
-          <h2><strong>2</strong></h1>
-          <h2 class="yellow">Take the M out of MIA <br> and <strong>put it back in <em>M</em>VC</strong></h2>
+          <h3>Keeping it <strong>Simple</strong><br>
+          The <strong class="yellow">Model Sandwich</strong></h3>
         </section>
 
         <section>
-          <img src="img/architecture.png">
-          <h5><strong>Up &amp; coming architecture for <span class="yellow"><strong>everything else</strong>.</span></strong></h5>
+          <img src="img/model-sandwhich.png">
         </section>
 
         <section>
-          <h3 class="yellow">So very, <em>very</em>, <strong>sensible</strong></h3>
-          <ul>
-            <li class="fragment">It's <strong>how we <em>think</em></strong></li>
-            <li class="fragment">How we <strong>work</strong></li>
-            <li class="fragment">How we <strong>version control</strong></li>
-          </ul>
-        </section>
-
-        <section data-background="img/unicorn.jpg">
-          <h2 style="color: purple;"><strong>FINALLY THE MODEL</strong></h2>
+          <img src="img/model-factory.png">
         </section>
 
         <section>
-        <h5>Brief <em>aside</em>: The <strong>Factory</strong></h5>
-<pre><code>.factory('rosterFactory', [
-  '$timeout',
-  'rosterService',
-  function($timeout, RosterService) {
+<pre><code>angular.module('Buildr').factory('rosterFactory', [
+  'dataService'.
+  'RosterModel',
+  function(dataService, RosterModel) {
     return function rosterFactory(id) {
-      var service = new RosterService(id);
+      var service = new dataService('roster', id);
 
       return new RosterModel(service);
     };
 }]);</code></pre>
-<h5>because Models <span class="yellow">don't make themselves!</span></h5>
-        </section>
-
-        <section data-background="img/unicorn.jpg">
-          <h2 style="color: purple;"><strong>MUCH SUSPENSE</strong></h2>
         </section>
 
         <section>
-        <h5>The <strong>MISSING MODEL !</strong></h5>
-<pre><code>.factory('rosterFactory', [
-  '$timeout',
-  'rosterService',
-  function($timeout, RosterService) {
-    return function rosterFactory(id) {
-      var service = new RosterService(id);
-
-      return new RosterModel(service);
-    };
-}]);</code></pre>
-        <h5>such dissapointment, <span class="yellow">too easy.</span></h5>
+          <img src="img/model-data.png">
         </section>
 
-                <section id="slide-access-control">
-          <h2 class="text-uppercase">API Storm</h2>
+        <section>
+          <h3>Keeping it <strong>Simple</strong><br>
+          <strong class="yellow">Validation</strong></h3>
+        </section>
+
+        <section>
+          <img src="img/model-validation.png">
+        </section>
+
+        <section>
+          <h3>Keeping it <strong>Simple</strong><br>
+          <strong class="yellow">Convention</strong></h3>
+        </section>
+
+        <section id="slide-access-control">
           <ul>
             <li class="fragment"><span>extend</span></li>
             <li class="fragment"><span>initialize</span></li>
@@ -358,65 +336,75 @@
         </section>
 
         <section>
-        <h5>The <em>service</em>, because <strong>every foundation</strong> <em>starts</em></h5>
-<pre><code>.factory('rosterFactory', [
-  '$timeout',
-  'rosterService',
-  function($timeout, RosterService) {
-    return function rosterFactory(id) {
-      var service = new RosterService(id);
-
-      return new RosterModel(service);
-    };
-}]);</code></pre>
-  <h5>with a ... <span class="yellow">solid foundation</span></h5>
-        </section>
-
-        <section>
           <h2><strong>3</strong></h2>
           <h2 class="green">Make it <strong>real-time</strong></h2>
         </section>
 
         <section>
-          <h3>First <span class="green">Register event bindings</span></h3>
+          <h3><strong class="green">Context</strong> <strong>and</strong> <strong class="green">events</strong> are used to maintain a <span class="green">local representation</span> of your remote data</h3>
+        </section>
+
+        <section>
+          <h3><span class="green"><strong>Event Bindings</strong></h3>
           <ul>
-            <li class="fragment"><strong>Set:</strong> Existing property receives new value</li>
-            <li class="fragment"><strong>Add:</strong> New property</li>
-            <li class="fragment"><strong>Remove:</strong> Removed property</li>
+            <li class="fragment"><strong>Set:</strong> An existing value has changed</li>
+            <li class="fragment"><strong>Add:</strong> A new property has been added</li>
+            <li class="fragment"><strong>Remove:</strong> A property has been removed</li>
           </ul>
         </section>
 
         <section>
-          <h3>Recognize that you need the <em>right</em> information to maintain a local Representation of your remote data and <span class="green">that requires the <strong>right events.</strong></span></h3>
+          <h3><span class="green"><strong>Context</strong></h3>
+<pre><code>{
+  "command": "SET",
+  "targetKey": "roster/aRoStErID",
+  "currentKey": "roster/",
+  "value": "aNewValue",
+  "userId": "user_5",
+  "position": {
+    "current": 4,
+    "previous": 6
+  },
+  "events": {
+    "current": 2,
+    "total": 3
+  }
+}</code></pre>
         </section>
 
         <section>
-          <h3>Second <span class="green">Fetch Everything</span></h3>
+          <h3>The Initializing <strong class="green">Fetch</strong></h3>
           <ul>
-            <li class="fragment">Prime the Model</li>
-            <li class="fragment">Resolve, emit or callback When Complete</li>
+            <li class="fragment">Primes the model</li>
+            <li class="fragment">Ensures a valid state</li>
+            <li class="fragment">Publishes a notification</li>
           </ul>
         </section>
 
         <section>
-          <h3>Return an object,  <span class="green">populate it <em>later</em><span class="green"></h3>
+          <h3>Return an object <strong>now</strong><br> <span class="green">populate it <em>later</em><span class="green"></h3>
         </section>
 
         <section>
-          <h3><strong>Promises</strong> (Q) for the <em>one-hit wonders</em>, <strong>events</strong> for the <em>other stuff</em></h3>
+          <h3><strong>Promises</strong> (Q) for the <em>one-hit wonders</em>,
+          <span class="green"> <strong>events</strong> for the <em>other stuff</em></span></h3>
         </section>
 
         <section>
-          <h3>Third (if you <em>must</em>) <span class="green">Persist Local Changes</span></h3>
+          <h3><strong class="green">Persist</strong> Local Changes (if you <em>must</em>)</h3>
           <ul>
-            <li class="fragment">Monitor local object</li>
+            <li class="fragment">Watch the local model</li>
             <li class="fragment">Calculate the diff</li>
             <li class="fragment">Push changes upstream</li>
           </ul>
         </section>
 
         <section>
-          <h3>Kiss your error <span class="green">locality, performance</span> and <strong>sanity</strong> good-bye and create an audit log</h3>
+          <h3>Caution: Kiss your error <span class="green">locality, performance</span> and <strong>sanity</strong> good-bye</h3>
+        </section>
+
+        <section>
+          <h3>CREATE AN AUDIT LOG</h3>
         </section>
 
         <section>
@@ -464,7 +452,7 @@
 
         <section>
           <h1 class="text-uppercase">Q&amp;A  <span class="blue">@matt_creager</span></h1>
-        </section> -->
+        </section>
       </div>
     </div>
 
