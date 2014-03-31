@@ -246,11 +246,13 @@
         </section>
 
         <section>
+          <h3>Let's <strong>express</strong> our roster model
+          <span class="yellow"><br> <em>sans</em> implementation</h3></span>
           <ul>
-            <li>Our Roster has a point limit</li>
-            <li class="fragment">Has a unit limit</li>
-            <li class="fragment">Contains units</li>
-            <li class="fragment">etc..</li>
+            <li class="fragment">Two possible types: Fantasy or 40k</li>
+            <li class="fragment">Limited total points</li>
+            <li class="fragment">Limited total units</li>
+            <li class="fragment">Unit composition requirements</li>
           </ul>
         </section>
 
@@ -295,14 +297,21 @@
         <section>
 <pre><code>angular.module('Buildr').factory('rosterFactory', [
   'dataService'.
-  'RosterModel',
-  function(dataService, RosterModel) {
-    return function rosterFactory(id) {
+  'FantasyRosterModel',
+  'FortyKRosterModel',
+  function(dataService, FantasyRosterModel, FortyKRosterModel) {
+    return function rosterFactory(type, id) {
       var service = new dataService('roster', id);
 
-      return new RosterModel(service);
+      if (type = FANTASY) return new FantasyRosterModel(service);
+
+      return new FortyKRosterModel(service);
     };
 }]);</code></pre>
+        </section>
+
+        <section>
+          <img src="img/model-sandwhich.png">
         </section>
 
         <section>
@@ -319,19 +328,38 @@
         </section>
 
         <section>
+          <h3><strong class="yellow">Rule of thumb</strong><br>
+          Model state <strong>must always be valid</strong></h3>
+        </section>
+
+        <section>
+          <h3>Keeping it <strong>Simple</strong><br>
+          <strong class="yellow">Extensibility</strong></h3>
+        </section>
+
+        <section>
+          <h3>Roster -> FantasyRoster</h3>
+          <h3>Roster -> FortyKRoster</h3>
+        </section>
+
+        <section>
+          <h3>Parasitic combination <strong class="yellow">inheritance</strong></h3>
+        </section>
+
+        <section>
           <h3>Keeping it <strong>Simple</strong><br>
           <strong class="yellow">Convention</strong></h3>
         </section>
 
         <section id="slide-access-control">
           <ul>
+            <li class="fragment"><span>get</span></li>
+            <li class="fragment"><span>set</span></li>
+            <li class="fragment"><span>on/off</span></li>
             <li class="fragment"><span>extend</span></li>
             <li class="fragment"><span>initialize</span></li>
-            <li class="fragment"><span>get</span></li>
             <li class="fragment"><span>sync</span></li>
-            <li class="fragment"><span>set</span></li>
             <li class="fragment"><span>key/child</span></li>
-            <li class="fragment"><span>omit</span></li>
           </ul>
         </section>
 
@@ -386,7 +414,7 @@
         </section>
 
         <section>
-          <h3><strong>Promises</strong> (Q) for the <em>one-hit wonders</em>,
+          <h3><strong>Promises</strong> (Q/$q) for the <em>one-hit wonders</em>,
           <span class="green"> <strong>events</strong> for the <em>other stuff</em></span></h3>
         </section>
 
