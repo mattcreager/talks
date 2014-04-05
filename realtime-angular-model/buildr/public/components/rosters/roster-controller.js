@@ -6,19 +6,14 @@
 
 angular
 .module('Buildr')
-.controller('RosterCtrl', ['$scope', 'UnitModel', function($scope, Unit) {
+.controller('RosterCtrl', ['$scope', 'RosterModel', function($scope, Roster) {
 
-  //console.log(Unit);
+  var roster_id = '8dc743a3af53d898';
 
-  // var roster_id = '8dc743a3af53d898';
+  $scope.roster = Roster.$find(roster_id);
+  $scope.roster.$getUnits();
 
-  // rosterFactory
-  //   .get(roster_id)
-  //   .then(function(roster) {
-  //     $scope.roster = roster;
-
-  //     console.log($scope.roster);
-  //   }).finally($scope.$apply.bind($scope));
+  console.log($scope.roster);
 
   // $scope.remove = function(roster) {
   //   roster.$remove();

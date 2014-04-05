@@ -9,24 +9,14 @@ angular
   'UnitModel',
   function($scope, Unit) {
 
-    var blahUnit = Unit.find();
+    $scope.blahUnit = Unit.$find('4826f1ef3d292b6f');
+    $scope.units = Unit.$find();
 
-    console.log('in bis', blahUnit);
+    //console.log($scope.units, $scope.blahUnit)
+
+    // $scope.$watch('blahUnit', function() {
+    //   console.log(arguments)
+    // })
   }]);
 
 })();
-
-
-/***
-
-unitFactory.get().then(function(units) {
-      $scope.units = units;
-
-      console.log($scope.units);
-    }).finally($scope.$apply.bind($scope));
-
-    $scope.remove = function(unit) {
-      unit.$remove();
-    };
-
-***/

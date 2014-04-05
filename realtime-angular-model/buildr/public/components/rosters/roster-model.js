@@ -1,74 +1,108 @@
-/* global angular, EventEmitter, _ */
+/* global angular, EventEmitter, _, Q */
 
 (function() { 'use strict';
 
-angular
-.module('Buildr')
-.factory('rosterFactory', ['$timeout', 'rosterService', function($timeout, rosterService) {
-  return {
-    get: function(id) {
-      return rosterService.get(id).then(function(rosters) {
-        if (!_.isArray(rosters)) {
-          return new RosterModel($timeout, rosterService, rosters);
-        }
-
-        return _.map(rosters, function(roster) {
-          return new RosterModel($timeout, rosterService, roster);
-        });
-      });
-    }
-  };
-}]);
-
-function RosterModel($timeout, rosterService, roster) {
-  _.extend(this, {
-    $$service: rosterService,
-    $$timeout: $timeout
-  });
-
-  _.merge(this, roster);
-}
-
-RosterModel.prototype.$inc = function(unit) {
-  var self = this;
-
-  this.$$timeout(function() {
-    unit.count++;
-  });
-
-  return this.$$service.inc(this.id, unit.id);
-};
-
-RosterModel.prototype.$add = function(unit) {
-  var self = this;
-
-  if (_.find(this.units, { id: unit.id })) {
-    return this.$inc(unit);
+function RosterModel(futureRosterData) {
+  if (!futureRosterData.inspect) {
+    _.extend(this, futureRosterData);
+    return;
   }
 
-  this.$$timeout(function() {
-    self.units.push(unit);
+  this.$futureRosterData = futureRosterData;
+  this.$unwrap(futureRosterData);
+}
+
+RosterModel.$factory = ['$timeout', 'bdResource', 'UnitModel', function($timeout, Resource, Unit) {
+  _.extend(RosterModel, {
+    $$resource: new Resource('/rosters'),
+    $timeout: $timeout,
+    $Unit: Unit
   });
 
-  return this.$$service.addUnit(this.id, {
-    unit_id: unit.id,
-    count: 1
-  });
-};
+  return RosterModel;
+}];
 
-RosterModel.prototype.$remove = function(unit) {
-  this.units.splice(this.units.indexOf(unit), 1);
+RosterModel.$find = function(uid) {
+  var futureRosterData = this.$$resource.find(uid);
 
-  var units = _.map(this.units, function(unit) {
-    return {
-      unit_id: unit.id,
-      count: unit.count
-    };
-  });
+  if (uid) return new RosterModel(futureRosterData);
 
-  return this.$$service.removeUnit(this.id, units);
+  return RosterModel.$unwrapCollection(futureRosterData);
 };
 
 RosterModel.prototype.$$emitter = _.clone(EventEmitter.prototype);
+
+RosterModel.prototype.$getUnits = function() {
+  var self = this;
+
+  return this.$futureRosterData.get('units').then(function(rosterUnits) {
+    var units  = _.reduce(rosterUnits, function(a, rosterUnit) {
+      var unit = RosterModel.$Unit.$find(rosterUnit.unit_id);
+      _.extend(unit, rosterUnit);
+      a.push(unit);
+      return a;
+    }, []);
+
+    RosterModel.$timeout(function() {
+      self.units = units;
+    });
+
+    return Q.all(_.pluck(units, '$futureUnitData')).then(function() {
+      return self.units;
+    });
+  });
+};
+
+RosterModel.prototype.$unwrap = function() {
+  var self = this;
+
+  this.$futureRosterData.then(function(data) {
+    RosterModel.$timeout(function() { _.extend(self, data); });
+  });
+};
+
+RosterModel.prototype.$inc = function(unit) {
+  unit = _.find(this.units, { id: unit.id });
+  unit.count++;
+
+  return this.$saveUnits();
+};
+
+RosterModel.prototype.$dec = function(unit) {
+  unit.count--;
+
+  return this.$saveUnits();
+};
+
+
+RosterModel.prototype.$add = function(unit) {
+  if (_.contains(_.pluck(this.units, 'id'), unit.id)) return this.$inc(unit);
+
+  unit.count = 1;
+  this.units.push(unit);
+
+  return this.$saveUnits();
+};
+
+RosterModel.prototype.$remove = function(unit) {
+  if (unit.count > 1) return this.$dec(unit);
+
+  this.units.splice(this.units.indexOf(unit), 1);
+
+  return this.$saveUnits();
+};
+
+RosterModel.prototype.$saveUnits = function() {
+  var units = _.map(this.units, function(unit) {
+    return {
+      unit_id: unit.id,
+      count: unit.count || 1
+    };
+  });
+
+  return RosterModel.$$resource.set(this.id, { units: units });
+};
+
+angular.module('Buildr').factory('RosterModel', RosterModel.$factory);
 
 })();

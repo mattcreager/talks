@@ -47,11 +47,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="unit in roster.units">
+            <tr ng-repeat="unit in roster.units track by $index">
               <td><strong>{{ unit.name }}<strong></td>
               <td><span class="label label-info">{{ unit.type }}</span></td>
               <td>{{ unit.count }}</td>
-              <td><code>{{ unit.points }}</code></td>
+              <td><code>{{ unit.points * unit.count }}</code></td>
               <td>
                 <div class="unit-actions btn-group pull-right">
                   <button ng-click="editUnit(unit)" type="button" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-edit"></span></button>
@@ -78,8 +78,9 @@
   <script src="dpd.js"></script>
   <script src="app.js"></script>
 
+  <script src="components/resource/resource.js"></script>
+
   <!-- Units -->
-  <script src="components/units/unit-service.js"></script>
   <script src="components/units/unit-model.js"></script>
   <script src="components/units/unit-controller.js"></script>
 

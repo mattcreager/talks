@@ -2,89 +2,60 @@
 
 (function() { 'use strict';
 
-// angular
-// .module('Buildr')
-// .factory('unitFactory', ['unitService', function(unitService) {
-//   return {
-//     get: function(id) {
-//       return unitService.get(id).then(function(units) {
-//         if (!_.isArray(units)) {
-//           return new UnitModel(unitService, units);
-//         }
+function UnitModel(futureUnitData) {
+  if (!futureUnitData.inspect) {
+    _.extend(this, futureUnitData);
+    return;
+  }
 
-//         return _.map(units, function(unit) {
-//           return new UnitModel(unitService, unit);
-//         });
-//       });
-//     }
-//   };
-// }]);
+  this.$futureUnitData = futureUnitData;
+  this.$unwrap(futureUnitData);
+}
 
-angular.module('Buildr').factory('UnitModel', function($http) {
-  UnitModel._resource = new Resource($http);
+UnitModel.$factory = ['$timeout', 'bdResource', function($timeout, Resource) {
+  _.extend(UnitModel, {
+    $$resource: new Resource('/units'),
+    $timeout: $timeout
+  });
 
   return UnitModel;
-});
+}];
 
-function Resource(http) {
-  _.extend(this, {
-    _http: http,
-    _path: '/units'
-  });
+UnitModel.$find = function(uid) {
+  var futureUnitData = this.$$resource.find(uid);
 
-  _.bindAll(this, 'find');
-}
+  if (uid) return new UnitModel(futureUnitData);
 
-Resource.prototype.find = function(uid) {
-  var deferred = Q.defer();
-  var path = uid ? this._path + '/' + uid : this._path;
-
-  this._http
-    .get(path)
-    .success(deferred.resolve)
-    .error(deferred.reject);
-
-  return deferred.promise;
+  return UnitModel.$unwrapCollection(futureUnitData);
 };
 
-function UnitModel(unitData) {
-  _.extend(this, {
-    packagedData: unitData,
-    value: null
-  });
-}
+UnitModel.$unwrapCollection = function(futureUnitData) {
+  var collection = {};
 
-UnitModel.find = function(uid) {
-  return new this(this._resource.find());
+  collection.$futureUnitData = futureUnitData;
+
+  futureUnitData.then(function(units) {
+    UnitModel.$timeout(function() {
+      _.reduce(units, function(c, unit) {
+        c[unit.id] = new UnitModel(unit);
+        return c;
+      }, collection);
+    });
+  });
+
+  return collection;
 };
 
 UnitModel.prototype.$$emitter = _.clone(EventEmitter.prototype);
 
-UnitModel.prototype.$remove = function() {
-  console.log('remove me what?');
+UnitModel.prototype.$unwrap = function() {
+  var self = this;
+
+  this.$futureUnitData.then(function(data) {
+    UnitModel.$timeout(function() { _.extend(self, data); });
+  });
 };
 
+angular.module('Buildr').factory('UnitModel', UnitModel.$factory);
+
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function inheritPrototype(SubClass, SuperClass) {
-//   var superCopy = Object.create(SuperClass.prototype);
-//   superCopy.constructor = SubClass;
-
-//   SubClass.prototype = superCopy;
-// }
-
