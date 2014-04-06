@@ -26,6 +26,7 @@
               <div class="unit-actions btn-group pull-right">
                 <button ng-click="editUnit(unit)" type="button" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-edit"></span></button>
                 <button ng-click="roster.$add(unit)" type="button" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-plus"></span></button>
+                <button ng-click="roster.$suggest(unit)" type="button" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-thumbs-up"></span></button>
               </div>
             </div>
           </div>
@@ -47,15 +48,22 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="unit in roster.units track by $index">
+            <tr ng-repeat="unit in roster.units track by $index"
+                ng-class="{ true: 'warning' }[ unit.isSuggestion ]">
               <td><strong>{{ unit.name }}<strong></td>
               <td><span class="label label-info">{{ unit.type }}</span></td>
               <td>{{ unit.count }}</td>
               <td><code>{{ unit.points * unit.count }}</code></td>
-              <td>
+              <td ng-hide="unit.isSuggestion">
                 <div class="unit-actions btn-group pull-right">
                   <button ng-click="editUnit(unit)" type="button" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-edit"></span></button>
                   <button ng-click="roster.$remove(unit)" type="button" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus"></span></button>
+                </div>
+              </td>
+              <td ng-show="unit.isSuggestion">
+                <div class="unit-actions btn-group pull-right">
+                  <button ng-click="roster.$acceptSuggestion(unit)" type="button" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-ok"></span></button>
+                  <button ng-click="roster.$remove(unit)" type="button" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
                 </div>
               </td>
             </tr>

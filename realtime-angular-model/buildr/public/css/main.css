@@ -25,3 +25,12 @@
 .roster-name {
   color: green;
 }
+
+.unit img {
+  float: left;
+  width: 20%;
+}
+
+.suggestion {
+  background-color: white;
+}

@@ -64,6 +64,14 @@
 			"required": false,
 			"id": "enhancements",
 			"order": 7
+		},
+		"universe": {
+			"name": "universe",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "universe",
+			"order": 8
 		}
 	}
 }

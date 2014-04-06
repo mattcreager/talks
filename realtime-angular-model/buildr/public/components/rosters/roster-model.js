@@ -12,15 +12,19 @@ function RosterModel(futureRosterData) {
   this.$unwrap(futureRosterData);
 }
 
-RosterModel.$factory = ['$timeout', 'bdResource', 'UnitModel', function($timeout, Resource, Unit) {
-  _.extend(RosterModel, {
-    $$resource: new Resource('/rosters'),
-    $timeout: $timeout,
-    $Unit: Unit
-  });
+RosterModel.$factory = [
+  '$timeout',
+  'bdResource',
+  'UnitModel',
+    function($timeout, Resource, Unit) {
+    _.extend(RosterModel, {
+      $$resource: new Resource('/rosters'),
+      $timeout: $timeout,
+      $Unit: Unit
+    });
 
-  return RosterModel;
-}];
+    return RosterModel;
+  }];
 
 RosterModel.$find = function(uid) {
   var futureRosterData = this.$$resource.find(uid);
@@ -74,7 +78,6 @@ RosterModel.prototype.$dec = function(unit) {
   return this.$saveUnits();
 };
 
-
 RosterModel.prototype.$add = function(unit) {
   if (_.contains(_.pluck(this.units, 'id'), unit.id)) return this.$inc(unit);
 
@@ -102,6 +105,55 @@ RosterModel.prototype.$saveUnits = function() {
 
   return RosterModel.$$resource.set(this.id, { units: units });
 };
+
+RosterModel.prototype.$acceptSuggestion = function(unit) {
+  unit.isSuggestion = false;
+
+  return this.$saveUnits();
+};
+
+RosterModel.prototype.$suggest = function(unit) {
+  if (_.contains(_.pluck(this.units, 'id'), unit.id)) return  ;
+
+  unit.count = 1;
+  unit.isSuggestion = true;
+  this.units.push(unit);
+
+  return this.$saveUnits();
+};
+
+function FantasyRoster() {
+  console.log('fantasyRoster kick-off');
+}
+
+inheritPrototype(FantasyRoster, RosterModel);
+
+FantasyRoster.prototype.$validate = function() {
+  console.log(this, 'validation');
+};
+
+// var createObject = Object.create;
+
+// if (!_.isFunction(createObject)) {
+//   createObject = function(obj) {
+//     function F() {}
+
+//     F.prototype = obj;
+//     return new F();
+//   };
+// }
+
+function inheritPrototype(SubClass, SuperClass) {
+  var superCopy = Object.create(SuperClass.prototype);
+
+  superCopy.constructor = SubClass;
+
+  SubClass.prototype = superCopy;
+
+  for (var i in SuperClass) {
+    SubClass[i] = SuperClass[i];
+  }
+}
 
 angular.module('Buildr').factory('RosterModel', RosterModel.$factory);
 
