@@ -2,32 +2,16 @@
 
 (function() { 'use strict';
 
-function Resource($http, path) {
-  _.extend(this, {
-    _http: $http,
-    _path: path
-  });
-}
+/** Constructor  **/
 
-Resource.factory = function($http) {
-  return function(path) {
-    return new Resource($http, path);
-  };
-};
+/* Factory */
 
-angular.module('Buildr').factory('bdResource', Resource.factory);
+/* Registration */
 
-Resource.prototype.find = function(uid) {
-  var deferred = Q.defer();
+/* Record retrieval */
 
-  var path = uid ? this._path + '/' + uid : this._path;
-
-  this._http
-    .get(path)
-    .success(deferred.resolve)
-    .error(deferred.reject);
-
-  return deferred.promise;
+Resource.prototype.path = function(uid) {
+  return uid ? this._path + '/' + uid : this._path;
 };
 
 Resource.prototype.set = function(uid, newValue) {

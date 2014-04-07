@@ -8,7 +8,6 @@ function Unit(futureUnitData) {
     return;
   }
 
-  this.$futureUnitData = futureUnitData;
   this.$unwrap(futureUnitData);
 }
 
@@ -31,6 +30,17 @@ Unit.$find = function(uid) {
   return Unit.$unwrapCollection(futureUnitData);
 };
 
+/* Automatic Promise unwrapping */
+
+Unit.prototype.$unwrap = function(futureUnitData) {
+  var self = this;
+
+  this.$futureUnitData = futureUnitData;
+  this.$futureUnitData.then(function(data) {
+    Unit.$timeout(function() { _.extend(self, data); });
+  });
+};
+
 Unit.$unwrapCollection = function(futureUnitData) {
   var collection = {};
 
@@ -46,16 +56,6 @@ Unit.$unwrapCollection = function(futureUnitData) {
   });
 
   return collection;
-};
-
-Unit.prototype.$$emitter = _.clone(EventEmitter.prototype);
-
-Unit.prototype.$unwrap = function() {
-  var self = this;
-
-  this.$futureUnitData.then(function(data) {
-    Unit.$timeout(function() { _.extend(self, data); });
-  });
 };
 
 Unit.prototype.$omit = function() {

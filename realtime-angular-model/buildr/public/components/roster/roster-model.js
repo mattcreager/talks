@@ -10,9 +10,8 @@ function Roster(futureRosterData) {
 Roster.$factory = [
   '$timeout',
   'bdResource',
-  'bdSuggestions',
   'bdUnit',
-  function($timeout, Resource, suggestions, Unit) {
+  function($timeout, Resource, Unit) {
     _.extend(Roster, {
       $$resource: new Resource('/rosters'),
       $timeout: $timeout,
@@ -98,23 +97,14 @@ Roster.prototype.$saveUnits = function() {
   return Roster.$$resource.set(this.id, { units: units });
 };
 
-Roster.prototype.$suggest = function(unit) {
-  if (_.contains(_.pluck(this.units, 'id'), unit.id)) return;
-
-  unit.count = 1;
-  this.suggestions.$addSuggestion(unit);
+Roster.prototype.$contains = function(unit) {
+  return _.contains(_.pluck(this.units, 'id'), unit.id);
 };
 
-Roster.prototype.$acceptSuggestion = function(unit) {
-  var self = this;
+/** $suggest **/
 
-  return this.suggestions.$removeSuggestion(unit).then(function() {
-     return self.$add(unit);
-  });
-};
+/** $acceptSuggestion **/
 
-Roster.prototype.$declineSuggestion = function(unit) {
-  return this.suggestions.$removeSuggestion(unit);
-};
+/** $declineSuggestion **/
 
 })();

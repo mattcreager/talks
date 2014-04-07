@@ -283,8 +283,7 @@
         </section>
 
         <section>
-          <h3>Keeping it <strong>Simple</strong><br>
-          The <strong class="yellow">Model Sandwich</strong></h3>
+          <h3>The <strong class="yellow">Model Sandwich</strong></h3>
         </section>
 
         <section>
@@ -296,22 +295,6 @@
         </section>
 
         <section>
-<pre><code>angular.module('Buildr').factory('rosterFactory', [
-  'dataService'.
-  'FantasyRosterModel',
-  'FortyKRosterModel',
-  function(dataService, FantasyRosterModel, FortyKRosterModel) {
-    return function rosterFactory(type, id) {
-      var service = new dataService('roster', id);
-
-      if (type = FANTASY) return new FantasyRosterModel(service);
-
-      return new FortyKRosterModel(service);
-    };
-}]);</code></pre>
-        </section>
-
-        <section>
           <img src="img/model-sandwhich.png">
         </section>
 
@@ -320,7 +303,6 @@
         </section>
 
         <section>
-          <h3>Keeping it <strong>Simple</strong><br>
           <strong class="yellow">Validation</strong></h3>
         </section>
 
@@ -334,13 +316,12 @@
         </section>
 
         <section>
-          <h3>Keeping it <strong>Simple</strong><br>
           <strong class="yellow">Extensibility</strong></h3>
         </section>
 
         <section>
-          <h3>Roster -> FantasyRoster</h3>
-          <h3>Roster -> FortyKRoster</h3>
+          <h3>Model -> Key</h3>
+          <h3>Model -> User</h3>
         </section>
 
         <section>
@@ -348,7 +329,6 @@
         </section>
 
         <section>
-          <h3>Keeping it <strong>Simple</strong><br>
           <strong class="yellow">Convention</strong></h3>
         </section>
 
