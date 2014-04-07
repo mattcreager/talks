@@ -7,7 +7,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>BUILD<span>R</span></h1>
+    <h1>Build<span>R</span></h1>
     <br>
     <div class="inner-container row" ng-controller="RosterCtrl">
       <section class="col-md-6">
@@ -24,7 +24,6 @@
               <description class="text-muted">{{ unit.description | words:15  }}</description>
               <span class="unit-cost">{{ unit.cost | currency }}</span>
               <div class="unit-actions btn-group pull-right">
-                <button ng-click="editUnit(unit)" type="button" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-edit"></span></button>
                 <button ng-click="roster.$add(unit)" type="button" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-plus"></span></button>
                 <button ng-click="roster.$suggest(unit)" type="button" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-thumbs-up"></span></button>
               </div>
@@ -36,7 +35,26 @@
       <section class="col-md-6">
         <h3>Roster: <span class="roster-name">{{ roster.name }}</span></h3>
         <br>
-        <p class="alert alert-sm alert-danger">Cheater, cheater, your army *should* <strong>not exceed 1000<strong> points!</p>
+        <div ng-show="!roster.valid">
+          <p ng-repeat="reason in roster.invalidReasons" class="alert alert-sm alert-danger">
+            {{ reason }}
+          </p>
+        </div><table class="table">
+        <h5><strong>Roster Suggestions</strong></h5>
+          <tbody>
+            <tr ng-repeat="unit in roster.suggestions track by $index" class="warning">
+              <td><strong>{{ unit.name }}<strong></td>
+              <td><span class="label label-info">{{ unit.type }}</span></td>
+              <td><code>{{ unit.points * unit.count }}</code></td>
+              <td>
+                <div class="unit-actions btn-group pull-right">
+                  <button ng-click="roster.$acceptSuggestion(unit)" type="button" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-ok"></span></button>
+                  <button ng-click="roster.$declineSuggestion(unit)" type="button" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
         <table class="table">
           <thead>
             <tr>
@@ -48,22 +66,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="unit in roster.units track by $index"
-                ng-class="{ true: 'warning' }[ unit.isSuggestion ]">
+            <tr ng-repeat="unit in roster.units track by $index">
               <td><strong>{{ unit.name }}<strong></td>
               <td><span class="label label-info">{{ unit.type }}</span></td>
               <td>{{ unit.count }}</td>
               <td><code>{{ unit.points * unit.count }}</code></td>
-              <td ng-hide="unit.isSuggestion">
+              <td>
                 <div class="unit-actions btn-group pull-right">
-                  <button ng-click="editUnit(unit)" type="button" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-edit"></span></button>
                   <button ng-click="roster.$remove(unit)" type="button" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus"></span></button>
-                </div>
-              </td>
-              <td ng-show="unit.isSuggestion">
-                <div class="unit-actions btn-group pull-right">
-                  <button ng-click="roster.$acceptSuggestion(unit)" type="button" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-ok"></span></button>
-                  <button ng-click="roster.$remove(unit)" type="button" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
                 </div>
               </td>
             </tr>
@@ -73,6 +83,9 @@
     </div>
   </div>
 
+  <!-- GoInstant -->
+  <script src="https://cdn.goinstant.net/v1/platform.min.js"></script>
+
   <!-- bower:js -->
   <script src="bower_components/jquery/jquery.js"></script>
   <script src="bower_components/angular/angular.js"></script>
@@ -81,6 +94,7 @@
   <script src="bower_components/q/q.js"></script>
   <script src="bower_components/eventEmitter/EventEmitter.js"></script>
   <script src="bower_components/angular-truncate/dist/angular-truncate.min.js"></script>
+  <script src="bower_components/goangular/dist/goangular.js"></script>
   <!-- endbower -->
 
   <script src="dpd.js"></script>
@@ -89,12 +103,13 @@
   <script src="components/resource/resource.js"></script>
 
   <!-- Units -->
-  <script src="components/units/unit-model.js"></script>
-  <script src="components/units/unit-controller.js"></script>
+  <script src="components/unit/unit-model.js"></script>
+  <script src="components/unit/unit-controller.js"></script>
+
+  <script src="components/suggestion/suggestion-model.js"></script>
 
   <!-- Rosters -->
-  <script src="components/rosters/roster-service.js"></script>
-  <script src="components/rosters/roster-model.js"></script>
-  <script src="components/rosters/roster-controller.js"></script>
+  <script src="components/roster/roster-model.js"></script>
+  <script src="components/roster/roster-controller.js"></script>
 </body>
 </html>

@@ -10,28 +10,31 @@ function RosterModel(futureRosterData) {
 
   this.$futureRosterData = futureRosterData;
   this.$unwrap(futureRosterData);
+  this.suggestions = RosterModel.$suggestions.$sync();
 }
 
 RosterModel.$factory = [
   '$timeout',
   'bdResource',
+  'bdSuggestions',
   'UnitModel',
-    function($timeout, Resource, Unit) {
+  function($timeout, Resource, suggestions, Unit) {
     _.extend(RosterModel, {
       $$resource: new Resource('/rosters'),
       $timeout: $timeout,
+      $suggestions: suggestions,
       $Unit: Unit
     });
 
     return RosterModel;
   }];
 
+angular.module('Buildr').factory('RosterModel', RosterModel.$factory);
+
 RosterModel.$find = function(uid) {
   var futureRosterData = this.$$resource.find(uid);
 
   if (uid) return new RosterModel(futureRosterData);
-
-  return RosterModel.$unwrapCollection(futureRosterData);
 };
 
 RosterModel.prototype.$$emitter = _.clone(EventEmitter.prototype);
@@ -41,7 +44,7 @@ RosterModel.prototype.$getUnits = function() {
 
   return this.$futureRosterData.get('units').then(function(rosterUnits) {
     var units  = _.reduce(rosterUnits, function(a, rosterUnit) {
-      var unit = RosterModel.$Unit.$find(rosterUnit.unit_id);
+      var unit = RosterModel.$Unit.$find(rosterUnit.id);
       _.extend(unit, rosterUnit);
       a.push(unit);
       return a;
@@ -52,6 +55,7 @@ RosterModel.prototype.$getUnits = function() {
     });
 
     return Q.all(_.pluck(units, '$futureUnitData')).then(function() {
+      self.$$emitter.emit('update');
       return self.units;
     });
   });
@@ -97,64 +101,29 @@ RosterModel.prototype.$remove = function(unit) {
 
 RosterModel.prototype.$saveUnits = function() {
   var units = _.map(this.units, function(unit) {
-    return {
-      unit_id: unit.id,
-      count: unit.count || 1
-    };
+    return _.pick(unit, ['id', 'count']);
   });
 
   return RosterModel.$$resource.set(this.id, { units: units });
 };
 
-RosterModel.prototype.$acceptSuggestion = function(unit) {
-  unit.isSuggestion = false;
-
-  return this.$saveUnits();
-};
-
 RosterModel.prototype.$suggest = function(unit) {
-  if (_.contains(_.pluck(this.units, 'id'), unit.id)) return  ;
+  if (_.contains(_.pluck(this.units, 'id'), unit.id)) return;
 
   unit.count = 1;
-  unit.isSuggestion = true;
-  this.units.push(unit);
-
-  return this.$saveUnits();
+  this.suggestions.$addSuggestion(unit);
 };
 
-function FantasyRoster() {
-  console.log('fantasyRoster kick-off');
-}
+RosterModel.prototype.$acceptSuggestion = function(unit) {
+  var self = this;
 
-inheritPrototype(FantasyRoster, RosterModel);
-
-FantasyRoster.prototype.$validate = function() {
-  console.log(this, 'validation');
+  return this.suggestions.$removeSuggestion(unit).then(function() {
+     return self.$add(unit);
+  });
 };
 
-// var createObject = Object.create;
-
-// if (!_.isFunction(createObject)) {
-//   createObject = function(obj) {
-//     function F() {}
-
-//     F.prototype = obj;
-//     return new F();
-//   };
-// }
-
-function inheritPrototype(SubClass, SuperClass) {
-  var superCopy = Object.create(SuperClass.prototype);
-
-  superCopy.constructor = SubClass;
-
-  SubClass.prototype = superCopy;
-
-  for (var i in SuperClass) {
-    SubClass[i] = SuperClass[i];
-  }
-}
-
-angular.module('Buildr').factory('RosterModel', RosterModel.$factory);
+RosterModel.prototype.$declineSuggestion = function(unit) {
+  return this.suggestions.$removeSuggestion(unit);
+};
 
 })();

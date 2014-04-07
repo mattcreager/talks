@@ -21,6 +21,8 @@ UnitModel.$factory = ['$timeout', 'bdResource', function($timeout, Resource) {
   return UnitModel;
 }];
 
+angular.module('Buildr').factory('UnitModel', UnitModel.$factory);
+
 UnitModel.$find = function(uid) {
   var futureUnitData = this.$$resource.find(uid);
 
@@ -56,6 +58,10 @@ UnitModel.prototype.$unwrap = function() {
   });
 };
 
-angular.module('Buildr').factory('UnitModel', UnitModel.$factory);
+UnitModel.prototype.$omit = function() {
+  return _.omit(this, function(value, key){
+    return _.first(key) === '$' || key === 'constructor';
+  });
+};
 
 })();
