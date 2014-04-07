@@ -6,7 +6,7 @@ var ROSTER_ID =  'dbc93961dff2a934';
 
 angular
 .module('Buildr')
-.controller('RosterCtrl', ['$scope', 'RosterModel', function($scope, Roster) {
+.controller('RosterCtrl', ['$scope', 'bdRoster', function($scope, Roster) {
   $scope.roster = Roster.$find(ROSTER_ID);
   $scope.roster.$getUnits();
 }]);

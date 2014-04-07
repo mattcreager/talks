@@ -4,10 +4,8 @@
 
 angular
 .module('Buildr')
-.controller('UnitCtrl', [
-  '$scope',
-  'UnitModel',
-  function($scope, Unit) {
+.controller('UnitCtrl', ['$scope', 'bdUnit', function($scope, Unit) {
     $scope.units = Unit.$find();
-  }]);
+}]);
+
 })();

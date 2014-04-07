@@ -195,15 +195,13 @@
 
 <section data-transition="zoom">
         <h5>A <em>Controller</em> with a <span class="blue">solid foundation</span></h5>
-<pre><code>angular.module('Buildr').controller('UnitCtrl', [
-  '$scope',
-  'unitFactory',
-  function($scope, unitFactory) {
-    $scope.units = unitFactory();
-    $scope.units.$initialize();
+<pre><code>angular
+.module('Buildr')
+..controller('UnitCtrl', ['$scope', 'bdUnit', function($scope, Unit) {
+    $scope.units = Unit.$find();
 
     $scope.editUnit = function(unit) {
-       $scope.editUnitModal.open(unit);
+       $scope.editModal.open(unit);  // should accept a promise!
     };
   }]);</code></pre>
 <h5>Communicates <strong>behaviour</strong></h5>

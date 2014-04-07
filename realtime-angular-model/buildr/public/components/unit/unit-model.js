@@ -2,7 +2,7 @@
 
 (function() { 'use strict';
 
-function UnitModel(futureUnitData) {
+function Unit(futureUnitData) {
   if (!futureUnitData.inspect) {
     _.extend(this, futureUnitData);
     return;
@@ -12,34 +12,34 @@ function UnitModel(futureUnitData) {
   this.$unwrap(futureUnitData);
 }
 
-UnitModel.$factory = ['$timeout', 'bdResource', function($timeout, Resource) {
-  _.extend(UnitModel, {
+Unit.$factory = ['$timeout', 'bdResource', function($timeout, Resource) {
+  _.extend(Unit, {
     $$resource: new Resource('/units'),
     $timeout: $timeout
   });
 
-  return UnitModel;
+  return Unit;
 }];
 
-angular.module('Buildr').factory('UnitModel', UnitModel.$factory);
+angular.module('Buildr').factory('bdUnit', Unit.$factory);
 
-UnitModel.$find = function(uid) {
+Unit.$find = function(uid) {
   var futureUnitData = this.$$resource.find(uid);
 
-  if (uid) return new UnitModel(futureUnitData);
+  if (uid) return new Unit(futureUnitData);
 
-  return UnitModel.$unwrapCollection(futureUnitData);
+  return Unit.$unwrapCollection(futureUnitData);
 };
 
-UnitModel.$unwrapCollection = function(futureUnitData) {
+Unit.$unwrapCollection = function(futureUnitData) {
   var collection = {};
 
   collection.$futureUnitData = futureUnitData;
 
   futureUnitData.then(function(units) {
-    UnitModel.$timeout(function() {
+    Unit.$timeout(function() {
       _.reduce(units, function(c, unit) {
-        c[unit.id] = new UnitModel(unit);
+        c[unit.id] = new Unit(unit);
         return c;
       }, collection);
     });
@@ -48,17 +48,17 @@ UnitModel.$unwrapCollection = function(futureUnitData) {
   return collection;
 };
 
-UnitModel.prototype.$$emitter = _.clone(EventEmitter.prototype);
+Unit.prototype.$$emitter = _.clone(EventEmitter.prototype);
 
-UnitModel.prototype.$unwrap = function() {
+Unit.prototype.$unwrap = function() {
   var self = this;
 
   this.$futureUnitData.then(function(data) {
-    UnitModel.$timeout(function() { _.extend(self, data); });
+    Unit.$timeout(function() { _.extend(self, data); });
   });
 };
 
-UnitModel.prototype.$omit = function() {
+Unit.prototype.$omit = function() {
   return _.omit(this, function(value, key){
     return _.first(key) === '$' || key === 'constructor';
   });

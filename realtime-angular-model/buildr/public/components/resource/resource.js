@@ -15,6 +15,8 @@ Resource.factory = function($http) {
   };
 };
 
+angular.module('Buildr').factory('bdResource', Resource.factory);
+
 Resource.prototype.find = function(uid) {
   var deferred = Q.defer();
 
@@ -39,7 +41,5 @@ Resource.prototype.set = function(uid, newValue) {
 
   return deferred.promise;
 };
-
-angular.module('Buildr').factory('bdResource', Resource.factory);
 
 })();

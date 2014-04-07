@@ -2,55 +2,45 @@
 
 (function() { 'use strict';
 
-function RosterModel(futureRosterData) {
-  if (!futureRosterData.inspect) {
-    _.extend(this, futureRosterData);
-    return;
-  }
-
-  this.$futureRosterData = futureRosterData;
+function Roster(futureRosterData) {
+  this.suggestions = Roster.$suggestions.$sync();
   this.$unwrap(futureRosterData);
-  this.suggestions = RosterModel.$suggestions.$sync();
 }
 
-RosterModel.$factory = [
+Roster.$factory = [
   '$timeout',
   'bdResource',
   'bdSuggestions',
-  'UnitModel',
+  'bdUnit',
   function($timeout, Resource, suggestions, Unit) {
-    _.extend(RosterModel, {
+    _.extend(Roster, {
       $$resource: new Resource('/rosters'),
       $timeout: $timeout,
       $suggestions: suggestions,
       $Unit: Unit
     });
 
-    return RosterModel;
+    return Roster;
   }];
 
-angular.module('Buildr').factory('RosterModel', RosterModel.$factory);
+angular.module('Buildr').factory('bdRoster', Roster.$factory);
 
-RosterModel.$find = function(uid) {
-  var futureRosterData = this.$$resource.find(uid);
-
-  if (uid) return new RosterModel(futureRosterData);
+Roster.$find = function(uid) {
+  return new Roster(this.$$resource.find(uid));
 };
 
-RosterModel.prototype.$$emitter = _.clone(EventEmitter.prototype);
-
-RosterModel.prototype.$getUnits = function() {
+Roster.prototype.$getUnits = function() {
   var self = this;
 
   return this.$futureRosterData.get('units').then(function(rosterUnits) {
     var units  = _.reduce(rosterUnits, function(a, rosterUnit) {
-      var unit = RosterModel.$Unit.$find(rosterUnit.id);
+      var unit = Roster.$Unit.$find(rosterUnit.id);
       _.extend(unit, rosterUnit);
       a.push(unit);
       return a;
     }, []);
 
-    RosterModel.$timeout(function() {
+    Roster.$timeout(function() {
       self.units = units;
     });
 
@@ -61,28 +51,29 @@ RosterModel.prototype.$getUnits = function() {
   });
 };
 
-RosterModel.prototype.$unwrap = function() {
+Roster.prototype.$unwrap = function(futureRosterData) {
   var self = this;
 
+  this.$futureRosterData = futureRosterData;
   this.$futureRosterData.then(function(data) {
-    RosterModel.$timeout(function() { _.extend(self, data); });
+    Roster.$timeout(function() { _.extend(self, data); });
   });
 };
 
-RosterModel.prototype.$inc = function(unit) {
+Roster.prototype.$inc = function(unit) {
   unit = _.find(this.units, { id: unit.id });
   unit.count++;
 
   return this.$saveUnits();
 };
 
-RosterModel.prototype.$dec = function(unit) {
+Roster.prototype.$dec = function(unit) {
   unit.count--;
 
   return this.$saveUnits();
 };
 
-RosterModel.prototype.$add = function(unit) {
+Roster.prototype.$add = function(unit) {
   if (_.contains(_.pluck(this.units, 'id'), unit.id)) return this.$inc(unit);
 
   unit.count = 1;
@@ -91,7 +82,7 @@ RosterModel.prototype.$add = function(unit) {
   return this.$saveUnits();
 };
 
-RosterModel.prototype.$remove = function(unit) {
+Roster.prototype.$remove = function(unit) {
   if (unit.count > 1) return this.$dec(unit);
 
   this.units.splice(this.units.indexOf(unit), 1);
@@ -99,22 +90,22 @@ RosterModel.prototype.$remove = function(unit) {
   return this.$saveUnits();
 };
 
-RosterModel.prototype.$saveUnits = function() {
+Roster.prototype.$saveUnits = function() {
   var units = _.map(this.units, function(unit) {
     return _.pick(unit, ['id', 'count']);
   });
 
-  return RosterModel.$$resource.set(this.id, { units: units });
+  return Roster.$$resource.set(this.id, { units: units });
 };
 
-RosterModel.prototype.$suggest = function(unit) {
+Roster.prototype.$suggest = function(unit) {
   if (_.contains(_.pluck(this.units, 'id'), unit.id)) return;
 
   unit.count = 1;
   this.suggestions.$addSuggestion(unit);
 };
 
-RosterModel.prototype.$acceptSuggestion = function(unit) {
+Roster.prototype.$acceptSuggestion = function(unit) {
   var self = this;
 
   return this.suggestions.$removeSuggestion(unit).then(function() {
@@ -122,7 +113,7 @@ RosterModel.prototype.$acceptSuggestion = function(unit) {
   });
 };
 
-RosterModel.prototype.$declineSuggestion = function(unit) {
+Roster.prototype.$declineSuggestion = function(unit) {
   return this.suggestions.$removeSuggestion(unit);
 };
 
