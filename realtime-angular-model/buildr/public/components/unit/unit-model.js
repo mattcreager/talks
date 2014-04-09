@@ -2,15 +2,20 @@
 
 (function() { 'use strict';
 
+/* CONSTRUCTOR ACCEPTS PROMISE OR DATA */
 function Unit(futureUnitData) {
+
+  /* DATA IS IMMEDIATELY AVAILABLE */
   if (!futureUnitData.inspect) {
     _.extend(this, futureUnitData);
     return;
   }
 
+  /* THE PROMISE WILL BE UNWRAPPED FIRST */
   this.$unwrap(futureUnitData);
 }
 
+/* THE FACTORY WE'LL USE TO REGISTER WITH ANGULAR */
 Unit.$factory = ['$timeout', 'bdResource', function($timeout, Resource) {
   _.extend(Unit, {
     $$resource: new Resource('/units'),
@@ -20,17 +25,19 @@ Unit.$factory = ['$timeout', 'bdResource', function($timeout, Resource) {
   return Unit;
 }];
 
+/* ANGULAR MODULE REGISTRATION */
 angular.module('Buildr').factory('bdUnit', Unit.$factory);
 
+/* FETCH A UNIT */
 Unit.$find = function(uid) {
+
+  /* FALLS BACK ON AN INSTANCE OF RESOURCE */
   var futureUnitData = this.$$resource.find(uid);
 
   if (uid) return new Unit(futureUnitData);
 
   return Unit.$unwrapCollection(futureUnitData);
 };
-
-/* Automatic Promise unwrapping */
 
 Unit.prototype.$unwrap = function(futureUnitData) {
   var self = this;

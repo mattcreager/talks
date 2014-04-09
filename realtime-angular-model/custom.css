@@ -154,7 +154,7 @@ body {
   height: 174px;
   background: url("img/df-motif.png") no-repeat -1px top; }
 
-.logo {
+.mvc-logo {
   float: right;
   width: 194px;
   height: 76px;
@@ -163,6 +163,14 @@ body {
   margin: 2em;
   border-radius: 3px;
   box-shadow: 0 0 10px 1px rgba(0, 39, 109, 0.45); }
+
+.salesforce-logo {
+  float: left;
+  width: 200px;
+  height: 140px;
+  background: url("/shared-assets/img/salesforce-logo.png") no-repeat center;
+  margin-left: 2em;
+  margin-bottom: 0.5em; }
 
 .reveal .progress {
   height: 8px;

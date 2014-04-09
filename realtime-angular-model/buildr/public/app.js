@@ -2,7 +2,6 @@
 
 (function() { 'use strict';
 
-angular
-  .module('Buildr', ['truncate']);
+angular.module('Buildr', ['truncate']);
 
 })();

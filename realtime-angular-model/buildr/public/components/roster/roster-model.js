@@ -3,7 +3,6 @@
 (function() { 'use strict';
 
 function Roster(futureRosterData) {
-  this.suggestions = Roster.$suggestions.$sync();
   this.$unwrap(futureRosterData);
 }
 
@@ -15,7 +14,6 @@ Roster.$factory = [
     _.extend(Roster, {
       $$resource: new Resource('/rosters'),
       $timeout: $timeout,
-      $suggestions: suggestions,
       $Unit: Unit
     });
 
