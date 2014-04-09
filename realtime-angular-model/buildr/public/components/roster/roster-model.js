@@ -3,18 +3,22 @@
 (function() { 'use strict';
 
 function Roster(futureRosterData) {
+  this.suggestions = Roster.$suggestions.$sync();
   this.$unwrap(futureRosterData);
+  console.log(this.suggestions);
 }
 
 Roster.$factory = [
   '$timeout',
   'bdResource',
   'bdUnit',
-  function($timeout, Resource, Unit) {
+  'bdSuggestions',
+  function($timeout, Resource, Unit, suggestions) {
     _.extend(Roster, {
       $$resource: new Resource('/rosters'),
       $timeout: $timeout,
-      $Unit: Unit
+      $Unit: Unit,
+      $suggestions: suggestions
     });
 
     return Roster;
@@ -100,6 +104,10 @@ Roster.prototype.$contains = function(unit) {
 };
 
 /** $suggest **/
+
+Roster.prototype.$suggest = function(unit) {
+  return this.suggestions.$key(unit.id).$set(unit.$omit());
+};
 
 /** $acceptSuggestion **/
 

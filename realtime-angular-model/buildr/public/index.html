@@ -14,6 +14,7 @@
         <h3>Unit Selection</h3>
         <br>
 
+        <!-- UNITS LIST -->
         <div class="units" ng-controller="UnitCtrl">
           <div ng-repeat="unit in units" class="unit row">
             <img ng-src="{{unit.image}}" class="col-md-3">
@@ -25,6 +26,7 @@
               <span class="unit-cost">{{ unit.cost | currency }}</span>
               <div class="unit-actions btn-group pull-right">
                 <button ng-click="roster.$add(unit)" type="button" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-plus"></span></button>
+                <!-- ADD A SUGGESTION -->
                 <button ng-click="roster.$suggest(unit)" type="button" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-thumbs-up"></span></button>
               </div>
             </div>
@@ -41,6 +43,7 @@
           </p>
         </div><table class="table">
         <h5><strong>Roster Suggestions</strong></h5>
+          <!-- SUGGESTIONS HERE -->
           <tbody>
             <tr ng-repeat="unit in roster.suggestions track by $index" class="warning">
               <td><strong>{{ unit.name }}<strong></td>
