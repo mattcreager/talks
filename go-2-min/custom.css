@@ -21,7 +21,12 @@
   font-style: normal;
 }
 
-.pony-up {
+/*********************************************
+ * MAGIC STYLES
+ *********************************************/
+
+.magic .pony-up {
+  display: block;
   font-family: 'equestriaregular' !important;
 }
 
@@ -29,8 +34,8 @@
  * GLOBAL STYLES
  *********************************************/
 body {
-  background: #ABDBDF;
-  background-color: #ABDBDF; }
+  background: #10222e;
+  background-color: #10222e; }
 
 .reveal {
   font-family: "proxima-nova", sans-serif;
@@ -181,20 +186,12 @@ body {
   height: 174px;
   background: url("img/df-motif.png") no-repeat -1px top; }
 
-.mvc-logo {
-  display: none;
-  float: right;
-  width: 294px;
-  height: 76px;
-  background: url("/shared-assets/img/gi-logo.png") no-repeat center;
-  background-color: rgba(255, 255, 255, 0.95); }
-
 .salesforce-logo {
-  float: left;
+  float: right;
   width: 200px;
   height: 140px;
   background: url("/shared-assets/img/salesforce-logo.png") no-repeat center;
-  margin-left: 2em;
+  margin-right: 3em;
   margin-bottom: 0.5em; }
 
 .reveal .progress {
@@ -306,11 +303,11 @@ ul.box-set {
 .reveal .pink {
   color: #df68a8; }
 .reveal .orange {
-  color: #FDBC5F; }
+  color: #f5931b; }
 .reveal .red {
-  color: #F13C34; }
+  color: red; }
 .reveal .green {
-  color: #1C8935; }
+  color: #92c13a; }
 .reveal .blue {
   color: #44bcff; }
 
@@ -328,8 +325,4 @@ ul.box-set {
 
 .reveal .pull-right {
   float: right;
-}
-
-.reveal .pull-left {
-  float: left;
 }
