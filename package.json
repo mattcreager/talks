@@ -1,11 +1,12 @@
 {
   "name": "Talks",
   "dependencies": {
-    "harp": "*"
+    "harp": "*",
+    "bower": "*"
   },
   "engines": {
     "node": "0.10.x",
     "npm": "1.2.x"
   },
-  "postinstall": "bower install"
+  "postinstall": "./node_modules/bower/bin/bower install"
 }
