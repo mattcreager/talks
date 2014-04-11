@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "jquery": "~2.1.0",
-    "angular": "~1.2.15"
+    "angular": "~1.2.15",
+    "reveal.js": "~2.6.1"
   }
 }

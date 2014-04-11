@@ -1,0 +1,11 @@
+{
+  "name": "Talks",
+  "dependencies": {
+    "harp": "*"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.2.x"
+  },
+  "postinstall": "bower install"
+}

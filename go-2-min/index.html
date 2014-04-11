@@ -14,21 +14,21 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <link rel="stylesheet" href="/sub_modules/reveal.js/css/reveal.min.css">
+    <link rel="stylesheet" href="/bower_components/reveal.js/css/reveal.min.css">
     <link rel="stylesheet" href="custom.css" id="theme">
 
     <link rel="icon" href="http://goinstant.com/static/img/favicons/favicon.png">
 
     <!-- For syntax highlighting -->
-    <link rel="stylesheet" href="/sub_modules/reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="/bower_components/reveal.js/lib/css/zenburn.css">
 
     <!-- If the query includes 'print-pdf', use the PDF print sheet -->
     <script>
-      document.write( '<link rel="stylesheet" href="/sub_modules/reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+      document.write( '<link rel="stylesheet" href="/bower_components/reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
     </script>
 
     <!--[if lt IE 9]>
-    <script src="/sub_modules/reveal/lib/js/html5shiv.js"></script>
+    <script src="/bower_components/reveal/lib/js/html5shiv.js"></script>
     <![endif]-->
     <script type="text/javascript" src="//use.typekit.net/jop5wss.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
@@ -42,6 +42,18 @@
         <section class="cover" data-background="img/lights.png">
           <h1><img src="/shared-assets/img/gi-logo.png" alt="GoInstant" width="400px"></h1>
           <h2>Real-Time Wizardry</h2>
+        </section>
+
+        <section id="slide-overview" class="center">
+          <h3>The Total Freakin Package</h3>
+          <ul class="box-set">
+            <li class="fragment"><span>Data Storage</span></li>
+            <li class="fragment"><span>Data Sync</span></li>
+            <li class="fragment"><span>Pub/Sub</span></li>
+            <li class="fragment"><span>User Management</span></li>
+            <li class="fragment"><span>Angular Intergration</span></li>
+            <li class="fragment"><span>Heroku <br>Add-On</span></li>
+          </ul>
         </section>
 
         <section class="light hack-an-app" data-background="img/notebook.png">
@@ -73,6 +85,16 @@
           </div>
         </section>
 
+        <section class="instructions" data-background="img/plane.jpg">
+          <h2>Up &amp; Soaring in 6 Minutes</h2>
+          <ol>
+            <li class="fragment">Hit <a href="https://goinstant.co/msignup/lahacks">goinstant.com/signup/lahacks</a></li>
+            <li class="fragment"><a href="https://goinstant.com/signup/lahacks">Sign up</a> (it's easy)</li>
+            <li class="fragment">Click the <span>Create App</span> button</li>
+            <li class="fragment">Begin the <a href="https://www.youtube.com/watch?v=b1oWd_NKtoo" target="_blank">How to Store and Share Data</a> Tutorial</li>
+          </ol>
+        </section>
+
         <section class="right people" data-background="img/map.png">
           <h2>Your Cheerleaders</h2>
           <h3>Matthew Creager</h3>
@@ -87,58 +109,23 @@
           <h4>The team at home is <span>96.342%</span> prepared, too!</h4>
         </section>
 
-        <section data-transition="fade" data-background="/shared-assets/img/goinstant-team.jpg">
-        </section>
-
-        <section data-transition="fade" data-background="/shared-assets/img/goinstant-team-blur.jpg" class="center">
-          <img src="/shared-assets/img/gi-logo.png" alt="GoInstant">
-        </section>
-
-        <section id="slide-overview" class="center">
-          <h3>The Total Freakin Package</h3>
-          <ul class="box-set">
-            <li class="fragment"><span>Data Storage</span></li>
-            <li class="fragment"><span>Data Sync</span></li>
-            <li class="fragment"><span>Pub/Sub</span></li>
-            <li class="fragment"><span>User Management</span></li>
-            <li class="fragment"><span>Angular Intergration</span></li>
-            <li class="fragment"><span>Heroku Add-On</span></li>
-          </ul>
-        </section>
-
-        <section class="instructions" data-background="img/plane.jpg">
-          <h2>Up &amp; Soaring in 6 Minutes</h2>
-          <ol>
-            <li class="fragment">Hit <a href="https://goinstant.com/">goinstant.com</a></li>
-            <li class="fragment"><a href="https://goinstant.com/signup">Sign up</a> (it's easy)</li>
-            <li class="fragment">Click the <span>Create App</span> button</li>
-            <li class="fragment">Begin the <a href="https://www.youtube.com/watch?v=b1oWd_NKtoo" target="_blank">How to Store and Share Data</a> Tutorial</li>
-          </ol>
-        </section>
-
         <section data-transition="fade">
           <video data-autoplay preload="auto" width="1024" height="550">
             <source src="/shared-assets/img/goangular-animated-0B3054.mp4" type="video/mp4">
           </video>
         </section>
 
-        <section class="instructions" data-transition="linear" data-background="img/blocks.jpg">
-          <h3>GoAngular &amp; Examples on GitHub</h3>
-          <ul>
-            <li class="fragment"><code>/goinstant/goangular</code></li>
-            <li class="fragment"><code>/mattcreager/talks/realtime-angular-model</code></li>
-            <li class="fragment"><code>/mattcreager/todo-example</code></li>
-          </ul>
+        <section data-transition="fade" data-background="/shared-assets/img/goinstant-team.jpg">
         </section>
 
-        <section class="solo center" data-background="img/lights.png">
-          <h1>Q&amp;A</h1>
+        <section data-transition="fade" data-background="/shared-assets/img/goinstant-team-blur.jpg" class="center">
+          <img src="/shared-assets/img/gi-logo.png" alt="GoInstant">
         </section>
       </div>
     </div>
 
-    <script src="/sub_modules/reveal.js/lib/js/head.min.js"></script>
-    <script src="/sub_modules/reveal.js/js/reveal.min.js"></script>
+    <script src="/bower_components/reveal.js/lib/js/head.min.js"></script>
+    <script src="/bower_components/reveal.js/js/reveal.min.js"></script>
 
     <script>
 
@@ -157,11 +144,11 @@
         // Optional libraries used to extend on reveal.js
         dependencies: [
           { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: '/sub_modules/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: '/sub_modules/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: '/sub_modules/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-          { src: '/sub_modules/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-          { src: '/sub_modules/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          { src: '/bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '/bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '/bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '/bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '/bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
         ]
       });
 
