@@ -13,7 +13,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <link rel="stylesheet" href="/sub_modules/reveal/css/reveal.min.css">
+    <link rel="stylesheet" href="/bower_components/reveal.js/css/reveal.min.css">
     <link rel="stylesheet" href="reveal-theme.css" id="theme">
 
     <!-- For syntax highlighting -->
@@ -21,11 +21,11 @@
 
     <!-- If the query includes 'print-pdf', use the PDF print sheet -->
     <script>
-      document.write( '<link rel="stylesheet" href="/sub_modules/reveal/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+      document.write( '<link rel="stylesheet" href="/bower_components/reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
     </script>
 
     <!--[if lt IE 9]>
-    <script src="/sub_modules/reveal/lib/js/html5shiv.js"></script>
+    <script src="/bower_components/reveal/lib/js/html5shiv.js"></script>
     <![endif]-->
     <script type="text/javascript" src="//use.typekit.net/jop5wss.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
@@ -115,23 +115,8 @@
         </section>
 
         <section data-title="5 Reasons You Should Hack on Angular">
-          <h2><strong>Data-Binding</strong></h2>
-          <h4 class="red">Reason <strong>Number Three</strong></h4>
-        </section>
-
-        <section data-title="5 Reasons You Should Hack on Angular">
-          <blockquote>"Data-binding in Angular web apps is the automatic synchronization of data between the model and view components."</blockquote>
-          <br>
-          <p style="text-align: right">- Thar be <strike>dragons</strike> <span class="yellow">documentation</span></p>
-        </section>
-
-        <section data-title="5 Reasons You Should Hack on Angular">
-          <img src="img/model-view.svg">
-        </section>
-
-        <section data-title="5 Reasons You Should Hack on Angular">
           <h2><strong>Architecture</strong></h2>
-          <h4 class="red">Reason <strong>Number Two</strong></h4>
+          <h4 class="red">Reason <strong>Number Three</strong></h4>
         </section>
 
         <section class="box" data-background="img/rocky.jpg" data-title="5 Reasons You Should Hack on Angular">
@@ -146,6 +131,21 @@
 
         <section data-title="5 Reasons You Should Hack on Angular">
           <img src="img/angular-mvc.svg">
+        </section>
+
+        <section data-title="5 Reasons You Should Hack on Angular">
+          <h2><strong>Data-Binding</strong></h2>
+          <h4 class="red">Reason <strong>Number Two</strong></h4>
+        </section>
+
+        <section data-title="5 Reasons You Should Hack on Angular">
+          <blockquote>"Data-binding in Angular web apps is the automatic synchronization of data between the model and view components."</blockquote>
+          <br>
+          <p style="text-align: right">- Thar be <strike>dragons</strike> <span class="yellow">documentation</span></p>
+        </section>
+
+        <section data-title="5 Reasons You Should Hack on Angular">
+          <img src="img/model-view.svg">
         </section>
 
         <section data-title="5 Reasons You Should Hack on Angular">
@@ -187,8 +187,8 @@
           <br>
           <ul>
             <li class="fragment"><h4><strong style="text-decoration: underline;">Community:</strong> <strong class="yellow">Large, active,</strong> and <strong class="yellow">friendly</strong> support group</h4><li>
-            <li class="fragment"><h4><strong style="text-decoration: underline;">Architecture:</strong> <strong class="yellow">Well established</strong> MVC design pattern</h4><li>
             <li class="fragment"><h4><strong style="text-decoration: underline;">Data-Binding:</strong> <strong class="yellow">Eliminates</strong> bucket loads of <strong class="yellow">boiler plate</strong></h4><li>
+            <li class="fragment"><h4><strong style="text-decoration: underline;">Architecture:</strong> <strong class="yellow">Well established</strong> MVC design pattern</h4><li>
             <li class="fragment"><h4><strong style="text-decoration: underline;">Parched:</strong> All adds up to you getting <strong class="yellow">more app</strong> for <strong class="yellow">less code</strong></h4><li>
             <li class="fragment"><h4><strong style="text-decoration: underline;">TDD:</strong> <strong class="yellow">more app</strong> with <strong class="yellow">less suck</strong></h4><li>
           </ul>
@@ -283,6 +283,7 @@
             <li><code class="red">javascriptjabber.com</code></li>
             <li><code class="red">egghead.io</code></li>
             <li><code class="red">#angularjs</code> on freenode (IRC)</li>
+            <li><code class="red">youtube.com/user/angularjs</code></li>
             <li><code class="red">youtube.com/user/ngconfvideos</code></li>
             <li><code class="red">github/mattcreager/talks</code></li>
             <li><code class="red">github/mattcreager/goangular-chat-example</code></li>
@@ -297,8 +298,10 @@
       </div>
     </div>
 
-    <script src="/sub_modules/reveal/lib/js/head.min.js"></script>
-    <script src="/sub_modules/reveal/js/reveal.min.js"></script>
+
+    <script src="/bower_components/reveal.js/lib/js/head.min.js"></script>
+    <script src="/bower_components/reveal.js/js/reveal.min.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
     <script src="js/main.js"></script>
 
@@ -317,11 +320,11 @@
         // Optional libraries used to extend on reveal.js
         dependencies: [
           { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: '/sub_modules/reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: '/sub_modules/reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '/bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '/bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
           { src: 'js/custom-highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-          { src: '/sub_modules/reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-          { src: '/sub_modules/reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          { src: '/bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '/bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
         ]
       });
     </script>
