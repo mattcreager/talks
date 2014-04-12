@@ -148,7 +148,7 @@ body {
     width: 100%;
     bottom: 10px;
     left: 0;
-    background-color: #666666;
+    background-color: #AAAAAA;
     box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.2);
     z-index: -1; }
 
@@ -285,7 +285,7 @@ ul.box-set {
 .reveal .dark-green {
   color: #0B6438; }
 .reveal .red {
-  color: #B0372C; }
+  color: #FF5242; }
 .reveal .grey {
 color: #333333; }
 .reveal .muted {
