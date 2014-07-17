@@ -62,6 +62,104 @@
           <h1 class="mvc-2">Model <strong>View</strong> Controller</h1>
         </section>
 
+        <section class="mvc center" data-transition="zoom" data-background="img/view-2.jpg">
+          <h1 class="mvc-2"><strong>View</strong></h1>
+          <p>What your users see, and <br>(more importantly) what they interact with.</p>
+        </section>
+
+        <section class="center" data-background="img/leaf.jpg">
+          <p class="blue">What's intentionally left out?</p>
+          <h2><span class="fragment struck">Models,</span> <span class="fragment struck">Controllers,</span> <span class="fragment struck">Routers</span></h2>
+        </section>
+
+        <section class="center" data-background="img/leaf.jpg">
+          <h3 class="blue">What you know:</h3>
+          <div class="split">
+            <div class="left">
+              <ul>
+                <li class="fragment">Railseee</li>
+                <li class="fragment">Server Renders HTML</li>
+                <li class="fragment">jQuery Manages Interactions</li>
+                <li class="fragment">SPA</li>
+              </ul>
+            </div>
+            <div class="right">
+              <ul>
+                <li class="fragment">Server sends JSON</li>
+                <li class="fragment">Templates and Json meet, a View is created</li>
+                <li class="fragment">Interactions managed by framework <br>(Backbone, Angular, Ember, etc)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="center" data-transition="slide" data-background="img/different.jpg">
+          <h2 class="mvc-2">React: It’s Different, <br><strong>Good Different</strong></h2>
+        </section>
+
+        <section class="center" data-background="img/leaf.jpg">
+          <h3 class="blue">My Favorite Parts</h3>
+          <div class="split">
+            <div class="left">
+              <ul>
+                <li class="fragment">Intelligent re-render</li>
+                <li class="fragment">Virtual DOM</li>
+                <li class="fragment">Synthetic Events</li>
+              </ul>
+            </div>
+            <div class="right">
+              <ul>
+                <li class="fragment">No Bindings</li>
+                <li class="fragment">No Observers</li>
+                <li class="fragment">Data trickle through</li>
+              </ul>
+            </div>
+          </div>
+          <h3 class="fragment zoom">• NO STATE!</h3>
+        </section>
+
+        <section class="center" data-background="img/leaf.jpg">
+          <h3 class="blue">Wait, what about Interactions?</h3>
+          <p>Synthetic Events.</p>
+              From <pre><code>f(state, props) = UI Fragment</code></pre>
+              To <pre><code>f(props) = UI Fragment</code></pre>
+        </section>
+
+        <section class="center" data-background="img/leaf.jpg">
+          <h3 class="blue">Virtual DOM</h3>
+          <ul>
+            <li class="fragment">The Dom, in Memory (FASSTT)</li>
+            <li class="fragment">Synthetic Event System (CONSISTENT)</li>
+            <li class="fragment">Bye Bye string concatenation</li>
+          </ul>
+        </section>
+
+        <section class="center" data-background="img/leaf.jpg">
+          <h3 class="blue">So Every Update&hellip;</h3>
+          <ul>
+            <li class="fragment">Build a virtual DOM tree</li>
+            <li class="fragment">Diff with the current DOM tree</li>
+            <li class="fragment">Compute shortest distance to new DOM tree</li>
+            <li class="fragment">Drop it into a queue</li>
+            <li class="fragment">Batch render changes</li>
+          </ul>
+        </section>
+
+        <section class="center" data-background="img/gpu.jpg">
+          <h3 class="blue"><strong>Sound Familiar?</strong></h3>
+          <br>
+          <h2 class="fragment">It’s how your GPU works!</h2>
+        </section>
+
+        <section class="center" data-background="img/leaf.jpg">
+          <h3 class="blue">Benefits</h3>
+          <ul>
+            <li>Server-side rendering</li>
+            <li>SVG, VML, Canvas Support</li>
+            <li>Testability</li>
+            <li>Portability</li>
+          </ul>
+        </section>
 
       </div>
     </div>

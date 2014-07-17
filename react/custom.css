@@ -28,6 +28,30 @@
     .reveal .mvc h1.mvc-2 strong {
       color: #61dafb;
       font-weight: 800; }
+.reveal p {
+  margin: 1em 0;
+  font-size: 1.25em; }
+  .reveal p.blue {
+    color: #61dafb; }
+.reveal .struck {
+  display: inline-block;
+  position: relative; }
+  .reveal .struck:after {
+    content: "";
+    width: 100%;
+    height: 5px;
+    left: 0;
+    background: rgba(204, 122, 111, 0.7);
+    position: absolute;
+    top: 60%; }
+.reveal .split > div {
+  width: 50%;
+  float: left;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  padding: 1em; }
+.reveal ul {
+  font-size: .7em; }
 
 .reveal .center {
   text-align: center; }
@@ -374,7 +398,9 @@ ul.box-set {
   box-shadow: 0 0 0; }
 
 .reveal pre code {
-  background-color: #10222E; }
+  background-color: #111;
+  padding: 1em;
+  font-size: 1.5em; }
 
 .reveal .pull-right {
   float: right; }
