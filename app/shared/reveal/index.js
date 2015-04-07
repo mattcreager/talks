@@ -1,15 +1,16 @@
 import Reveal from 'reveal.js'
 
 class RevealCustom {
-  constructor(opts) {
+  constructor (opts) {
     Reveal.initialize()
+  }
 
-    Reveal.addEventListener( 'slidechanged', function( event ) {
-      // event.previousSlide, event.currentSlide, event.indexh, event.indexv
-      var currentSlide = event.indexh
-      $state.go('angular-and-beyond', { slide: currentSlide })
-      console.log(currentSlide)
-    })
+  addEventListener (event, cb) {
+    Reveal.addEventListener(event, cb)
+  }
+
+  setCurrentSlide (slide) {
+    if (Reveal.getIndices().h !== +slide) Reveal.slide(slide)
   }
 }
 

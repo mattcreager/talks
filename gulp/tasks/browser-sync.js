@@ -12,7 +12,7 @@ var gulp = require('gulp')
 gulp.task('browserSync', ['build'], function () {
   browserSync({
     files: [
-      './app/*.html',
+      './app/**/*.html',
       './app/bundle.css',
       './app/bundle.js'
     ],
