@@ -38,7 +38,6 @@
     "watchify": "^3.1.0"
   },
   "browser": {
-    "angular": "./node_modules/angular/angular.js",
     "reveal.js": "./node_modules/reveal.js/js/reveal.js",
     "classList": "./node_modules/reveal.js/lib/js/classList.js",
     "highlight": "./node_modules/reveal.js/plugin/highlight/highlight.js"

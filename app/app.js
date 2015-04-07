@@ -1,28 +1,17 @@
-require('angular')
-require('angular-ui-router')
-var Reveal = require('reveal.js')
+'use strict'
 
-console.log(Reveal)
+import angular from 'angular'
+import uiRouter from 'angular-ui-router'
+import Reveal from './shared/reveal'
+import routes from './routes'
+import config from './config'
 
-// Full list of configuration options available at:
-// https://github.com/hakimel/reveal.js#configuration
-Reveal.initialize({
-	controls: true,
-	progress: true,
-	history: true,
-	center: true,
-	transition: 'slide', // none/fade/slide/convex/concave/zoom
-	// Optional reveal.js plugins
-	dependencies: [
-		// { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-		// { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-		// { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-		// { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-		// { src: 'plugin/zoom-js/zoom.js', async: true },
-		// { src: 'plugin/notes/notes.js', async: true }
-	]
-});
+const TalkTrack = 'TalkTrack'
 
-Reveal.addEventListener( 'ready', function( event ) {
-	console.log('listening?')
-} );
+angular
+  .module(TalkTrack, [uiRouter])
+  .controller('AngularAndBeyond', function ($state, $stateParams, config) {
+    let reveal = new Reveal(config.reveal)
+  })
+  .config(routes)
+  .constant('config', config)
