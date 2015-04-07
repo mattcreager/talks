@@ -1,0 +1,13 @@
+/tasks
+/messages
+/users
+/users/:id
+/users/:id/tasks
+/users/:id/expenses
+/users/:id/whatever
+/tasks/:task_id
+
+/users/5/tasks =>
+	click on task 3 =>
+	/tasks/3 =>
+		clicking close actually links to /users/5/tasks

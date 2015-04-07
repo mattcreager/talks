@@ -1,0 +1,69 @@
+// Default mixins and settings -----------------
+@import "../node_modules/reveal.js/css/theme/template/mixins";
+@import "../node_modules/reveal.js/css/theme/template/settings";
+// ---------------------------------------------
+
+// Include theme-specific fonts
+@import url(https://fonts.googleapis.com/css?family=Montserrat:700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic);
+
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #E7E7EC;
+
+$mainFont: 'Open Sans', sans-serif;
+$mainFontSize: 28px;
+$mainColor: #3F3F44;
+
+$headingColor: #79589F;
+$headingFont: 'Montserrat', Impact, sans-serif;
+$headingTextShadow: 0.1;
+$headingLetterSpacing: -0.03em;
+$headingTextTransform: none;
+
+$linkColor: #534A93;
+$linkColorHover: lighten( $linkColor, 20% );
+
+$selectionBackgroundColor: #3F3F44;
+
+$brandDanger: #D64242;
+$brandInfo: #56CDFC;
+
+body .reveal .gray-lighter {
+	color: $backgroundColor;
+}
+
+body .reveal section img {
+	border: none;
+	box-shadow: none;
+	background: none;
+}
+
+body .reveal h4 {
+	color: $brandDanger;
+}
+
+body .reveal h5 {
+	color: #3F3F44;
+
+	span {
+		color: $brandInfo;
+	}
+}
+
+body .reveal h2 span {
+	color: $brandInfo;
+}
+
+body .reveal h3 span {
+	opacity: 0.5;
+}
+
+// Background generator
+// @mixin bodyBackground() {
+//  @include radial-gradient( rgba(247,242,211,1), rgba(255,255,255,1) );
+// }
+
+// Theme template ------------------------------
+@import "../node_modules/reveal.js/css/theme/template/theme";
+// ---------------------------------------------

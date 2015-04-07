@@ -1,0 +1,10 @@
+@import "../node_modules/reveal.js/css/reveal.scss";
+@import "./theme";
+
+#title h1 {
+	color: $backgroundColor;
+}
+
+#title h3 {
+	color :#CBCBD2;
+}
