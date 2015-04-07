@@ -117,6 +117,26 @@
       <img src="talks/angular-and-beyond/images/model-view.svg">
     </section>
 
+    <section>
+        <pre><code data-trim>
+    class RevealCustom {
+        constructor(opts) {
+            this.title = 'Still just a string'
+        }
+    }
+        </code></pre>
+        <br/><hr/>
+        <h3><strong>POJ</strong></h3>
+    </section>
+
+    <section>
+        <pre><code data-trim>
+    &lt;div ui-view class="reveal" id="app-container"&gt;&lt;/div&gt;
+        </code></pre>
+        <br/><hr/>
+        <h3><strong>!POHTML</strong></h3>
+    </section>
+
     <section data-background="talks/angular-and-beyond/images/rocky.jpg">
         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
         <h3 class="gray-lighter"><em>Dramatically</em> less boilerplate.&nbsp; <span>Hurahh!</span></h3>
@@ -168,7 +188,27 @@
         <h2><span>Two-Way Data-Binding</span> and Things That Go Bump in the Night</h2>
     </section>
 
+    <section>
+        <img src="talks/angular-and-beyond/images/snoring.png">
+    </section>
+
     <!-- /PART-THREE -->
+
+    <section>
+        <h2>Pro-Tips</h2>
+    </section>
+
+    <section>
+        <ul>
+            <li class="fragment"><strong>Unidirectional data-flow FTW</strong> -
+Directives->HTML->Controller->Services.</li>
+            <li class="fragment"><strong>Controller != View</strong> - So don't manipulate the bloody DOM</li>
+            <li class="fragment"><strong>When in Doubt <code>$apply</code></strong> - Keep Angular informed of async operations</li>
+            <li class="fragment"><strong>UI-Router</strong> - Seriously.</li>
+            <li class="fragment"><strong><code>$watch</code></strong> - In custom directives? Sure. Controllers? <strong>never.</strong></li>
+            <li class="fragment"><strong><code>$apply already in progress</code></strong> - see <code>safeApply()</code>.</li>
+        </ul>
+    </section>
 
     <!-- CONCLUSION -->
     <section>
@@ -176,15 +216,23 @@
     </section>
 
     <section>
-      <h3><strong class="yellow">Invest</strong> in learning Angular; you'll <strong class="yellow">build better</strong> client-side applications <strong class="yellow">faster</strong></h3>
+      <h3>Invest in learning Angular; <br/><span>you'll build better client-side applications faster</span></h3>
     </section>
 
     <section>
-      <h3>Angular has lots of <strong>bits and pieces</strong>, so what? It's still <strong class="yellow">remarkably E-Z</strong> to get started</h3>
+      <h3><span>Angular has lots of moving parts, so what?<br/> </span>It's still remarkably E-Z to get started</h3>
     </section>
 
     <section>
-      <h3>In short: <strong class="yellow">Angular</strong> is <strong class="yellow">the sh^t</strong></h3>
+      <h3><span>In short<br> <strike>Angular is</strike> </span>Modern frameworks <span>are the sh^t</span></h3>
+    </section>
+
+    <section>
+        <img src="talks/angular-and-beyond/images/tree.png">
+    </section>
+
+    <section>
+        <img src="talks/angular-and-beyond/images/forest.png">
     </section>
         
     <section>
@@ -192,6 +240,8 @@
         <ul style="list-style: none">
             <li><code>javascriptjabber.com</code></li>
             <li><code>egghead.io</code></li>
+            <li><code>Batarang</code></li>
+            <li><code>ngmodules.org</code></li>
             <li><code>#angularjs</code> on freenode (IRC)</li>
             <li><code>youtube.com/user/angularjs</code></li>
             <li><code>youtube.com/user/ngconfvideos</code></li>
