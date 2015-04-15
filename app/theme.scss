@@ -31,6 +31,7 @@ $backgroundColor: #E7E7EC;
 $mainFont: benton-sans, sans-serif;
 $mainFontSize: 28px;
 $mainColor: #79589F;
+$contentColor: #333;
 
 $headingColor: #79589F;
 $headingFont: $mainFont;
@@ -46,6 +47,9 @@ $selectionBackgroundColor: #3F3F44;
 
 $brandDanger: #D64242;
 $brandInfo: darken(#56CDFC, 5%);
+
+$timelineColor: $mainColor;
+$timelineColorHighlight: $mainColor;
 
 
 // Theme template ------------------------------

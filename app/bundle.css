@@ -1260,6 +1260,9 @@ body {
 .reveal .slide-number {
   color: #534A93; }
 
+* {
+  box-sizing: border-box; }
+
 .reveal h6 {
   text-transform: uppercase;
   font-size: .65em;
@@ -1286,3 +1289,76 @@ body {
   display: block; }
 #presenter .title {
   color: #3dc6fc; }
+
+.full-height, .customer {
+  height: 100%; }
+
+.timeline-wrapper {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  padding: 1em; }
+  .timeline-wrapper .timeline {
+    position: absolute;
+    bottom: 0;
+    margin: 1em 0;
+    width: 100%;
+    text-align: center;
+    border-bottom: 2px solid #79589F;
+    font-size: .8em; }
+    .timeline-wrapper .timeline > ul {
+      -webkit-transform-origin: right;
+      -moz-transform-origin: right;
+      -ms-transform-origin: right;
+      -o-transform-origin: right;
+      transform-origin: right;
+      -webkit-transform: translateX(-50%);
+      -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      -o-transform: translateX(-50%);
+      transform: translateX(-50%);
+      margin-right: -4em; }
+      .timeline-wrapper .timeline > ul li {
+        position: relative;
+        display: inline-block;
+        padding: 1em;
+        opacity: .3; }
+        .timeline-wrapper .timeline > ul li:after {
+          content: "";
+          position: absolute;
+          width: 2px;
+          height: 23px;
+          bottom: -3px;
+          left: 50%;
+          margin-left: -1px;
+          background: #79589F; }
+      .timeline-wrapper .timeline > ul .current-marker {
+        opacity: 1;
+        font-weight: bold;
+        color: #79589F; }
+
+.two-col .col {
+  float: left;
+  width: 50%; }
+  .two-col .col.content {
+    margin-top: 20px;
+    padding-top: 15px; }
+
+.content p, .content ul, .content ol {
+  font-size: 18px;
+  color: #333; }
+.content h4 {
+  color: #737373; }
+
+.text-align-left {
+  text-align: left; }
+
+.text-align-center {
+  text-align: center; }
+
+pre {
+  border: 1px solid #ddd;
+  background: #3F3F3F;
+  border-radius: 5px; }

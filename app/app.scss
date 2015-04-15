@@ -1,11 +1,16 @@
 @import "../node_modules/reveal.js/css/reveal.scss";
 @import "./theme";
+@import "bourbon/bourbon";
 
 @mixin gradient-primary {
   background-color: #3B2F63;
   background-image: -webkit-radial-gradient(0% bottom,   rgba(118, 72, 160, 0.7) 0%, rgba(118, 72, 160, 0) 60%), -webkit-radial-gradient(90% bottom,   #523f8c 0%, rgba(82, 63, 140, 0) 40%), -webkit-radial-gradient(50% top,   rgba(84, 90, 182, 0.6) 0%, rgba(84, 90, 182, 0) 75%), -webkit-radial-gradient(right top,   #794aa2 0%, rgba(121, 74, 162, 0) 57%);
   background-image: radial-gradient(  at 0% bottom, rgba(118, 72, 160, 0.7) 0%, rgba(118, 72, 160, 0) 60%), radial-gradient(  at 90% bottom, #523f8c 0%, rgba(82, 63, 140, 0) 40%), radial-gradient(  at 50% top, rgba(84, 90, 182, 0.6) 0%, rgba(84, 90, 182, 0) 75%), radial-gradient(  at right top, #794aa2 0%, rgba(121, 74, 162, 0) 57%);
   background-repeat: no-repeat;
+}
+
+* {
+	box-sizing: border-box;
 }
 
 .reveal	{
@@ -20,9 +25,12 @@
 			border: 0;
 			background: 0;
 			box-shadow: none;
+
 		}
 	}
 }
+
+//Types of slides
 
 .light-on-dark {
 	h1 {
@@ -47,4 +55,98 @@
 	.title {
 		color: $brandInfo;
 	}
+}
+
+@mixin full-height() {
+	height: 100%;
+}
+
+.full-height,
+.customer {
+	@include full-height;
+}
+
+.has-timeline {
+}
+
+.timeline-wrapper {
+	position: absolute;
+	height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+	padding: 1em;
+
+	.timeline {
+		position: absolute;
+		bottom: 0;
+		margin: 1em 0;
+		width: 100%;
+		text-align: center;
+		border-bottom: 2px solid $timelineColor;
+		font-size: .8em;
+
+	  > ul {
+	  	@include transform-origin(right);
+	  	@include transform(translateX(-50%));
+	  	margin-right: -4em;
+
+	  	li {
+	  		position: relative;
+	  		display: inline-block;
+	  		padding: 1em;
+	  		opacity: .3;
+	  		&:after {
+	  			content: "";
+	  			position: absolute;
+					width: 2px;
+					height: 23px;
+					bottom: -3px;
+					left: 50%;
+					margin-left: -1px;
+	  			background: $timelineColor;
+	  		}
+	  	}
+	  	.current-marker {
+	  		opacity: 1;
+	  		font-weight: bold;
+	  		color: $timelineColorHighlight;
+	  	}
+	  }
+	}
+}
+
+.two-col {
+	.col {
+		float: left;
+		width: 50%;
+		&.content {
+			margin-top: 20px;
+			padding-top: 15px;
+		}
+	}
+}
+
+.content {
+	p, ul, ol {
+		font-size: 18px;
+		color: $contentColor;
+	}
+	h4 {
+		color: lighten($contentColor, 25%);
+	}
+}
+
+.text-align-left {
+	text-align: left;
+}
+
+.text-align-center {
+	text-align: center;
+}
+
+pre {
+	border: 1px solid #ddd;
+	background: #3F3F3F;
+	border-radius: 5px;
 }
