@@ -1275,8 +1275,10 @@ body {
 
 .light-on-dark h1 {
   color: white; }
-.light-on-dark h2, .light-on-dark h3, .light-on-dark h4 {
+.light-on-dark h2, .light-on-dark h3, .light-on-dark h4, .light-on-dark p, .light-on-dark ol, .light-on-dark ul .content h2, .light-on-dark .content h3, .light-on-dark .content h4, .light-on-dark .content p, .light-on-dark .content ul, .light-on-dark .content ol {
   color: rgba(255, 255, 255, 0.8); }
+.light-on-dark h6, .light-on-dark .content h6 {
+  color: #a087bd; }
 .light-on-dark hr {
   border-color: rgba(255, 255, 255, 0.25); }
 .light-on-dark.slide-background {
