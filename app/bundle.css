@@ -1021,7 +1021,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 28px;
   font-weight: normal;
-  color: #3F3F44; }
+  color: #7D7D8E; }
 
 ::selection {
   color: #fff;
@@ -1205,7 +1205,7 @@ body {
 .reveal section img {
   margin: 15px 0px;
   background: rgba(255, 255, 255, 0.12);
-  border: 4px solid #3F3F44;
+  border: 4px solid #7D7D8E;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); }
 
 .reveal a img {
@@ -1263,8 +1263,29 @@ body {
 .reveal .slide-number {
   color: #534A93; }
 
-#title h1 {
+#heroku-intro #title h1 {
   color: #E7E7EC; }
-
-#title h3 {
+#heroku-intro #title h2 {
+  font-size: 1.5em;
   color: #CBCBD2; }
+#heroku-intro #title hr {
+  color: #7D7D8E; }
+#heroku-intro #presenter a, #heroku-intro #presenter span {
+  display: block; }
+#heroku-intro #presenter a {
+  font-size: 2.5em;
+  font-weight: 700; }
+#heroku-intro #presenter .title {
+  font-size: 1.5em; }
+#heroku-intro #presenter .twitter a {
+  font-size: 1.5em;
+  font-weight: 200; }
+#heroku-intro .customer .header {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  align-items: center; }
+  #heroku-intro .customer .header .logo {
+    flex-basis: 343px; }
+  #heroku-intro .customer .header h3 {
+    font-size: 1em; }

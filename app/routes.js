@@ -7,6 +7,12 @@ let routes = ($stateProvider, $urlRouterProvider) => {
     controller: 'AngularAndBeyond'
   })
 
+  $stateProvider.state('heroku-an-introduction', {
+    url: '/heroku-an-introduction/*slide',
+    templateUrl: '/talks/heroku-an-introduction/deck.html',
+    controller: 'HerokuAnIntroduction'
+  })
+
   $urlRouterProvider.otherwise('/')
 }
 
