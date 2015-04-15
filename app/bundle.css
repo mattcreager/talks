@@ -1,5 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Montserrat:700);
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic);
 /*!
  * reveal.js
  * http://lab.hakim.se/reveal-js
@@ -988,27 +986,26 @@ body {
 .zoomed .reveal .roll span:after {
   visibility: hidden; }
 
-body .reveal .gray-lighter {
-  color: #E7E7EC; }
+@font-face {
+  font-family: 'benton-sans';
+  font-weight: 200;
+  font-style: normal;
+  src: url('//www.herokucdn.com/fonts/bentonsans-book.eot');
+  src: url('//www.herokucdn.com/fonts/bentonsans-book.eot?#iefix') format('embedded-opentype'), url('//www.herokucdn.com/fonts/bentonsans-book.woff') format('woff'), url('//www.herokucdn.com/fonts/bentonsans-book.ttf') format('truetype'), url('//www.herokucdn.com/fonts/bentonsans-book.svg#benton-sans') format('svg'); }
 
-body .reveal section img {
-  border: none;
-  box-shadow: none;
-  background: none; }
+@font-face {
+  font-family: 'benton-sans';
+  font-weight: normal;
+  font-style: normal;
+  src: url('//www.herokucdn.com/fonts/bentonsans-regular.eot');
+  src: url('//www.herokucdn.com/fonts/bentonsans-regular.eot?#iefix') format('embedded-opentype'), url('//www.herokucdn.com/fonts/bentonsans-regular.woff') format('woff'), url('//www.herokucdn.com/fonts/bentonsans-regular.ttf') format('truetype'), url('//www.herokucdn.com/fonts/bentonsans-regular.svg#benton-sans') format('svg'); }
 
-body .reveal h4 {
-  color: #D64242; }
-
-body .reveal h5 {
-  color: #3F3F44; }
-  body .reveal h5 span {
-    color: #56CDFC; }
-
-body .reveal h2 span {
-  color: #56CDFC; }
-
-body .reveal h3 span {
-  opacity: 0.5; }
+@font-face {
+  font-family: 'benton-sans';
+  font-weight: bold;
+  font-style: normal;
+  src: url('//www.herokucdn.com/fonts/bentonsans-medium.eot');
+  src: url('//www.herokucdn.com/fonts/bentonsans-medium.eot?#iefix') format('embedded-opentype'), url('//www.herokucdn.com/fonts/bentonsans-medium.woff') format('woff'), url('//www.herokucdn.com/fonts/bentonsans-medium.ttf') format('truetype'), url('//www.herokucdn.com/fonts/bentonsans-medium.svg#benton-sans') format('svg'); }
 
 /*********************************************
  * GLOBAL STYLES
@@ -1018,10 +1015,10 @@ body {
   background-color: #E7E7EC; }
 
 .reveal {
-  font-family: 'Open Sans', sans-serif;
+  font-family: benton-sans, sans-serif;
   font-size: 28px;
   font-weight: normal;
-  color: #7D7D8E; }
+  color: #79589F; }
 
 ::selection {
   color: #fff;
@@ -1038,10 +1035,10 @@ body {
 .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
   margin: 0 0 20px 0;
   color: #79589F;
-  font-family: 'Montserrat', Impact, sans-serif;
-  font-weight: normal;
+  font-family: benton-sans, sans-serif;
+  font-weight: 200;
   line-height: 1.2;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
   text-transform: none;
   text-shadow: 0.1;
   word-wrap: break-word; }
@@ -1205,7 +1202,7 @@ body {
 .reveal section img {
   margin: 15px 0px;
   background: rgba(255, 255, 255, 0.12);
-  border: 4px solid #7D7D8E;
+  border: 4px solid #79589F;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); }
 
 .reveal a img {
@@ -1263,29 +1260,29 @@ body {
 .reveal .slide-number {
   color: #534A93; }
 
-#heroku-intro #title h1 {
-  color: #E7E7EC; }
-#heroku-intro #title h2 {
-  font-size: 1.5em;
-  color: #CBCBD2; }
-#heroku-intro #title hr {
-  color: #7D7D8E; }
-#heroku-intro #presenter a, #heroku-intro #presenter span {
+.reveal h6 {
+  text-transform: uppercase;
+  font-size: .65em;
+  font-weight: bold;
+  letter-spacing: .25em; }
+.reveal section img {
+  border: 0;
+  background: 0;
+  box-shadow: none; }
+
+.light-on-dark h1 {
+  color: white; }
+.light-on-dark h2, .light-on-dark h3, .light-on-dark h4 {
+  color: rgba(255, 255, 255, 0.8); }
+.light-on-dark hr {
+  border-color: rgba(255, 255, 255, 0.25); }
+.light-on-dark.slide-background {
+  background-color: #3B2F63;
+  background-image: -webkit-radial-gradient(0% bottom, rgba(118, 72, 160, 0.7) 0%, rgba(118, 72, 160, 0) 60%), -webkit-radial-gradient(90% bottom, #523f8c 0%, rgba(82, 63, 140, 0) 40%), -webkit-radial-gradient(50% top, rgba(84, 90, 182, 0.6) 0%, rgba(84, 90, 182, 0) 75%), -webkit-radial-gradient(right top, #794aa2 0%, rgba(121, 74, 162, 0) 57%);
+  background-image: radial-gradient(at 0% bottom, rgba(118, 72, 160, 0.7) 0%, rgba(118, 72, 160, 0) 60%), radial-gradient(at 90% bottom, #523f8c 0%, rgba(82, 63, 140, 0) 40%), radial-gradient(at 50% top, rgba(84, 90, 182, 0.6) 0%, rgba(84, 90, 182, 0) 75%), radial-gradient(at right top, #794aa2 0%, rgba(121, 74, 162, 0) 57%);
+  background-repeat: no-repeat; }
+
+#presenter [rel="author"], #presenter .fragment {
   display: block; }
-#heroku-intro #presenter a {
-  font-size: 2.5em;
-  font-weight: 700; }
-#heroku-intro #presenter .title {
-  font-size: 1.5em; }
-#heroku-intro #presenter .twitter a {
-  font-size: 1.5em;
-  font-weight: 200; }
-#heroku-intro .customer .header {
-  display: flex;
-  flex-flow: row;
-  justify-content: space-around;
-  align-items: center; }
-  #heroku-intro .customer .header .logo {
-    flex-basis: 343px; }
-  #heroku-intro .customer .header h3 {
-    font-size: 1em; }
+#presenter .title {
+  color: #3dc6fc; }
