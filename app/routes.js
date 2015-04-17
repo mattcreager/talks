@@ -1,6 +1,11 @@
 'use strict'
 
 let routes = ($stateProvider, $urlRouterProvider) => {
+  $stateProvider.state('home', {
+    url: '/',
+    templateUrl: '/shared/index.html'
+  })
+
   $stateProvider.state('angular-and-beyond', {
     url: '/angular-and-beyond/*slide',
     templateUrl: '/talks/angular-and-beyond/deck.html',
@@ -11,6 +16,12 @@ let routes = ($stateProvider, $urlRouterProvider) => {
     url: '/heroku-an-introduction/*slide',
     templateUrl: '/talks/heroku-an-introduction/deck.html',
     controller: 'HerokuAnIntroduction'
+  })
+
+  $stateProvider.state('ruby-pre-roll', {
+    url: '/ruby-pre-roll/*slide',
+    templateUrl: '/talks/ruby-pre-roll/deck.html',
+    controller: 'RubyPreRoll'
   })
 
   $urlRouterProvider.otherwise('/')
