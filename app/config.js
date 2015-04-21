@@ -7,6 +7,7 @@ export default {
     history: false,
     center: true,
     transition: 'slide',
-    autoSlide: 5000
+    autoSlide: 8000,
+    loop: true
   }
 }
