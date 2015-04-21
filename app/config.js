@@ -6,6 +6,7 @@ export default {
     progress: true,
     history: false,
     center: true,
-    transition: 'slide'
+    transition: 'slide',
+    autoSlide: 5000
   }
 }
