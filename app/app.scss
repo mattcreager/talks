@@ -16,9 +16,10 @@
 .reveal	{
 	h6 {
 		text-transform: uppercase;
-		font-size: .65em;
+		font-size: .75em;
 		font-weight: bold;
 		letter-spacing: .25em;
+		color: lighten($mainColor, 15%);
 	}
 	section {
 		img {
@@ -55,6 +56,24 @@
 	&.slide-background {
 		@include gradient-primary();
 	}
+	table {
+		font-size: 1em;
+		td {
+			color: white;
+			font-weight: 100;
+			small {
+				font-size: .85em;
+			}
+		}
+		th {
+			color: $brandInfo;
+		}
+	}
+
+}
+
+.nowrap {
+	white-space: nowrap;
 }
 
 #presenter {
@@ -126,14 +145,42 @@
 	}
 }
 
-.two-col {
+[class*="-col"] {
+	@include clearfix();
 	.col {
 		float: left;
+		padding: 1em;
+	}
+	&.content {
+		margin-top: 20px;
+		padding-top: 15px;
+	}
+}
+
+ul[class*="-col"] {
+	margin: 0;
+	padding: 0;
+	li {
+		list-style: none;
+	}
+}
+
+.two-col {
+	.col {
 		width: 50%;
-		&.content {
-			margin-top: 20px;
-			padding-top: 15px;
-		}
+	}
+}
+
+.three-col {
+	.col {
+		width: 33.33%;
+	}
+}
+
+
+.four-col {
+	.col {
+		width: 25%;
 	}
 }
 
@@ -153,6 +200,9 @@
 
 .text-align-center {
 	text-align: center;
+	img {
+		display: inline-block;
+	}
 }
 
 pre {
@@ -160,3 +210,11 @@ pre {
 	background: #3F3F3F;
 	border-radius: 5px;
 }
+
+.ruby-wallpaper {
+	h2,
+	h2 a {
+		color: #E5068E
+	}
+}
+
