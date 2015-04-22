@@ -38,10 +38,12 @@ angular
     reveal.setCurrentSlide($state.params.slide)
     reveal.addEventListener('slidechanged', (event) => {
       if (reveal.isLastSlide()) {
+        console.log('last slide')
         setTimeout(function() {
-          Reveal.setCurrentSlide(0)
+          console.log('setting current')
+          reveal.setCurrentSlide(0)
         }, 8000)
-        
+
         return
       } 
 
