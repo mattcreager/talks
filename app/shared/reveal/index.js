@@ -9,6 +9,10 @@ class RevealCustom {
     Reveal.addEventListener(event, cb)
   }
 
+  isLastSlide () {
+  	return Reveal.isLastSlide()
+  }
+
   setCurrentSlide (slide) {
     if (Reveal.getIndices().h !== +slide) Reveal.slide(slide)
   }

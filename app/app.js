@@ -37,6 +37,14 @@ angular
 
     reveal.setCurrentSlide($state.params.slide)
     reveal.addEventListener('slidechanged', (event) => {
+      if (reveal.isLastSlide()) {
+        setTimeout(function() {
+          Reveal.setCurrentSlide(0)
+        }, 8000)
+        
+        return
+      } 
+
       $state.go('ruby-pre-roll', { slide: event.indexh }, { notify: false })
     })
   })
