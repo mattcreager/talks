@@ -30,6 +30,14 @@ angular
       $state.go('heroku-an-introduction', { slide: event.indexh }, { notify: false })
     })
   })
+  .controller('HitchhikersHeroku', ($scope, $state, config) => {
+    let reveal = new Reveal(config.reveal)
+
+    reveal.setCurrentSlide($state.params.slide)
+    reveal.addEventListener('slidechanged', (event) => {
+      $state.go('hitchhikers-heroku', { slide: event.indexh }, { notify: false })
+    })
+  })
   .controller('RubyPreRoll', ($scope, $state, config) => {
     $scope.title = 'Heroku an Introduction'
 

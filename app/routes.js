@@ -18,6 +18,12 @@ let routes = ($stateProvider, $urlRouterProvider) => {
     controller: 'HerokuAnIntroduction'
   })
 
+  $stateProvider.state('hitchhikers-heroku', {
+    url: '/hitchhikers-heroku/*slide',
+    templateUrl: '/talks/hitchhikers-heroku/deck.html',
+    controller: 'HitchhikersHeroku'
+  })
+
   $stateProvider.state('appsworld', {
     url: '/appsworld/*slide',
     templateUrl: '/talks/ruby-pre-roll/deck.html',
