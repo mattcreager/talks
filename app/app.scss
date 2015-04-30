@@ -186,7 +186,7 @@ ul[class*="-col"] {
 
 .content {
 	p, ul, ol {
-		font-size: 18px;
+		font-size: 28px;
 		color: $contentColor;
 	}
 	h4 {
@@ -216,5 +216,10 @@ pre {
 	h2 a {
 		color: #E5068E
 	}
+}
+
+#title h4 {
+	font-family: 'Share Tech Mono';
+	font-size: 68px;
 }
 
