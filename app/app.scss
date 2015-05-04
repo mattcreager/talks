@@ -155,6 +155,27 @@
 		margin-top: 20px;
 		padding-top: 15px;
 	}
+	ul {
+		color: #222;
+		h4 {
+			font-weight: bold;
+			color: $mainColor;
+			font-size: .9em;
+			margin: 0;
+			a {
+				color: $mainColor;
+				text-decoration: underline;
+			}
+		}
+		p {
+			font-size: .7em;
+			margin: 0;
+			color: #222;
+		}
+		li {
+			margin-bottom: .75em;
+		}
+	}
 }
 
 ul[class*="-col"] {
@@ -167,7 +188,10 @@ ul[class*="-col"] {
 
 .two-col {
 	.col {
-		width: 50%;
+		width: 40%;
+		&:last-child {
+			width: 60%;
+		}
 	}
 }
 
