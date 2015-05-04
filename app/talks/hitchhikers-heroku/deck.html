@@ -98,9 +98,6 @@
                         <h4><a href="//devcenter.heroku.com/articles/github-integration">GitHub</a></h4>
                     </li>
                     <li>
-                        <h4><a href="//devcenter.heroku.com/articles/platform-api-reference">Platform API</a></h4>
-                    </li>
-                    <li>
                         <h4><a href="https://elements.heroku.com/addons#deployment">Heroku Deployment Add-ons</a></h4>
                     </li>
                     <li>
@@ -110,6 +107,9 @@
                         <h4>
                             Support for Jenkins via. the <a href="https://github.com/heroku/heroku-jenkins-plugin">Heroku Jenkins Plugin</a>
                         </h4>
+                    </li>
+                    <li>
+                        <h4><a href="//devcenter.heroku.com/articles/platform-api-reference">Platform API</a></h4>
                     </li>
                 </ul>
             </div>
@@ -125,11 +125,18 @@
             </div>
             <div class="col">
                 <ul>
-                    <li><h4>A large <a href="//addons.heroku.com/">marketplace</a> of add-ons to choose from</h4></li>
-                    <li><h4>Discover new, popular, and/or trending add-ons</h4></li>
-                    <li><h4>Identify which languages &amp; regions they support</h4></li>
-                    <li><h4>Provision add-ons from the Heroku dashboard or toolbelt</h4></li>
-                    <li><h4>??? <a href="//devcenter.heroku.com/articles/github-integration-pull-request-apps">Automatically provision</a> add-ons during PR deployment</h4></li>
+                    <li>
+                        <h4><a href="//addons.heroku.com/">Marketplace</a></h4>
+                        <p>Identify new, popular and/or trending tools &amp; services that support your language and are available in your region</p>
+                    </li>
+                    <li>
+                        <h4><a href="//addons.heroku.com/">Provisioning</a></h4>
+                        <p>Add Heroku Add-ons to your app from the <a href="//dashboard.heroku.com">Dashboard</a>, <a href="//toolbelt.heroku.com">CLI</a>, or with the <a href="https://devcenter.heroku.com/articles/platform-api-reference">platform API</a></p>
+                    </li>
+                    <li>
+                        <h4><a href="//devcenter.heroku.com/articles/managing-add-ons"><code>Addons:upgrade</code></a></h4>
+                        <p>Add-ons come in a variety of plans to fit your application and ensure you only pay for what you need</p>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -179,14 +186,8 @@
     </section>
 
     <section>
-        <h2>Heroku button</h2>
-        <p>One-click provisioning, configuration and deployment of third-party apps</p>
-        <img src="/talks/hitchhikers-heroku/images/button-panel.png">
-    </section>
-
-    <section>
         <h2>Dashboard &amp; Metrics</h2>
-        <p>Manage your apps, investigate and diagnose issues with the dashboard and app-level metrics</p>
+        <p>Manage your apps, investigate and diagnose issues<br/> with the dashboard and app-level metrics</p>
         <div class="two-col">
             <div class="col">
                 <img src="http://placehold.it/500x500" alt="">
@@ -212,7 +213,7 @@
 
     <section>
         <h2>Scale</h2>
-        <p>Heroku lets you grow quickly to support growth, traffic spikes and new features</p>
+        <p>Heroku lets you grow quickly to support growth, <br/>traffic spikes and new features</p>
         <div class="two-col">
             <div class="col">
                 <img src="http://placehold.it/500x500" alt="">
@@ -220,28 +221,20 @@
             <div class="col">
                 <ul>
                     <li>
-                        <h4>
-                            <a href="//devcenter.heroku.com/articles/dyno-size">Dyno size</a>
-                        </h4>
-                        <p>1x and 2x dynos have variable performance</p>
-                        </li>
+                        <h4><a href="https://devcenter.heroku.com/articles/dyno-size">Size</a></h4>
+                        <p>Choose the dyno size appropriate for your project</p>
+                    </li>
                     <li>
-                        <h4>
-                            <a href="//devcenter.heroku.com/articles/scaling">Scale easily</a>
-                        </h4>
-                        <p>1x and 2x dynos have variable performance</p>
-                        </li>
+                        <h4><a href="https://devcenter.heroku.com/articles/procfile">Process Types</a></h4>
+                        <p>Divide your app into worker, web, queue and other process types</p>
+                    </li>
                     <li>
-                        <h4>
-                            <a href="//devcenter.heroku.com/articles/scaling">Scale easily</a>
-                        </h4>
-                        <p>1x and 2x dynos have variable performance</p>
-                        </li>
+                        <h4><a href="https://devcenter.heroku.com/articles/scaling">Scale</a></h4>
+                        <p>Scale process-types independently, and on-demand using the slider from your app dashboard, or the CLI</p>
+                    </li>    
                     <li>
-                        <h4>
-                            <a href="//devcenter.heroku.com/articles/managing-add-ons">Upgrade Add-ons</a>
-                        </h4>
-                        <p>1x and 2x dynos have variable performance</p>
+                        <h4><a href="//12factor.net/"><strong>12 Factor</strong></a></h4>
+                        <p>A tried and true methodology for building scalable apps on Heroku</p>
                     </li>
                 </ul>
             </div>
@@ -249,8 +242,8 @@
     </section>
 
     <section>
-        <h2>Salesforce &amp; Heroku Connect</h2>
-        <p>Your Apps, in one place. Important data, right at the surface</p>
+        <h2>Heroku Connect</h2>
+        <p>Seamless Heroku and Salesforce data synchronization</p>
         <div class="two-col">
             <div class="col">
                 <img src="http://placehold.it/500x500" alt="">
@@ -259,15 +252,21 @@
                 <ul>
                     <li>
                         <h4>
-                            <a href="//www.heroku.com/dx"><strong>Dashboard</strong></a>
+                            Point and click configuration</a>
                         </h4>
-                        <p>Manage your apps, deployments, databases and add-ons</p>
+                        <p>Configure Heroku Connect through a Web UI that is easy for either developers and Salesforce business users to set-up and manage</p>
                     </li>
                     <li>
                         <h4>
-                            <a href="//www.heroku.com/dx"><strong>Metrics</strong></a>
+                            Streamlined developer experience
                         </h4>
-                        <p>Runtime characteristics including <strong>throughput</strong>, <strong>response time</strong>, <strong>errors</strong>, <strong>memory</strong> and <strong>dyno load</strong>, designed to help you spot and resolve problems</p>
+                        <p>Heroku Connect provides a way to cleanly separate Salesforce API interactions from application code. </p>
+                    </li>
+                    <li>
+                        <h4>
+                            <a href="//addons.heroku.com/herokuconnect">Free edition for proof of concepts</a>
+                        </h4>
+                        <p>Available with just one click from the Heroku Add-ons Marketplace</p>
                     </li>
                 </ul>
             </div>
@@ -279,10 +278,45 @@
         <h6><a href="https://devcenter.heroku.com/start">devcenter.heroku.com/start</a></h6>
     </section>
 
-    <section>
+   <section>
+        <h2>Heroku Button</h2>
+        <p>One-click provisioning, configuration and deployment of third-party apps</p>
+        <img src="/talks/hitchhikers-heroku/images/button-panel.png">
+    </section>
+
+    <section class="light-on-dark">
+        <h2>"Don't Panic"</h2>
+        <p>Alternate next steps; possibly resulting<br/> in the delivery of a shiny new Heroku T-shirt</p>
+        <div class="two-col">
+            <div class="col">
+                <img src="http://placehold.it/500x500" alt="">
+            </div>
+            <div class="col">
+                <ol>
+                    <li>
+                        <h4>
+                            Button it up</a>
+                        </h4>
+                        <p>Add a <a href="//devcenter.heroku.com/articles/heroku-button">Heroku Button</a> to a favorite project</p>
+                    </li>
+                    <li>
+                        <h4>
+                            Tweet or email us
+                        </h4>
+                        <p>Send a link to the projects repo. to <a href="//twitter.com/heroku">@heroku</a> or <a href="mailto:creager@heroku.com">creager@heroku.com</a></p>
+                    </li>
+                    <li>
+                        <h4>Cool buttons, win T-Shirts</h4>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <section class="light-on-dark" data-background="talks/hitchhikers-heroku/images/space.jpg">
         <h2><span>Q&amp;A</span> w. <a href="">@matt_creager</a></h2>
         <hr>
-        <q style="text-align: left;">“Live as if you were to die tomorrow.<br/> Learn as if you were to live forever.”<br/> - Mahatma Gandhi</q>
+        <q style="text-align: left;">“So long, and thanks for all the fish.”<br/> -  Douglas Adams, The Hitchhiker's Guide to the Galaxy</q>
     </section>
 
 </div>
