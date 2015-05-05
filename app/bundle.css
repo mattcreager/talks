@@ -1278,6 +1278,10 @@ body {
   color: white; }
 .light-on-dark h2, .light-on-dark h3, .light-on-dark h4, .light-on-dark p, .light-on-dark ol, .light-on-dark ul .content h2, .light-on-dark .content h3, .light-on-dark .content h4, .light-on-dark .content p, .light-on-dark .content ul, .light-on-dark .content ol {
   color: rgba(255, 255, 255, 0.8); }
+  .light-on-dark h2 a, .light-on-dark h3 a, .light-on-dark h4 a, .light-on-dark p a, .light-on-dark ol a, .light-on-dark ul .content h2 a, .light-on-dark .content h3 a, .light-on-dark .content h4 a, .light-on-dark .content p a, .light-on-dark .content ul a, .light-on-dark .content ol a {
+    color: #24befb; }
+    .light-on-dark h2 a:hover, .light-on-dark h3 a:hover, .light-on-dark h4 a:hover, .light-on-dark p a:hover, .light-on-dark ol a:hover, .light-on-dark ul .content h2 a:hover, .light-on-dark .content h3 a:hover, .light-on-dark .content h4 a:hover, .light-on-dark .content p a:hover, .light-on-dark .content ul a:hover, .light-on-dark .content ol a:hover {
+      color: #04a7e8; }
 .light-on-dark h6, .light-on-dark .content h6 {
   color: #a087bd; }
 .light-on-dark hr {
@@ -1364,21 +1368,31 @@ body {
 [class*="-col"].content {
   margin-top: 20px;
   padding-top: 15px; }
-[class*="-col"] ul {
+[class*="-col"] ul, [class*="-col"] ol {
   color: #222; }
-  [class*="-col"] ul h4 {
+  .light-on-dark [class*="-col"] ul, .light-on-dark [class*="-col"] ol {
+    color: #d4c9e1; }
+  [class*="-col"] ul h4, [class*="-col"] ol h4 {
     font-weight: bold;
     color: #79589F;
     font-size: .9em;
     margin: 0; }
-    [class*="-col"] ul h4 a {
+    .light-on-dark [class*="-col"] ul h4, .light-on-dark [class*="-col"] ol h4 {
+      color: #d4c9e1; }
+    [class*="-col"] ul h4 a, [class*="-col"] ol h4 a {
       color: #79589F;
       text-decoration: underline; }
-  [class*="-col"] ul p {
+      .light-on-dark [class*="-col"] ul h4 a, .light-on-dark [class*="-col"] ol h4 a {
+        color: white; }
+  [class*="-col"] ul p, [class*="-col"] ol p {
     font-size: .7em;
     margin: 0;
     color: #222; }
-  [class*="-col"] ul li {
+    .light-on-dark [class*="-col"] ul p, .light-on-dark [class*="-col"] ol p {
+      color: #baa8cf; }
+      .light-on-dark [class*="-col"] ul p a, .light-on-dark [class*="-col"] ol p a {
+        color: white; }
+  [class*="-col"] ul li, [class*="-col"] ol li {
     margin-bottom: .75em; }
 
 ul[class*="-col"] {

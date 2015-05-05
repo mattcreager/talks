@@ -45,6 +45,12 @@
 	.content ul,
 	.content ol {
 		color: fade-out(white, .2);
+		a {
+				color: lighten(#04a7e8, 10%);
+			&:hover {
+			color: #04a7e8;
+			}
+		}
 	}
 	h6,
 	.content h6 {
@@ -155,22 +161,37 @@
 		margin-top: 20px;
 		padding-top: 15px;
 	}
-	ul {
+	ul, ol {
 		color: #222;
+		.light-on-dark & {
+			color: lighten($mainColor, 35%);
+		}
 		h4 {
 			font-weight: bold;
 			color: $mainColor;
 			font-size: .9em;
 			margin: 0;
+			.light-on-dark & {
+				color: lighten($mainColor, 35%);
+			}
 			a {
 				color: $mainColor;
 				text-decoration: underline;
+				.light-on-dark & {
+					color: white;
+				}
 			}
 		}
 		p {
 			font-size: .7em;
 			margin: 0;
 			color: #222;
+			.light-on-dark & {
+				color: lighten($mainColor, 25%);
+				a {
+					color: white;
+				}
+			}
 		}
 		li {
 			margin-bottom: .75em;
