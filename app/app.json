@@ -1,0 +1,13 @@
+{
+  "name":"Daily User Report",
+  "env":{
+    "NODE_ENV": "pull_request",
+    "SEND_TO": "creager@heroku.com, devcenter@heroku.com",
+    "HEROKU_APP_NAME": {
+      "required": true
+    },
+    "HEROKU_PARENT_APP_NAME": {
+      "required": true
+    }
+  }
+}

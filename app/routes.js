@@ -24,8 +24,8 @@ let routes = ($stateProvider, $urlRouterProvider) => {
     controller: 'HitchhikersHeroku'
   })
 
-  $stateProvider.state('appsworld', {
-    url: '/appsworld/*slide',
+  $stateProvider.state('ruby-pre-roll', {
+    url: '/ruby-pre-roll/*slide',
     templateUrl: '/talks/ruby-pre-roll/deck.html',
     controller: 'RubyPreRoll'
   })
