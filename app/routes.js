@@ -24,10 +24,10 @@ let routes = ($stateProvider, $urlRouterProvider) => {
     controller: 'HitchhikersHeroku'
   })
 
-  $stateProvider.state('ruby-pre-roll', {
-    url: '/ruby-pre-roll/*slide',
-    templateUrl: '/talks/ruby-pre-roll/deck.html',
-    controller: 'RubyPreRoll'
+  $stateProvider.state('pre-roll', {
+    url: '/pre-roll/*slide',
+    templateUrl: '/talks/pre-roll/deck.html',
+    controller: 'PreRoll'
   })
 
   $urlRouterProvider.otherwise('/')

@@ -16,6 +16,6 @@ gulp.task('browserSync', ['build'], function () {
       './app/bundle.css',
       './app/bundle.js'
     ],
-    proxy: 'localhost:5000/'
+    proxy: 'localhost:4302/'
   })
 })

@@ -1,6 +1,41 @@
 @import "../node_modules/reveal.js/css/reveal.scss";
 @import "./theme";
 @import "bourbon/bourbon";
+@import "neat";
+
+.row {
+	@include outer-container;
+
+	.col {
+		@include span-columns(6);
+	}
+}
+
+.data-logo {
+	@include span-columns(2);
+}
+
+.row .data-header {
+	padding-top: 10px;
+}
+
+.data-header {
+	@include span-columns(10);
+
+	h6, h3 {
+		margin-left: 20px;
+		text-align: left;
+	}
+
+	h3 {
+		font-size: 1.45em;
+		margin-bottom: 5px;
+	}
+
+	h6 {
+		margin-top: 0;
+	}
+}
 
 @mixin gradient-primary {
   background-color: #3B2F63;
@@ -236,6 +271,7 @@ ul[class*="-col"] {
 	}
 	h4 {
 		color: lighten($contentColor, 25%);
+		font-size: 1.1em;
 	}
 }
 

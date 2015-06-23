@@ -1260,6 +1260,55 @@ body {
 .reveal .slide-number {
   color: #534A93; }
 
+html {
+  box-sizing: border-box; }
+
+*, *::after, *::before {
+  box-sizing: inherit; }
+
+.row {
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto; }
+  .row::after {
+    clear: both;
+    content: "";
+    display: table; }
+  .row .col {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 48.82117%; }
+    .row .col:last-child {
+      margin-right: 0; }
+
+.data-logo {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 14.70196%; }
+  .data-logo:last-child {
+    margin-right: 0; }
+
+.row .data-header {
+  padding-top: 10px; }
+
+.data-header {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 82.94039%; }
+  .data-header:last-child {
+    margin-right: 0; }
+  .data-header h6, .data-header h3 {
+    margin-left: 20px;
+    text-align: left; }
+  .data-header h3 {
+    font-size: 1.45em;
+    margin-bottom: 5px; }
+  .data-header h6 {
+    margin-top: 0; }
+
 * {
   box-sizing: border-box; }
 
@@ -1416,7 +1465,8 @@ ul[class*="-col"] {
   font-size: 28px;
   color: #333; }
 .content h4 {
-  color: #737373; }
+  color: #737373;
+  font-size: 1.1em; }
 
 .text-align-left {
   text-align: left; }

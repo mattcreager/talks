@@ -38,24 +38,16 @@ angular
       $state.go('hitchhikers-heroku', { slide: event.indexh }, { notify: false })
     })
   })
-  .controller('RubyPreRoll', ($scope, $state, config) => {
+  .controller('PreRoll', ($scope, $state, config) => {
     $scope.title = 'Heroku an Introduction'
 
     let reveal = new Reveal(config.reveal)
 
     reveal.setCurrentSlide($state.params.slide)
     reveal.addEventListener('slidechanged', (event) => {
-      if (reveal.isLastSlide()) {
-        console.log('last slide')
-        setTimeout(function() {
-          console.log('setting current')
-          reveal.setCurrentSlide(0)
-        }, 8000)
+      //if (reveal.isLastSlide()) // setTimeout(function() { reveal.setCurrentSlide(0) }, 8000)
 
-        return
-      } 
-
-      $state.go('ruby-pre-roll', { slide: event.indexh }, { notify: false })
+      $state.go('pre-roll', { slide: event.indexh }, { notify: false })
     })
   })
   .config(routes)

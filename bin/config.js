@@ -10,6 +10,6 @@ module.exports = {
   cache: util.bool(process.env.VIEW_CACHE) || true,
   server: {
     host: '0.0.0.0',
-    port: util.int(process.env.PORT) || 5000
+    port: util.int(process.env.PORT) || 4302
   }
 }
