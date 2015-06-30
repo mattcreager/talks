@@ -304,3 +304,19 @@ pre {
 	font-size: 68px;
 }
 
+body #database ul {
+	margin-left: 0;
+  list-style-type: none;
+}
+
+body #database ul li {
+	h4 {
+		padding: 10px;
+	}
+	&:nth-child(2) {
+		background: #a087bd;
+		h4 {
+			color: #3B2F63;
+		}
+	}
+}
