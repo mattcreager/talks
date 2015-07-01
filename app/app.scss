@@ -11,32 +11,6 @@
 	}
 }
 
-.data-logo {
-	@include span-columns(2);
-}
-
-.row .data-header {
-	padding-top: 10px;
-}
-
-.data-header {
-	@include span-columns(10);
-
-	h6, h3 {
-		margin-left: 20px;
-		text-align: left;
-	}
-
-	h3 {
-		font-size: 1.45em;
-		margin-bottom: 5px;
-	}
-
-	h6 {
-		margin-top: 0;
-	}
-}
-
 @mixin gradient-primary {
   background-color: #3B2F63;
   background-image: -webkit-radial-gradient(0% bottom,   rgba(118, 72, 160, 0.7) 0%, rgba(118, 72, 160, 0) 60%), -webkit-radial-gradient(90% bottom,   #523f8c 0%, rgba(82, 63, 140, 0) 40%), -webkit-radial-gradient(50% top,   rgba(84, 90, 182, 0.6) 0%, rgba(84, 90, 182, 0) 75%), -webkit-radial-gradient(right top,   #794aa2 0%, rgba(121, 74, 162, 0) 57%);
@@ -264,6 +238,12 @@ ul[class*="-col"] {
 	}
 }
 
+.half-col {
+	.col {
+		width: 50%;
+	}
+}
+
 .content {
 	p, ul, ol {
 		font-size: 28px;
@@ -302,21 +282,4 @@ pre {
 #title h4 {
 	font-family: 'Share Tech Mono';
 	font-size: 68px;
-}
-
-body #database ul {
-	margin-left: 0;
-  list-style-type: none;
-}
-
-body #database ul li {
-	h4 {
-		padding: 10px;
-	}
-	&:nth-child(2) {
-		background: #a087bd;
-		h4 {
-			color: #3B2F63;
-		}
-	}
 }
