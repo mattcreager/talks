@@ -1,7 +1,7 @@
-<div id="heroku-intro" class="slides">
+<div id="heroku-intro" class="slides sf-blue">
     <section id="title" class="light-on-dark" data-autoslide="5000">
         <h1>
-            <img src="talks/heroku-an-introduction/images/heroku-white.png" alt="" width="35%">
+            <img src="shared/images/sfdc-heroku-white.png" alt="" width="50%">
         </h1>
         <h3 class="fragment fade-out" data-autoslide="500"> The Application Platform for Developers</h3>
         <h3 class="fragment" style="margin-top: -2em;">Build Amazing Things, We'll Take Care of the Rest</h3>
@@ -14,8 +14,10 @@
     </section>
 
     <section class="customer" data-transition="convex" data-autoslide="3500">
-        <img style="margin: 35px;" class="item logo" src="shared/images/macys.png"/>
-        <br>
+        <img class="item logo" src="shared/images/macys.png"/>
+        <blockquote>"Heroku gives us a powerful platform that enables us to test, learn, and proceed with new mobile ideas that excite our customers."
+        <cite><strong>Shawn Morrissey,</strong> Vice President, Mobile Engineering, Macys.com</cite>
+        </blockquote>
         <img class="image-fixed-bottom" src="shared/images/macys-screenshot.png">
     </section>
 
@@ -38,9 +40,28 @@
         </div>
     </section>
 
+    <section data-autoslide="8000" class="partners">
+        <div class="row">
+            <div class="half-col">
+                <h2>Partners</h2>
+                <h6>Heroku Elements</h6>
+                <div class="col">
+                    <img width="150px" src="shared/images/partners/fastly.png" />
+                    <h3>Solarwinds</h3>
+                </div>
+                <div class="col">
+                    <img width="150px" src="shared/images/partners/treasuredata.png" />
+                    <h3>Treasure Data</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section data-autoslide="8000" class="customer" data-transition="convex" data-autoslide="3500">
         <img style="margin: 35px;" class="item logo" src="shared/images/westfield.png"/>
-        <br>
+        <blockquote>“We chose Heroku because the platform gives the ability to move quickly by pushing app improvements fast – in a secure environment!”
+        <cite><strong>Thiago Figueiro,</strong> Vice President, Engineering and Production Operations at Westfield Labs</cite>
+        </blockquote>
         <img class="image-fixed-bottom" src="shared/images/westfield-screenshot.png">
     </section>
 
@@ -52,31 +73,45 @@
             <h4>Continously deploy to Heroku from GitHub</h4>
         </div>
     </section>
-
+    <section data-autoslide="8000" data-transition="convex" >
+        <h2>Heroku Flow</h2>
+        <div class="content">
+            <h4>A flexible way to structure, support, and visualize continuous delivery</h4>
+        </div>
+        <img src="shared/images/pipelines.png">
+        <br>
+    </section>
     <section data-autoslide="8000" class="light-on-dark" id="database">
         <div class="row">
             <div class="half-col">
+                <h2>Trusted Data Stores as a Service</h2>
+                <h6>Optimized for Developers</h6>
                 <div class="col">
                     <img width="100px" src="shared/images/heroku-data-postgres-logo.svg" />
                     <h3>Heroku Postgres</h3>
                     <h6>SQL database service</h6>
-                    <hr>
-                    <ul style="list-style: circle; margin-top: 1em; padding-left: 1em;">
-                        <li>Dataclips makes sharing SQL query results easy</li>
-                        <li>Easy to Setup, Secure by Default</li>
-                        <li>Fork your db like you would a repo</li>
-                    </ul>
                 </div>
                 <div class="col">
                     <img width="75px" src="shared/images/heroku-data-redis-logo.svg" />
                     <h3>Heroku Redis</h3>
                     <h6>KEY/VALUE DATA STORE</h6>
-                    <hr>
-                    <ul style="list-style: circle; margin-top: 1em; padding-left: 1em;">
-                        <li>Performance Analytics surface key metrics</li>
-                        <li>Fine-grained logs</li>
-                        <li>Query with SQL via. Heroku Data Links</li>
-                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section data-autoslide="8000" class="partners">
+        <div class="row">
+            <div class="half-col">
+                <h2>Partners</h2>
+                <h6>Heroku Elements</h6>
+                <div class="col">
+                    <img width="150px" src="shared/images/partners/mongolab.png" />
+                    <h3>MongoLab</h3>
+                </div>
+                <div class="col">
+                    <img width="150px" src="shared/images/partners/newrelic.png" />
+                    <h3>New Relic</h3>
                 </div>
             </div>
         </div>
@@ -84,15 +119,52 @@
 
     <section data-autoslide="8000" class="customer" data-transition="convex" data-autoslide="3500">
         <img class="item logo" src="https://s3.amazonaws.com/heroku-www-files/customers/logos/producthunt.png"/>
+        <blockquote>“We love Heroku because we don’t have to worry about bringing up servers, dealing with our own images, or firewalls. We just want to focus on our product.”
+        <cite><strong>Mike Coutermarsh</strong> Software Engineer, Product Hunt</cite>
+        </blockquote>
         <img class="image-fixed-bottom" src="https://s3.amazonaws.com/heroku-www-files/customers/photos/producthunt-1.jpg">
     </section>
 
     <section data-autoslide="8000">
         <img src="/shared/images/docker-heroku.png" width="30%">
         <br>
-        <h2>Docker Support</h2>
+        <h2>Heroku Docker</h2>
         <div class="content">
-            <h4>Fast isolated development environments powered by Docker</h4>
+            <h4>Develop locally with Docker, Deploy to Heroku for dev prod parity</h4>
+        </div>
+    </section>
+
+    <section data-autoslide="8000">
+        <h2>Heroku Private Spaces</h2>
+            <h6>Your own private Heroku, delivered as a Service</h6>
+            <img src="/shared/images/space-single.png" width="75%">
+            <ul class="three-col content">
+                <li class="col text-align-center">
+                <p>Private Network</p>
+                </li>
+                <li class="col text-align-center">
+                <p>Private Data</p>
+                </li>
+                <li class="col text-align-center">
+                <p>Global Regions</p>
+                </li>
+            </ul>
+    </section>
+
+    <section data-autoslide="8000" class="partners">
+        <div class="row">
+            <div class="half-col">
+                <h2>Partners</h2>
+                <h6>Heroku Elements</h6>
+                <div class="col">
+                    <img width="150px" src="shared/images/partners/fastly.png" />
+                    <h3>Fastly</h3>
+                </div>
+                <div class="col">
+                    <img width="150px" src="shared/images/partners/sendgrid.png" />
+                    <h3>SendGrid</h3>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -104,17 +176,17 @@
                 <li class="col text-align-center">
                     <img src="shared/images/addon-white.png" width="90">
                     <h4><strong>Add-ons</strong></h4>
-                    <p>Tools and services for extending, and operating your app</p>
+                    <p>Extend your app</p>
                 </li>
                 <li class="col text-align-center">
                     <img src="shared/images/button-white.png" width="90">
                     <h4><strong>Buttons</strong></h4>
-                    <p>One-click provisioning, configuration and deployment</p>
+                    <p>Jumpstart your project</p>
                 </li>
                 <li class="col text-align-center">
                     <img src="shared/images/buildpack-white.png" width="90">
                     <h4><strong>Buildpacks</strong></h4>
-                    <p>Customize, and automate your build process</p>
+                    <p>Customize your stack</p>
                 </li>
             </ul>
     </section>

@@ -87,6 +87,35 @@
 
 }
 
+.reveal .sf-blue {
+	section:not(.light-on-dark) {
+		h2 {
+			color: $blue;
+		}
+	}
+}
+
+.reveal {
+	blockquote {
+		margin: -1em auto 0 auto;
+		box-shadow: none;
+		font-style: normal;
+		color: #222;
+		cite {
+			display: block;
+			margin: 1em 0;
+			font-size: .8em;
+			font-style: italic;
+			color: $blue;
+			strong {
+				margin-top: 1em;
+				display: block;
+				font-style: normal;
+			}
+		}
+	}
+}
+
 .nowrap {
 	white-space: nowrap;
 }
@@ -226,6 +255,7 @@ ul[class*="-col"] {
 }
 
 .three-col {
+	width: 100%;
 	.col {
 		width: 33.33%;
 	}
@@ -240,14 +270,16 @@ ul[class*="-col"] {
 
 .half-col {
 	.col {
-		width: 50%;
+		width: 48%;
 	}
 }
 
 .content {
+
 	p, ul, ol {
 		font-size: 28px;
 		color: $contentColor;
+		font-weight: 200;
 	}
 	h4 {
 		color: lighten($contentColor, 25%);
@@ -283,3 +315,4 @@ pre {
 	font-family: 'Share Tech Mono';
 	font-size: 68px;
 }
+
