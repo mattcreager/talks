@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+	<html class="sl-root decks export offline loaded">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Apache Kafka on Heroku: Slides</title>
+		<meta name="description" content="Slides">
+
+		<link rel="stylesheet" type="text/css" href="lib/offline-v2.css">
+
+
+
+		<!-- User CSS -->
+		<style id="user-css-output" type="text/css">
+			.reveal a,
+.reveal a:link,
+.reveal a:visited,
+.reveal a:hover,
+.reveal a:active {
+  color: #408fec;
+}
+@font-face {
+  font-family: 'benton-sans';
+  font-weight: 200;
+  font-style: normal;
+  src: url('https://www.herokucdn.com/fonts/bentonsans-book.eot?#iefix') format('embedded-opentype'), url('https://www.herokucdn.com/fonts/bentonsans-book.woff') format('woff'), url('https://www.herokucdn.com/fonts/bentonsans-book.ttf') format('truetype'), url('https://www.herokucdn.com/fonts/bentonsans-book.svg#benton-sans') format('svg');
+}
+@font-face {
+  font-family: 'benton-sans';
+  font-weight: normal;
+  font-style: normal;
+  src: url('https://www.herokucdn.com/fonts/bentonsans-regular.eot?#iefix') format('embedded-opentype'), url('https://www.herokucdn.com/fonts/bentonsans-regular.woff') format('woff'), url('https://www.herokucdn.com/fonts/bentonsans-regular.ttf') format('truetype'), url('https://www.herokucdn.com/fonts/bentonsans-regular.svg#benton-sans') format('svg');
+}
+@font-face {
+  font-family: 'benton-sans';
+  font-weight: bold;
+  font-style: normal;
+  src: url('https://www.herokucdn.com/fonts/bentonsans-medium.eot?#iefix') format('embedded-opentype'), url('https://www.herokucdn.com/fonts/bentonsans-medium.woff') format('woff'), url('https://www.herokucdn.com/fonts/bentonsans-medium.ttf') format('truetype'), url('https://www.herokucdn.com/fonts/bentonsans-medium.svg#benton-sans') format('svg');
+}
+.reveal .slides h1,
+.reveal .slides h2,
+.reveal .slides h3 {
+  font-family: benton-sans, sans-serif;
+}
+
+		</style>
+	</head>
+	<body class="reveal-viewport theme-font-montserrat theme-color-white-blue">
+		<div class="reveal">
+			<div class="slides">
+				<section class="has-dark-background" data-id="232ffa42e88ac6f8cb39d53e30eb59fd" data-background-color="rgb(92,78,159)" data-background-image="deck/3184489-slide-background.png" data-background-size="cover"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 244px; height: auto;" data-block-id="bdd91921b521d94cc71f5db9bbeec12a"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11; color: rgb(238, 238, 238); border-width: 1px; line-height: 0.91;" data-has-line-height="">
+<h2><span style="color:#D3D3D3">Event Driven</span></h2>
+
+<h2><span style="color:#D3D3D3">Architectures with</span></h2>
+
+<h2><span style="color:#D3D3D3">Apache Kafka on Heroku</span></h2>
+</div></div>
+
+<div class="sl-block" data-block-type="text" data-block-id="0339d6ff2a3dd04231c78bf3781323f9" style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 80px; top: 560px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; color: rgb(207, 215, 230);" dir="ui">
+<p>Chris Castle, Developer Advocate</p>
+
+<p>Rand Fitzpatrick, Director of Product</p>
+
+<p>November 3, 2016</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 640px; height: 110.156px; left: 160px; top: 459px;" data-block-id="c5739a8d96f166d1d619421cfd3b52c0"><div class="sl-block-style" style="z-index: 13; opacity: 0.25;"><div class="sl-block-content" style="z-index: 13;" href=""><img data-natural-width="1406" data-natural-height="242" style="" data-src="deck/3184432-kafka-header.png"></div></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="ee3a46853aa32e8a68c044e97ce48218" style="min-width: 30px; min-height: 30px; width: 360px; height: 160.079px; left: 280px; top: 26px;"><div class="sl-block-content" style="z-index: 14;"><img data-natural-width="1518" data-natural-height="675" style="" data-src="deck/3189149-salesforce-heroku-white.png"></div></div></section><section class="has-dark-background" data-background-color="rgb(92,78,159)" data-id="f69638a43e25bacca32bd85375328868" data-background-image="deck/3184489-slide-background.png">
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 700px; left: 260px; top: 140px;" data-block-id="413820219ee2a52640f4fae991216ee0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; color: rgb(207, 215, 230);" dir="ui">
+<h3 style="text-align:left">
+<span style="font-size:1.0em">What problems does Apache Kafka solve?</span><br>
+ </h3>
+
+<h3 style="text-align:left">
+<span style="font-size:1.0em">What are the core concepts of Kafka?</span><br>
+ </h3>
+
+<h3 style="text-align:left"><span style="font-size:1.0em">Why Apache Kafka on Heroku?</span></h3>
+</div></div>
+
+<div class="sl-block" data-block-type="line" data-block-id="2da74edef914f15cbf541e1956f853c3" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 240px; top: 70px;"><div class="sl-block-content" data-line-x1="160" data-line-y1="350" data-line-x2="160" data-line-y2="-210" data-line-color="#cfd7e6" data-line-start-type="none" data-line-end-type="none" style="z-index: 13;" data-line-width="2px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="560" viewbox="160 -210 1 560"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="160" y1="350" x2="160" y2="-210"></line><line stroke="#cfd7e6" stroke-width="2" x1="160" y1="350" x2="160" y2="-210"></line></svg></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="ed836f6b96ea0fa5776763a36f694ac4" style="min-width: 30px; min-height: 30px; width: 161.596px; height: 155px; left: 43px; top: 203px;"><div class="sl-block-style" style="z-index: 14; opacity: 0.75;"><div class="sl-block-content" style="z-index: 14;" data-inline-svg="false"><img data-natural-width="98" data-natural-height="94" style="" data-src="deck/3184002-heroku-data-kafka-logo.svg"></div></div></div></section><section class="has-light-background" data-background-color="#e7e7ec" data-id="6de9496784456cdea4435e50bb759361"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-id="e2dfed3d7bb77cc39d7b143fd8e4c747"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; color: rgb(171, 142, 205);">
+<h2>Forward-Looking Statements</h2>
+</div></div>
+
+<div class="sl-block" data-block-type="text" data-block-id="8f4bcf5614b650a197f42b9cebfc507c" style="height: auto; min-width: 30px; min-height: 30px; width: 960px; left: 0px; top: 74px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; line-height: 0.845;" data-has-line-height="">
+<p style="text-align:left"><span style="font-size:0.5em">Statement under the Private Securities Litigation Reform Act of 1995:<br>
+This presentation may contain forward-looking statements that involve risks, uncertainties, and assumptions. If any such uncertainties materialize or if any of the assumptions proves incorrect, the results of salesforce.com, inc. could differ materially from the results expressed or implied by the forward-looking statements we make. All statements other than statements of historical fact could be deemed forward-looking, including any projections of product or service availability, subscriber growth, earnings, revenues, or other financial items and any statements regarding strategies or plans of management for future operations, statements of belief, any statements concerning new, planned, or upgraded services or technology developments and customer contracts or use of our services.</span><br>
+ </p>
+
+<p style="text-align:left"><span style="font-size:0.5em">The risks and uncertainties referred to above include – but are not limited to – risks associated with developing and delivering new functionality for our service, new products and services, our new business model, our past operating losses, possible fluctuations in our operating results and rate of growth, interruptions or delays in our Web hosting, breach of our security measures, the outcome of any litigation, risks associated with completed and any possible mergers and acquisitions, the immature market in which we operate, our relatively limited operating history, our ability to expand, retain, and motivate our employees and manage our growth, new releases of our service and successful customer deployment, our limited history reselling non-salesforce.com products, and utilization and selling to larger enterprise customers. Further information on potential factors that could affect the financial results of salesforce.com, inc. is included in our annual report on Form 10-K for the most recent fiscal year and in our quarterly report on Form 10-Q for the most recent fiscal quarter. These documents and others containing important disclosures are available on the SEC Filings section of the Investor Information section of our Web site.<br>
+<br>
+Any unreleased services or features referenced in this or other presentations, press releases or public statements are not currently available and may not be delivered on time or at all. Customers who purchase our services should make the purchase decisions based upon features that are currently available. Salesforce.com, inc. assumes no obligation and does not intend to update these forward-looking statements.</span></p>
+
+<p style="text-align:left"> </p>
+</div></div></section><section class="has-dark-background" data-background-color="rgb(92,78,159)" data-id="1c54150ac09f37158d8ac7964f1fa7b0" data-background-image="deck/3184489-slide-background.png">
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 666px; left: 294px; top: 202px;" data-block-id="260e15070cea4e7ae26c3b0ecf36fba4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; color: rgb(207, 215, 230);" dir="ui">
+<h2 style="text-align: left;">What problems does Apache Kafka solve?</h2>
+</div></div>
+
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 240px; top: 70px;" data-block-id="750b9084d6b74cc7ab37cb664872c398"><div class="sl-block-content" data-line-x1="160" data-line-y1="350" data-line-x2="160" data-line-y2="-210" data-line-color="#cfd7e6" data-line-start-type="none" data-line-end-type="none" style="z-index: 11;" data-line-width="2px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="560" viewbox="160 -210 1 560"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="160" y1="350" x2="160" y2="-210"></line><line stroke="#cfd7e6" stroke-width="2" x1="160" y1="350" x2="160" y2="-210"></line></svg></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 161.596px; height: 155px; left: 43px; top: 203px;" data-block-id="63c549337a1eaab55640ecffeb3ad0f1"><div class="sl-block-style" style="z-index: 13; opacity: 0.75;"><div class="sl-block-content" style="z-index: 13;" data-inline-svg="false"><img data-natural-width="98" data-natural-height="94" style="" data-src="deck/3184002-heroku-data-kafka-logo.svg"></div></div></div></section><section class="has-light-background" data-background-color="#e7e7ec" data-id="e9fea8641bd629b58a8ec276cfefbcdf"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-id="8a25af7c8c6ca208e9d0b60e1cfb85bd"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; color: rgb(171, 142, 205);">
+<h2>Event-Driven Architecture</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="d0e05dc133a1b739280868ffb30819bc" style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 80px; top: 199px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; color: rgb(121, 88, 159);">
+<h3 style="text-align: left;"><em>Event-driven architecture (EDA), also known as message-driven architecture, is a software architecture pattern promoting the production, detection, consumption of, and reaction to events.</em></h3>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="416787602e8f30f0cc4d70afdb67a38b" style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 80px; top: 512px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; color: rgb(150, 163, 182);" dir="ui">
+<p style="text-align:left">Source: <a href="https://en.wikipedia.org/wiki/Event-driven_architecture" target="_blank">Wikipedia</a></p>
+</div></div></section><section class="has-light-background" data-background-color="#e7e7ec" data-id="bdd8c76077abdc1760e8b0e44f263fad"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-id="f3f295739428c6d82f854344ec93cf3e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; text-align: left; color: rgb(171, 142, 205);">
+<h2>What Are Events?</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 288px;" data-block-id="b1a3c360d39c79fab0ab3ad1059affb7"><div class="sl-block-content fragment fade-out" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; color: rgb(121, 88, 159);" dir="ui" data-fragment-index="0">
+<h2><em>"Contextualized operation on state"</em></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="3b9f2686c5217b915d5fdac748e57edc" style="height: auto; min-width: 30px; min-height: 30px; width: 579px; left: 54px; top: 118px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; color: rgb(83, 74, 147); line-height: 1.17; background-color: rgb(164, 194, 244); padding: 5px;" dir="ui" data-has-line-height="" data-fragment-index="0">
+<p style="text-align:left"><strong><span style="font-size:0.7em">Context</span></strong></p>
+
+<p style="text-align:left"><span style="font-size:0.7em">When was the event? (event time, process time)?<br>
+What produced the event? (causal history, device, etc)<br>
+Where did the event occur? (system location, geo location)</span></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 579px; left: 31px; top: 400px;" data-block-id="cc7040123e2d7d8dd43202fb305e7098"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(83, 74, 147); line-height: 1.17; background-color: rgb(162, 196, 201); padding: 5px;" dir="ui" data-has-line-height="" data-fragment-index="1">
+<p style="text-align:left"><strong><span style="font-size:0.7em">Operation</span></strong></p>
+
+<p style="text-align:left"><span style="font-size:0.7em">What function was applied? (create, update, delete, etc)<br>
+What are the characteristics of the function?</span></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 391px; left: 545px; top: 535px;" data-block-id="a9a6638c36ada6321cfd8c9bb5af63b6"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; color: rgb(83, 74, 147); line-height: 1.17; background-color: rgb(180, 167, 214); padding: 5px;" dir="ui" data-has-line-height="" data-fragment-index="2">
+<p style="text-align:left"><span style="font-size:0.7em"><strong>State</strong><br>
+What is the data involved in the event?<br>
+How is that data identified?</span></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 288px;" data-block-id="1f20af7a4e4d6666d91d2382e7fa1d9a"><div class="sl-block-style" style="z-index: 16; opacity: 0.3;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16; color: rgb(121, 88, 159);" dir="ui" data-fragment-index="0">
+<h2><em>"Contextualized operation on state"</em></h2>
+</div></div></div></section><section class="has-light-background" data-background-color="#e7e7ec" data-id="96559e497063aeb29800458379b30e0c"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-id="1eb81fb0777699b98e6f9fe2d90ccfbe"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; text-align: left; color: rgb(171, 142, 205);">
+<h2>Event Examples</h2>
+</div></div>
+
+<div class="sl-block" data-block-type="text" data-block-id="033faa54c2a1bc25e44ff21d38c3bc83" style="height: auto; min-width: 30px; min-height: 30px; width: 386px; left: 80px; top: 110px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; color: rgb(121, 88, 159);">
+<p style="text-align:left">Product views</p>
+
+<p style="text-align:left">Completed sales</p>
+
+<p style="text-align:left">Page visits</p>
+
+<p style="text-align:left">Site logins</p>
+
+<p style="text-align:left">Shipping notifications</p>
+
+<p style="text-align:left">Inventory received</p>
+
+<p style="text-align:left">IoT sensor values</p>
+
+<p style="text-align:left">Weather data</p>
+
+<p style="text-align:left">Traffic data</p>
+
+<p style="text-align:left">Tweets</p>
+
+<p style="text-align:left">Election polling data!</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" data-block-id="3715dfd4d70ef4388a7c357d36b88df3" style="min-width: 4px; min-height: 4px; width: 300px; height: 118px; left: 511px; top: 195px;"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgb(164, 194, 244)" data-shape-stretch="true" style="z-index: 12;" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 300 118"><rect width="300" height="118" class="shape-element" fill="rgb(164, 194, 244)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 300px; height: 118px; left: 511px; top: 313px;" data-block-id="90bdb7bdf2ef184f0b0ca6796b937ad5"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgb(162, 196, 201)" data-shape-stretch="true" style="z-index: 13;" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 300 118"><rect width="300" height="118" class="shape-element" fill="rgb(162, 196, 201)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 300px; height: 118px; left: 511px; top: 431px;" data-block-id="cf35b6169e23eb2a812353cfabfb8f06"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgb(180, 167, 214)" data-shape-stretch="true" style="z-index: 14;" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 300 118"><rect width="300" height="118" class="shape-element" fill="rgb(180, 167, 214)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="10d62b125d66f1d3adcb38c30d31eaf1" style="height: auto; min-width: 30px; min-height: 30px; width: 329px; left: 497px; top: 156px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; color: rgb(83, 74, 147);" dir="ui" data-fragment-index="0">
+<p>Completed sale</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="49319ea643c579ff2c6eb34c43ec0eaf" style="height: auto; min-width: 30px; min-height: 30px; width: 300px; left: 511px; top: 195px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16; line-height: 1.105; padding: 5px;" data-has-line-height="" data-fragment-index="0">
+<p style="text-align:left"><span style="font-size:0.7em">2016-11-03T15:13:27Z</span></p>
+
+<p style="text-align:left"><span style="font-size:0.7em">Retail www site</span></p>
+
+<p style="text-align:left"><span style="font-size:0.7em">referrer Google search</span></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 300px; left: 511px; top: 323px;" data-block-id="77d85a60d2bba615eecc5258b66a66bd"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; line-height: 1.105; padding: 5px;" data-has-line-height="" data-fragment-index="0">
+<p style="text-align:left"><span style="font-size:21px">Inventory item purchased</span></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 300px; left: 512px; top: 426px;" data-block-id="48d0d0b75c173de53bba7b4589c2f827"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18; line-height: 1.105; padding: 5px;" data-has-line-height="" data-fragment-index="0">
+<p style="text-align:left"><span style="font-size:21px">Amazon Echo, Black</span></p>
+
+<p style="text-align:left"><span style="font-size:21px">$179.99</span></p>
+
+<p style="text-align:left"><span style="font-size:21px">ID </span><span style="font-size:0.7em">B00X4WHP5E</span></p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="8542c43745d29f93e9226386aee0dc7a" style="height: auto; min-width: 30px; min-height: 30px; width: 140px; left: 818px; top: 235px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19; color: rgb(83, 74, 147);" data-fragment-index="0">
+<p style="text-align: left;"><strong><span style="font-size:0.7em">Context</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 140px; left: 818px; top: 347px;" data-block-id="ea9dc8c9132e62e4ec55db805a3f822e"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 20; color: rgb(83, 74, 147);" data-fragment-index="0">
+<p style="text-align:left"><span style="font-size:21px"><strong>Operation</strong></span></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 140px; left: 818px; top: 468px;" data-block-id="32e95e16b376dcac95a50348836a03a3"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 22; color: rgb(83, 74, 147);" data-fragment-index="0">
+<p style="text-align:left"><span style="font-size:21px"><strong>State</strong></span></p>
+</div></div></section><section class="has-light-background" data-background-color="#e7e7ec" data-id="d2555aa854c5bda505c450a8e4d3cfee"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-id="63e2bc6610eced271e8ebcd4cbd07904"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; color: rgb(171, 142, 205);">
+<h2>Why Should I Care?</h2>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-block-id="4c7eae87554d973c8686432d344e155e" style="height: auto; min-width: 30px; min-height: 30px; width: 960px; left: 0px; top: 140px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; color: rgb(83, 74, 147); line-height: 1.755;" data-has-line-height="">
+<ul>
+	<li style="text-align:left">Scaling too slowly leads to dropped data</li>
+	<li style="text-align:left">Overprovisioning leads to inefficient systems</li>
+	<li style="text-align:left">Dataflow between processing stages requires coordination</li>
+	<li style="text-align:left">Parallel pipelines with the same data can be nontrivial</li>
+	<li style="text-align:left">Service discovery must support current and future processes</li>
+	<li style="text-align:left">
+	<p>Sequencing service availability is critical to system function</p>
+	</li>
+	<li style="text-align:left">
+	<p>Possible loss of state when individual services fail</p>
+	</li>
+</ul>
+</div></div></section><section class="has-light-background" data-background-color="#e7e7ec" data-id="9785f4704f770daee675771f205b3890"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-id="87e8d3df4a79a15bb0c3f89d95a5eed2"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; text-align: left; color: rgb(171, 142, 205);">
+<h2>Why Should I Care?</h2>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 493px; left: 281px; top: 94px;" data-block-id="8afad3d94c14ece364d9e78a373ec4fd"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; color: rgb(83, 74, 147); line-height: 1.04;" data-has-line-height="">
+<p style="text-align:left"><span style="font-size:0.7em"><strong>Inbound Streams</strong></span></p>
+
+<ul>
+	<li style="text-align:left"><span style="font-size:0.7em">Scaling too slowly leads to dropped data</span></li>
+	<li style="text-align:left"><span style="font-size:0.7em">Overprovisioning leads to inefficient systems</span></li>
+	<li style="text-align:left"><span style="font-size:0.7em">Backpressure and other coordination is hard!</span></li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 629px; left: 281px; top: 274px;" data-block-id="8ee71f83edb479d178ac94f1f7c338a4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; color: rgb(83, 74, 147); line-height: 1.04;" data-has-line-height="">
+<p style="text-align:left"><span style="font-size:0.7em"><strong>Data Pipelines</strong></span></p>
+
+<ul>
+	<li style="text-align:left"><span style="font-size:0.7em">Dataflow between processing stages requires coordination</span></li>
+	<li style="text-align:left"><span style="font-size:0.7em">Parallel pipelines with the same data can be nontrivial</span></li>
+	<li style="text-align:left"><span style="font-size:0.7em">Provenance and auditability!?</span></li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 166.324px; height: 166px; left: 74px; top: 93px;" data-block-id="4e0679e01e2eea8a6140843d5cfa23c5"><div class="sl-block-content" style="z-index: 14;"><img style="" data-natural-width="513" data-natural-height="512" data-src="deck/3180293-Picture1.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 166.648px; height: 166px; left: 73px; top: 298px;" data-block-id="c7ab8919a3137f8dc57c64b214b21cbf"><div class="sl-block-content" style="z-index: 16;"><img style="" data-natural-width="514" data-natural-height="512" data-src="deck/3184103-data-pipelines.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 646px; left: 281px; top: 498px;" data-block-id="83ab02ddaafa877095580a7f0785fcf5"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; color: rgb(83, 74, 147); line-height: 1.04;" data-has-line-height="">
+<p style="text-align:left"><span style="font-size:0.7em"><strong>Microservices</strong></span></p>
+
+<ul>
+	<li style="text-align:left"><span style="font-size:0.7em">Service discovery must support current and future processes</span></li>
+	<li style="text-align:left"><span style="font-size:0.7em">Sequencing service availability is critical to system function</span></li>
+	<li style="text-align:left"><span style="font-size:0.7em">Possible loss of state when individual services fail</span></li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 167px; height: 166.35px; left: 73px; top: 516px;" data-block-id="76342e8ada728c151dbe0afca8475094"><div class="sl-block-content" style="z-index: 18;"><img style="" data-natural-width="514" data-natural-height="512" data-src="deck/3184107-microservices.png"></div></div></section><section class="has-light-background" data-background-color="#e7e7ec" data-id="f349ebb3f90a5d8ac12a157dea020b98"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-id="9ae91ae0054aa0c000d58f7714e7c62b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; color: rgb(171, 142, 205);">
+<h2>Why Should I Care?</h2>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 679px; left: 281px; top: 94px;" data-block-id="4a0f355323763b5feaf6d9496274fe4f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; color: rgb(83, 74, 147); line-height: 1.04;" data-has-line-height="">
+<p style="text-align:left"><span style="font-size:0.7em"><strong>Inbound Streams</strong></span></p>
+
+<ul>
+	<li style="text-align:left"><span style="font-size:0.7em">Event streams in Kafka allow other resources to pull when ready</span></li>
+	<li style="text-align:left"><span style="font-size:0.7em">Resources can fail and reconnect without dropping events</span></li>
+	<li style="text-align:left"><span style="font-size:0.7em">Kafka provides elasticity, reducing the need for backpressure</span></li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 642px; left: 281px; top: 274px;" data-block-id="39f627a17843e9ae611fb17ca030f5c2"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; color: rgb(83, 74, 147); line-height: 1.04;" data-has-line-height="">
+<p style="text-align:left"><span style="font-size:0.7em"><strong>Data Pipelines</strong></span></p>
+
+<ul>
+	<li style="text-align:left"><span style="font-size:0.7em">Dataflow coordination is reduced via event stream structure</span></li>
+	<li style="text-align:left"><span style="font-size:0.7em">The immutability of data allows for trivial parallel processing</span></li>
+	<li style="text-align:left"><span style="font-size:0.7em">Tracking provenance and lineage of data becomes possible</span></li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 538px; left: 281px; top: 498px;" data-block-id="38f7545473fb405c33aac98dfb49d5e6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(83, 74, 147); line-height: 1.04;" data-has-line-height="" dir="ui">
+<p style="text-align:left"><span style="font-size:0.7em"><strong>Microservices</strong></span></p>
+
+<ul>
+	<li style="text-align:left"><span style="font-size:0.7em">Services now only need to discover topics in Kafka</span></li>
+	<li style="text-align:left"><span style="font-size:0.7em">Service availability sequencing is relaxed</span></li>
+	<li style="text-align:left">
+<span style="font-size:0.7em">Inter-service communication is more robust</span><br>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="184361df4a208a2e395cb047b51d4f81" style="min-width: 30px; min-height: 30px; width: 167px; height: 166.674px; left: 73px; top: 93px;"><div class="sl-block-content" style="z-index: 16;"><img data-natural-width="513" data-natural-height="512" style="" data-src="deck/3188947-inbound-streams-kafka.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="5c4861804654a569a8e510b0a6fe96ab" style="min-width: 30px; min-height: 30px; width: 167px; height: 166.35px; left: 73px; top: 298px;"><div class="sl-block-content" style="z-index: 17;"><img data-natural-width="514" data-natural-height="512" style="" data-src="deck/3188952-data-pipelines-kafka.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="79a54cb08e5cd0aa9e6bf2f8d0a900d5" style="min-width: 30px; min-height: 30px; width: 166.648px; height: 166px; left: 73.352px; top: 516px;"><div class="sl-block-content" style="z-index: 18;"><img style="" data-natural-width="514" data-natural-height="512" data-src="deck/3188954-microservices-kafka.png"></div></div></section><section class="has-light-background" data-background-color="#e7e7ec" data-id="71ec805dca02e93f28836a01db988145"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-id="444b7ade715a255ae55bbcb7014f7ace"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; color: rgb(171, 142, 205);">
+<h2>Use Cases</h2>
+
+<h3>Heroku Platform Event Stream</h3>
+</div></div>
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 887px; left: 32px; top: 630px;" data-block-id="aa31db52ff64a8e0de73e2ae2e1fc47f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; line-height: 0.754;" data-has-line-height="">
+<p style="text-align:left"><span style="font-size:0.5em">Learn more at<br>
+<a href="https://blog.heroku.com/powering-the-heroku-platform-api-a-distributed-systems-approach-using-streams-and-apache-kafka" target="_blank">https://blog.heroku.com/powering-the-heroku-platform-api-a-distributed-systems-approach-using-streams-and-apache-kafka</a></span></p>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="dfa8e437e3cd954750dcd1d1780f268e" style="min-width: 30px; min-height: 30px; width: 870.224px; height: 316px; left: 45px; top: 192px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="1600" data-natural-height="581" style="" data-src="deck/3189075-platform-event-stream-arch2.png"></div></div></section><section class="has-light-background" data-background-color="#e7e7ec" data-id="d8c6f10a1d9e69a72da66583d4950f49"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-id="fba685f3130264e933bc6c1e8f5a6f95"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; color: rgb(171, 142, 205);">
+<h2>Use Cases</h2>
+
+<h3>Heroku Operational Experience: App Metrics</h3>
+</div></div>
+
+
+<div class="sl-block" data-block-type="image" data-block-id="7022f577f4b48e83da655644ee0cc53e" style="min-width: 30px; min-height: 30px; width: 742.257px; height: 415px; left: 108px; top: 179px;"><a class="sl-block-content" style="z-index: 12;" href="https://dashboard.heroku.com/apps/coh-blog/metrics/web" target="_blank"><img style="" data-natural-width="1252" data-natural-height="700" data-src="deck/3189262-metrics-dashboard.png"></a></div></section><section class="has-light-background" data-background-color="#e7e7ec" data-id="898440a39a0aeccd2438eadb7bb3d71e"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-id="401a096a9525f16343aba4914e56efa0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; color: rgb(171, 142, 205);">
+<h2>Use Cases</h2>
+
+<h3>Heroku App Metrics</h3>
+</div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 766px; left: 101px; top: 639px;" data-block-id="27e1d250ff4617baf141a3dbd33becec"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; line-height: 0.754;" data-has-line-height="">
+<p style="text-align:left"><span style="font-size:0.5em">Learn more at<br>
+<a href="https://engineering.heroku.com/blogs/2016-05-26-heroku-metrics-there-and-back-again/" target="_blank">https://engineering.heroku.com/blogs/2016-05-26-heroku-metrics-there-and-back-again/</a></span></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 800px; height: 434.587px; left: 80px; top: 146px;" data-block-id="aaa53e16a953e39eb78ac623dd00c904"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="1515" data-natural-height="823" style="" data-src="deck/3189258-opex-architecture.png"></div></div></section><section class="has-light-background" data-background-color="#e7e7ec" data-id="13becafdaed2c190dc9a1e548dfea081"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-id="7abfa0b8a4700d8280333708c0850e13"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; text-align: left; color: rgb(171, 142, 205);">
+<h2>Use Cases</h2>
+
+<h3>Twitter Analytics Dashboard</h3>
+</div></div>
+
+
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 834.783px; height: 420px; left: 63px; top: 188px;" data-block-id="0a31e6365f58c280283b99a5a029d7f4"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="1600" data-natural-height="805" data-src="deck/3193345-Screen_Shot_2016-11-03_at_12.39.45_PM.png"></div></div></section><section class="has-light-background" data-background-color="#e7e7ec" data-id="e051bf574853acca1a667b93d7812b38"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-id="36bd80d47de4cfcd2e9be895fb9ec6b6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; text-align: left; color: rgb(171, 142, 205);">
+<h2>Use Cases Generalized</h2>
+</div></div>
+
+<div class="sl-block" data-block-type="image" style="width: 240px; height: 239.066px; left: 440px; top: 231px;" data-block-id="7fa465a33e0e9bb11226ab3c100648f2"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="514" data-natural-height="512" data-src="deck/3184103-data-pipelines.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 240px; height: 239.532px; left: 160px; top: 230px;" data-block-id="9e61d34d8bc681fde43d55953cd9ddde"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="513" data-natural-height="512" data-src="deck/3180293-Picture1.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 240px; height: 239.066px; left: 720px; top: 231px;" data-block-id="b757b998341e84b9d4f64e40c02598c0"><div class="sl-block-content" style="z-index: 13;"><img style="" data-natural-width="514" data-natural-height="512" data-src="deck/3184107-microservices.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 248px; left: 156px; top: 171px;" data-block-id="27e5b9dece9e85a18d7821bab3b6608c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(83, 74, 147);">
+<p>Inbound Streams</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 248px; left: 436px; top: 171px;" data-block-id="dc94ca4dc0a1efd9325f14089d5e6bfd"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; color: rgb(83, 74, 147);">
+<p>Data Pipelines</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 216px; left: 732px; top: 171px;" data-block-id="4a569a21aa0e4874b711a44b6456ed7c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16; color: rgb(83, 74, 147);">
+<p>Microservices</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 197px; left: 12px; top: 490px;" data-block-id="8814ef6dfebfb198a110b1d17a8e83a7"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; color: rgb(83, 74, 147); line-height: 1.04;" data-fragment-index="0" data-has-line-height="">
+<p style="text-align:left"><span style="font-size:0.7em">Platform<br>
+Event Stream</span></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 197px; left: 12px; top: 575px;" data-block-id="402b98d73d6989ebd96825c11906a363"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18; color: rgb(83, 74, 147); line-height: 1.04;" data-fragment-index="0" data-has-line-height="">
+<p style="text-align:left"><span style="font-size:0.7em">App Metrics</span></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 189px; left: 12px; top: 646px;" data-block-id="0a73f371ce1a5aba5858a2407a2d3b15"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19; color: rgb(83, 74, 147); line-height: 1.04;" data-fragment-index="0" data-has-line-height="">
+<p style="text-align:left"><span style="font-size:0.7em">Twitter Analytics</span></p>
+</div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 0px; top: 559px;" data-block-id="250fb583884f3e48f61628d839d56c1c"><div class="sl-block-content fragment" data-line-x1="-26" data-line-y1="0" data-line-x2="934" data-line-y2="0" data-line-color="#cfd7e6" data-line-start-type="none" data-line-end-type="none" style="z-index: 20;" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="960" height="1" viewbox="-26 0 960 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-26" y1="0" x2="934" y2="0"></line><line stroke="#cfd7e6" stroke-width="2" x1="-26" y1="0" x2="934" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 0px; top: 629px;" data-block-id="374043b3bb3d88aab2aacf5a68b37da2"><div class="sl-block-content fragment" data-line-x1="-26" data-line-y1="0" data-line-x2="934" data-line-y2="0" data-line-color="#cfd7e6" data-line-start-type="none" data-line-end-type="none" style="z-index: 21;" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="960" height="1" viewbox="-26 0 960 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-26" y1="0" x2="934" y2="0"></line><line stroke="#cfd7e6" stroke-width="2" x1="-26" y1="0" x2="934" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 28px; height: 28px; left: 266px; top: 576px;" data-block-id="118da5174e12203a434644e1b56cf612"><div class="sl-block-content fragment" data-shape-type="symbol-checkmark-circle" data-shape-fill-color="rgb(64, 143, 236)" data-shape-stretch="true" style="z-index: 22;" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(64, 143, 236)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM13.52 23.383l-7.362-7.363 2.828-2.828 4.533 4.535 9.617-9.617 2.828 2.828-12.444 12.445z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 28px; height: 28px; left: 266px; top: 507px;" data-block-id="8f41bb552e4194e5ee126a683789ec0f"><div class="sl-block-content fragment" data-shape-type="symbol-checkmark-circle" data-shape-fill-color="rgb(64, 143, 236)" data-shape-stretch="true" style="z-index: 23;" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(64, 143, 236)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM13.52 23.383l-7.362-7.363 2.828-2.828 4.533 4.535 9.617-9.617 2.828 2.828-12.444 12.445z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 28px; height: 28px; left: 826px; top: 507px;" data-block-id="3e25fc985cbb78819df519d33de83c34"><div class="sl-block-content fragment" data-shape-type="symbol-checkmark-circle" data-shape-fill-color="rgb(64, 143, 236)" data-shape-stretch="true" style="z-index: 24;" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(64, 143, 236)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM13.52 23.383l-7.362-7.363 2.828-2.828 4.533 4.535 9.617-9.617 2.828 2.828-12.444 12.445z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 28px; height: 28px; left: 266px; top: 647px;" data-block-id="140b6a390ebc97f45d0454d3b1b40c03"><div class="sl-block-content fragment" data-shape-type="symbol-checkmark-circle" data-shape-fill-color="rgb(64, 143, 236)" data-shape-stretch="true" style="z-index: 25;" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(64, 143, 236)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM13.52 23.383l-7.362-7.363 2.828-2.828 4.533 4.535 9.617-9.617 2.828 2.828-12.444 12.445z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 28px; height: 28px; left: 546px; top: 647px;" data-block-id="8856217cad1cec28f2348fe07a353653"><div class="sl-block-content fragment" data-shape-type="symbol-checkmark-circle" data-shape-fill-color="rgb(64, 143, 236)" data-shape-stretch="true" style="z-index: 26;" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(64, 143, 236)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM13.52 23.383l-7.362-7.363 2.828-2.828 4.533 4.535 9.617-9.617 2.828 2.828-12.444 12.445z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 28px; height: 28px; left: 546px; top: 576px;" data-block-id="559f8b7980a4bc0c2db2e2b8cae5cb20"><div class="sl-block-content fragment" data-shape-type="symbol-checkmark-circle" data-shape-fill-color="rgb(64, 143, 236)" data-shape-stretch="true" style="z-index: 27;" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(64, 143, 236)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM13.52 23.383l-7.362-7.363 2.828-2.828 4.533 4.535 9.617-9.617 2.828 2.828-12.444 12.445z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 28px; height: 28px; left: 826px; top: 576px;" data-block-id="de793ef7876ba1bd5304fb5a201a6b7c"><div class="sl-block-content fragment" data-shape-type="symbol-checkmark-circle" data-shape-fill-color="rgb(64, 143, 236)" data-shape-stretch="true" style="z-index: 29;" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(64, 143, 236)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM13.52 23.383l-7.362-7.363 2.828-2.828 4.533 4.535 9.617-9.617 2.828 2.828-12.444 12.445z"></path></g></svg></div></div></section><section class="has-dark-background" data-background-color="rgb(92,78,159)" data-id="250a7ea31829c68c4a28f5caa705c5b3" data-background-image="deck/3184489-slide-background.png">
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 700px; left: 260px; top: 202px;" data-block-id="7bb471ac6ed57738d3b63f84717a4248"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; color: rgb(207, 215, 230);" dir="ui">
+<h2 style="text-align:left">What are the core concepts of Kafka?</h2>
+</div></div>
+
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 240px; top: 70px;" data-block-id="f209eaa8d243c0e6e0fd7780944c938a"><div class="sl-block-content" data-line-x1="160" data-line-y1="350" data-line-x2="160" data-line-y2="-210" data-line-color="#cfd7e6" data-line-start-type="none" data-line-end-type="none" style="z-index: 11;" data-line-width="2px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="560" viewbox="160 -210 1 560"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="160" y1="350" x2="160" y2="-210"></line><line stroke="#cfd7e6" stroke-width="2" x1="160" y1="350" x2="160" y2="-210"></line></svg></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 161.596px; height: 155px; left: 43px; top: 203px;" data-block-id="869d77ada322a43663e5a649176e714b"><div class="sl-block-style" style="z-index: 13; opacity: 0.75;"><div class="sl-block-content" style="z-index: 13;" data-inline-svg="false"><img data-natural-width="98" data-natural-height="94" style="" data-src="deck/3184002-heroku-data-kafka-logo.svg"></div></div></div></section><section class="has-light-background" data-background-color="#e7e7ec" data-id="d0b144d3181d7bd5c8009fe0beaed8c4"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-id="666408e34c0f9cd3c65f1273875cf467"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; text-align: left; color: rgb(171, 142, 205);">
+<h2>Apache Kafka Core Concepts</h2>
+</div></div>
+
+<div class="sl-block" data-block-type="image" data-block-id="c6b213148f7e252732f83a21717fd3aa" style="min-width: 30px; min-height: 30px; width: 431px; height: 288.567px; left: 49px; top: 210px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="932" data-natural-height="624" style="" data-src="deck/3185016-kafka-isomorrphic.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="db8fd1d76f7b6b655cb727a36f9131fb" style="height: auto; min-width: 30px; min-height: 30px; width: 98px; left: 0px; top: 210px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; color: rgb(64, 143, 236);">
+<p style="text-align:center"><strong><span style="font-size:0.5em">PRODUCERS</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 98px; left: 250px; top: 210px;" data-block-id="09f25c158c3d2e120595d6cf871865c0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; color: rgb(64, 143, 236);">
+<p style="text-align:center"><strong><span style="font-size:0.5em">CONSUMERS</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="7b4141eb118f26cfcf3f95cf646c8c4b" style="height: auto; min-width: 30px; min-height: 30px; width: 434px; left: 526px; top: 91px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; line-height: 1.04; color: rgb(83, 74, 147);" data-has-line-height="">
+<p style="text-align:left"><span style="font-size:0.7em"><strong>​Brokers</strong></span></p>
+
+<p style="text-align:left"><span style="font-size:0.7em">The instances running Kafka and managing streams of events in a cluster.</span></p>
+
+<p style="text-align:left"> </p>
+
+<p style="text-align:left"><span style="font-size:0.7em"><strong>​Producers + Consumers</strong></span></p>
+
+<p style="text-align:left"><span style="font-size:0.7em">Clients that write to or read from a Kafka cluster.</span></p>
+
+<p style="text-align:left"> </p>
+
+<p style="text-align:left"><span style="font-size:0.7em">​<strong>Topics</strong></span></p>
+
+<p style="text-align:left"><span style="font-size:0.7em">Streams of events that are replicated across the brokers. Configured with time based retention or log compaction.</span></p>
+
+<p style="text-align:left"> </p>
+
+<p style="text-align:left"><span style="font-size:0.7em"><strong>​Partitions</strong></span></p>
+
+<p style="text-align:left"><span style="font-size:0.7em">Discrete subsets of topics, and important tuning points for parallelism and ordering.</span></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 69px; left: 12px; top: 376px;" data-block-id="f300bbe78179cf03fd0876f027b94adf"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; color: rgb(64, 143, 236);">
+<p style="text-align: right;"><strong><span style="font-size:0.5em">BROKER</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="line" data-block-id="5336887ebb35f176051bb41f8cb920b4" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 85px; top: 401px;"><div class="sl-block-content" data-line-x1="0" data-line-y1="200" data-line-x2="38" data-line-y2="200" data-line-color="#408fec" data-line-start-type="none" data-line-end-type="circle" style="z-index: 16;" data-line-width="3px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="38" height="1" viewbox="0 200 38 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="200.5" x2="34.5" y2="200.5"></line><line stroke="#408fec" stroke-width="3" x1="0.5" y1="200.5" x2="34.5" y2="200.5"></line><ellipse rx="4.5" ry="4.5" cx="34" cy="200" fill="#408fec"></ellipse></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 69px; left: 24px; top: 415px;" data-block-id="bf9f9d50afd2708fed6b809db632db09"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; color: rgb(64, 143, 236);">
+<p style="text-align: right;"><strong><span style="font-size:0.5em">TOPIC</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 98px; top: 439px;" data-block-id="18df5e54daa7d03779d02338f42df957"><div class="sl-block-content" data-line-x1="-63" data-line-y1="200" data-line-x2="38" data-line-y2="200" data-line-color="#408fec" data-line-start-type="none" data-line-end-type="circle" style="z-index: 18;" data-line-width="3px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="101" height="1" viewbox="-63 200 101 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-62.5" y1="200.5" x2="34.5" y2="200.5"></line><line stroke="#408fec" stroke-width="3" x1="-62.5" y1="200.5" x2="34.5" y2="200.5"></line><ellipse rx="4.5" ry="4.5" cx="34" cy="200" fill="#408fec"></ellipse></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 86px; left: 58px; top: 448px;" data-block-id="f8b5ad357ff21049362429ade4e39dde"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19; color: rgb(64, 143, 236);">
+<p style="text-align:right"><strong><span style="font-size:0.5em">PARTITION</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 187px; top: 454px;" data-block-id="45e793bbc52b986ac1bf89df8d4dea2b"><div class="sl-block-content" data-line-x1="-25" data-line-y1="200" data-line-x2="38" data-line-y2="200" data-line-color="#408fec" data-line-start-type="none" data-line-end-type="circle" style="z-index: 20;" data-line-width="3px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="63" height="1" viewbox="-25 200 63 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-24.5" y1="200.5" x2="34.5" y2="200.5"></line><line stroke="#408fec" stroke-width="3" x1="-24.5" y1="200.5" x2="34.5" y2="200.5"></line><ellipse rx="4.5" ry="4.5" cx="34" cy="200" fill="#408fec"></ellipse></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 187px; top: 454px;" data-block-id="51348d4a9c5fd63626d3fbf1ab5b90bc"><div class="sl-block-content" data-line-x1="-25" data-line-y1="194.5" data-line-x2="-25" data-line-y2="175" data-line-color="#408fec" data-line-start-type="none" data-line-end-type="none" style="z-index: 22;" data-line-width="3px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="20" viewbox="-25 175 1 20"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-24.5" y1="195.5" x2="-24.5" y2="175.5"></line><line stroke="#408fec" stroke-width="3" x1="-24.5" y1="195.5" x2="-24.5" y2="175.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 149px; top: 473px;" data-block-id="bc11915b14848aee88bb9264f11bb40a"><div class="sl-block-content" data-line-x1="-0.5" data-line-y1="200" data-line-x2="38" data-line-y2="200" data-line-color="#408fec" data-line-start-type="none" data-line-end-type="none" style="z-index: 23;" data-line-width="3px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="38" height="1" viewbox="0 200 38 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="200.5" x2="38.5" y2="200.5"></line><line stroke="#408fec" stroke-width="3" x1="0.5" y1="200.5" x2="38.5" y2="200.5"></line></svg></div></div></section><section class="has-light-background" data-background-color="#e7e7ec" data-id="9c6e3ae47ad53cdf9a1f4887ffb1ae54"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-id="af0be854d75c7209bb9a68eac1cd361c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 20; text-align: left; color: rgb(171, 142, 205);">
+<h2>Example Producers</h2>
+</div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 335px; left: 80px; top: 110px;" data-block-id="b9d4fcfef4ec3c7c766fdb6229db8e5a"><div class="sl-block-style" style="z-index: 21; opacity: 0.8;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 21; color: rgb(121, 88, 159); background-color: rgb(231, 231, 236); border-width: 1px;">
+<p style="text-align:left">Product views</p>
+
+<p style="text-align:left">Completed sales</p>
+
+<p style="text-align:left">Page visits</p>
+
+<p style="text-align:left">Site logins</p>
+
+<p style="text-align:left">Shipping notifications</p>
+
+<p style="text-align:left">Inventory received</p>
+
+<p style="text-align:left">IoT data</p>
+
+<p style="text-align:left">Weather data</p>
+
+<p style="text-align:left">Traffic data</p>
+
+<p style="text-align:left">Tweets</p>
+
+<p style="text-align:left">Election polling data!</p>
+</div></div></div>
+<div class="sl-block" data-block-type="line" data-block-id="0eb04f0690df8150dccf519bb6a5b23e" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 80px; top: 132px;"><div class="sl-block-content fragment" data-line-x1="-269" data-line-y1="200" data-line-x2="227" data-line-y2="200" data-line-color="#96a3b6" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 19;" data-line-width="4px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="496" height="1" viewbox="-269 200 496 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-269" y1="200" x2="221" y2="200"></line><line stroke="#96a3b6" stroke-width="4" x1="-269" y1="200" x2="221" y2="200"></line><polygon fill="#96a3b6" transform="translate(221,200) rotate(90)" points="0,-6 6,6 -6,6"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 80px; top: 178px;" data-block-id="620b2ee4969146afe4962982a9f69195"><div class="sl-block-content fragment" data-line-x1="-269" data-line-y1="200" data-line-x2="227" data-line-y2="200" data-line-color="#96a3b6" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 18;" data-line-width="4px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="496" height="1" viewbox="-269 200 496 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-269" y1="200" x2="221" y2="200"></line><line stroke="#96a3b6" stroke-width="4" x1="-269" y1="200" x2="221" y2="200"></line><polygon fill="#96a3b6" transform="translate(221,200) rotate(90)" points="0,-6 6,6 -6,6"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 80px; top: 225px;" data-block-id="4f61126135a0a91d14aae3a102aa7a81"><div class="sl-block-content fragment" data-line-x1="-269" data-line-y1="200" data-line-x2="227" data-line-y2="200" data-line-color="#96a3b6" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 15;" data-line-width="4px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="496" height="1" viewbox="-269 200 496 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-269" y1="200" x2="221" y2="200"></line><line stroke="#96a3b6" stroke-width="4" x1="-269" y1="200" x2="221" y2="200"></line><polygon fill="#96a3b6" transform="translate(221,200) rotate(90)" points="0,-6 6,6 -6,6"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 80px; top: 271px;" data-block-id="71801c4e6da3e96de6719c1674af1e87"><div class="sl-block-content fragment" data-line-x1="-269" data-line-y1="200" data-line-x2="227" data-line-y2="200" data-line-color="#96a3b6" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 16;" data-line-width="4px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="496" height="1" viewbox="-269 200 496 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-269" y1="200" x2="221" y2="200"></line><line stroke="#96a3b6" stroke-width="4" x1="-269" y1="200" x2="221" y2="200"></line><polygon fill="#96a3b6" transform="translate(221,200) rotate(90)" points="0,-6 6,6 -6,6"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 80px; top: 318px;" data-block-id="ca705761b1dd032eb0c0a44201cd2b95"><div class="sl-block-content fragment" data-line-x1="-269" data-line-y1="200" data-line-x2="227" data-line-y2="200" data-line-color="#96a3b6" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 17;" data-line-width="4px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="496" height="1" viewbox="-269 200 496 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-269" y1="200" x2="221" y2="200"></line><line stroke="#96a3b6" stroke-width="4" x1="-269" y1="200" x2="221" y2="200"></line><polygon fill="#96a3b6" transform="translate(221,200) rotate(90)" points="0,-6 6,6 -6,6"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 335px; left: 576px; top: 110px;" data-block-id="2eeaecdd9f987664aa8f5597ec4db9dc"><div class="sl-block-style" style="z-index: 22; opacity: 0.75;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 22; color: rgb(121, 88, 159); background-color: rgb(231, 231, 236); border-width: 1px;" data-fragment-index="0">
+<p style="text-align:left">Web server</p>
+
+<p style="text-align:left">Payment processor</p>
+
+<p style="text-align:left">Browser</p>
+
+<p style="text-align:left">Authentication service</p>
+
+<p style="text-align:left">Shipping provider</p>
+
+<p style="text-align:left">Warehouse</p>
+
+<p style="text-align:left">Motion sensor</p>
+
+<p style="text-align:left">Rain gauge</p>
+
+<p style="text-align:left">Vehicle sensor</p>
+
+<p style="text-align:left">Twitter</p>
+
+<p style="text-align:left">Online/phone survey</p>
+</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 80px; top: 364px;" data-block-id="5360edd25765e5ed553c919a56a3ad2b"><div class="sl-block-content fragment" data-line-x1="-269" data-line-y1="200" data-line-x2="227" data-line-y2="200" data-line-color="#96a3b6" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 14;" data-line-width="4px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="496" height="1" viewbox="-269 200 496 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-269" y1="200" x2="221" y2="200"></line><line stroke="#96a3b6" stroke-width="4" x1="-269" y1="200" x2="221" y2="200"></line><polygon fill="#96a3b6" transform="translate(221,200) rotate(90)" points="0,-6 6,6 -6,6"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 80px; top: 410px;" data-block-id="d1719de97e88af493eaaf03befde4911"><div class="sl-block-content fragment" data-line-x1="-269" data-line-y1="200" data-line-x2="227" data-line-y2="200" data-line-color="#96a3b6" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 13;" data-line-width="4px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="496" height="1" viewbox="-269 200 496 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-269" y1="200" x2="221" y2="200"></line><line stroke="#96a3b6" stroke-width="4" x1="-269" y1="200" x2="221" y2="200"></line><polygon fill="#96a3b6" transform="translate(221,200) rotate(90)" points="0,-6 6,6 -6,6"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 80px; top: 457px;" data-block-id="69ec497f60ebaec42ed9ca2d314247dc"><div class="sl-block-content fragment" data-line-x1="-269" data-line-y1="200" data-line-x2="227" data-line-y2="200" data-line-color="#96a3b6" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 12;" data-line-width="4px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="496" height="1" viewbox="-269 200 496 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-269" y1="200" x2="221" y2="200"></line><line stroke="#96a3b6" stroke-width="4" x1="-269" y1="200" x2="221" y2="200"></line><polygon fill="#96a3b6" transform="translate(221,200) rotate(90)" points="0,-6 6,6 -6,6"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 80px; top: 503px;" data-block-id="8062e9695600a37e7ecfa8b126441012"><div class="sl-block-content fragment" data-line-x1="-269" data-line-y1="200" data-line-x2="227" data-line-y2="200" data-line-color="#96a3b6" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 11;" data-line-width="4px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="496" height="1" viewbox="-269 200 496 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-269" y1="200" x2="221" y2="200"></line><line stroke="#96a3b6" stroke-width="4" x1="-269" y1="200" x2="221" y2="200"></line><polygon fill="#96a3b6" transform="translate(221,200) rotate(90)" points="0,-6 6,6 -6,6"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 80px; top: 550px;" data-block-id="f9237112d2a2447502e1e786c1f422de"><div class="sl-block-content fragment" data-line-x1="-269" data-line-y1="200" data-line-x2="227" data-line-y2="200" data-line-color="#96a3b6" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 10;" data-line-width="4px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="496" height="1" viewbox="-269 200 496 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-269" y1="200" x2="221" y2="200"></line><line stroke="#96a3b6" stroke-width="4" x1="-269" y1="200" x2="221" y2="200"></line><polygon fill="#96a3b6" transform="translate(221,200) rotate(90)" points="0,-6 6,6 -6,6"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 80px; top: 597px;" data-block-id="0c9e6d360138d34b85123dd47e5afc77"><div class="sl-block-content fragment" data-line-x1="-269" data-line-y1="200" data-line-x2="227" data-line-y2="200" data-line-color="#96a3b6" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 0;" data-line-width="4px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="496" height="1" viewbox="-269 200 496 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-269" y1="200" x2="221" y2="200"></line><line stroke="#96a3b6" stroke-width="4" x1="-269" y1="200" x2="221" y2="200"></line><polygon fill="#96a3b6" transform="translate(221,200) rotate(90)" points="0,-6 6,6 -6,6"></polygon></svg></div></div></section><section class="has-light-background" data-background-color="#e7e7ec" data-id="ae49e1614db1bae630524513a2a55b10"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-id="4ce730890ede2c531e3a5078d2688436"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 21; text-align: left; color: rgb(171, 142, 205);">
+<h2>Example Consumers</h2>
+</div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 335px; left: 80px; top: 110px;" data-block-id="c2c397e4795af389e64a617b908f7e65"><div class="sl-block-style" style="z-index: 22; opacity: 0.8;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 22; color: rgb(121, 88, 159); background-color: rgb(231, 231, 236); border-width: 1px;">
+<p style="text-align:left">Product views</p>
+
+<p style="text-align:left">Completed sales</p>
+
+<p style="text-align:left">Page visits</p>
+
+<p style="text-align:left">Site logins</p>
+
+<p style="text-align:left">Shipping notifications</p>
+
+<p style="text-align:left">Inventory received</p>
+
+<p style="text-align:left">IoT data</p>
+
+<p style="text-align:left">Weather data</p>
+
+<p style="text-align:left">Traffic data</p>
+
+<p style="text-align:left">Tweets</p>
+
+<p style="text-align:left">Election polling data!</p>
+</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 335px; left: 576px; top: 110px;" data-block-id="11793ebc6202f193ed19bd206fcf23bc"><div class="sl-block-style" style="z-index: 15; opacity: 0.75;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; color: rgb(121, 88, 159); background-color: rgb(231, 231, 236); border-width: 1px;" data-fragment-index="0">
+<p style="text-align:left">Personalization engine</p>
+
+<p style="text-align:left">Accounting system</p>
+
+<p style="text-align:left">Reporting dashboard</p>
+
+<p style="text-align:left">Security audit service</p>
+
+<p style="text-align:left">Shipping provider</p>
+
+<p style="text-align:left">Inventory database</p>
+
+<p style="text-align:left">Actuator</p>
+
+<p style="text-align:left">Climate model</p>
+
+<p style="text-align:left">Traffic map</p>
+
+<p style="text-align:left">Analytics dashboard</p>
+
+<p style="text-align:left">Election forecast</p>
+</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 80px; top: 132px;" data-block-id="3269a1e906ea4c3e28548a8ff69bfb9f"><div class="sl-block-content fragment" data-line-x1="-269" data-line-y1="200" data-line-x2="227" data-line-y2="200" data-line-color="#96a3b6" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 0;" data-line-width="4px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="496" height="1" viewbox="-269 200 496 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-269" y1="200" x2="221" y2="200"></line><line stroke="#96a3b6" stroke-width="4" x1="-269" y1="200" x2="221" y2="200"></line><polygon fill="#96a3b6" transform="translate(221,200) rotate(90)" points="0,-6 6,6 -6,6"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 80px; top: 178px;" data-block-id="33cceee7d092f36ca30c1e4d27200d2e"><div class="sl-block-content fragment" data-line-x1="-269" data-line-y1="200" data-line-x2="227" data-line-y2="200" data-line-color="#96a3b6" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 20;" data-line-width="4px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="496" height="1" viewbox="-269 200 496 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-269" y1="200" x2="221" y2="200"></line><line stroke="#96a3b6" stroke-width="4" x1="-269" y1="200" x2="221" y2="200"></line><polygon fill="#96a3b6" transform="translate(221,200) rotate(90)" points="0,-6 6,6 -6,6"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 80px; top: 225px;" data-block-id="7c21edef1869f5f97da1a8de9abc9d38"><div class="sl-block-content fragment" data-line-x1="-269" data-line-y1="200" data-line-x2="227" data-line-y2="200" data-line-color="#96a3b6" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 17;" data-line-width="4px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="496" height="1" viewbox="-269 200 496 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-269" y1="200" x2="221" y2="200"></line><line stroke="#96a3b6" stroke-width="4" x1="-269" y1="200" x2="221" y2="200"></line><polygon fill="#96a3b6" transform="translate(221,200) rotate(90)" points="0,-6 6,6 -6,6"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 80px; top: 271px;" data-block-id="81860d57e6e9190416b3d0d8a06d486c"><div class="sl-block-content fragment" data-line-x1="-269" data-line-y1="200" data-line-x2="227" data-line-y2="200" data-line-color="#96a3b6" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 18;" data-line-width="4px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="496" height="1" viewbox="-269 200 496 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-269" y1="200" x2="221" y2="200"></line><line stroke="#96a3b6" stroke-width="4" x1="-269" y1="200" x2="221" y2="200"></line><polygon fill="#96a3b6" transform="translate(221,200) rotate(90)" points="0,-6 6,6 -6,6"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 80px; top: 318px;" data-block-id="b465df2d47073548c3906091eb806245"><div class="sl-block-content fragment" data-line-x1="-269" data-line-y1="200" data-line-x2="227" data-line-y2="200" data-line-color="#96a3b6" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 19;" data-line-width="4px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="496" height="1" viewbox="-269 200 496 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-269" y1="200" x2="221" y2="200"></line><line stroke="#96a3b6" stroke-width="4" x1="-269" y1="200" x2="221" y2="200"></line><polygon fill="#96a3b6" transform="translate(221,200) rotate(90)" points="0,-6 6,6 -6,6"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 80px; top: 364px;" data-block-id="305a54834be570c2ee6c20037d014af8"><div class="sl-block-content fragment" data-line-x1="-269" data-line-y1="200" data-line-x2="227" data-line-y2="200" data-line-color="#96a3b6" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 16;" data-line-width="4px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="496" height="1" viewbox="-269 200 496 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-269" y1="200" x2="221" y2="200"></line><line stroke="#96a3b6" stroke-width="4" x1="-269" y1="200" x2="221" y2="200"></line><polygon fill="#96a3b6" transform="translate(221,200) rotate(90)" points="0,-6 6,6 -6,6"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 80px; top: 410px;" data-block-id="104c1aff0ccd39994f22b98203b15bed"><div class="sl-block-content fragment" data-line-x1="-269" data-line-y1="200" data-line-x2="227" data-line-y2="200" data-line-color="#96a3b6" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 14;" data-line-width="4px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="496" height="1" viewbox="-269 200 496 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-269" y1="200" x2="221" y2="200"></line><line stroke="#96a3b6" stroke-width="4" x1="-269" y1="200" x2="221" y2="200"></line><polygon fill="#96a3b6" transform="translate(221,200) rotate(90)" points="0,-6 6,6 -6,6"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 80px; top: 457px;" data-block-id="ca95cee21b955b0de7feaa5534de526a"><div class="sl-block-content fragment" data-line-x1="-269" data-line-y1="200" data-line-x2="227" data-line-y2="200" data-line-color="#96a3b6" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 13;" data-line-width="4px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="496" height="1" viewbox="-269 200 496 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-269" y1="200" x2="221" y2="200"></line><line stroke="#96a3b6" stroke-width="4" x1="-269" y1="200" x2="221" y2="200"></line><polygon fill="#96a3b6" transform="translate(221,200) rotate(90)" points="0,-6 6,6 -6,6"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 80px; top: 503px;" data-block-id="1d2bf7a38dfedd95b353339d4835bab9"><div class="sl-block-content fragment" data-line-x1="-269" data-line-y1="200" data-line-x2="227" data-line-y2="200" data-line-color="#96a3b6" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 12;" data-line-width="4px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="496" height="1" viewbox="-269 200 496 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-269" y1="200" x2="221" y2="200"></line><line stroke="#96a3b6" stroke-width="4" x1="-269" y1="200" x2="221" y2="200"></line><polygon fill="#96a3b6" transform="translate(221,200) rotate(90)" points="0,-6 6,6 -6,6"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 80px; top: 550px;" data-block-id="690ea52c263c17ae225dc5f452908bf9"><div class="sl-block-content fragment" data-line-x1="-269" data-line-y1="200" data-line-x2="227" data-line-y2="200" data-line-color="#96a3b6" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 11;" data-line-width="4px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="496" height="1" viewbox="-269 200 496 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-269" y1="200" x2="221" y2="200"></line><line stroke="#96a3b6" stroke-width="4" x1="-269" y1="200" x2="221" y2="200"></line><polygon fill="#96a3b6" transform="translate(221,200) rotate(90)" points="0,-6 6,6 -6,6"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 80px; top: 597px;" data-block-id="f2eeba1035561cf5395bcf921d8005d6"><div class="sl-block-content fragment" data-line-x1="-269" data-line-y1="200" data-line-x2="227" data-line-y2="200" data-line-color="#96a3b6" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 10;" data-line-width="4px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="496" height="1" viewbox="-269 200 496 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-269" y1="200" x2="221" y2="200"></line><line stroke="#96a3b6" stroke-width="4" x1="-269" y1="200" x2="221" y2="200"></line><polygon fill="#96a3b6" transform="translate(221,200) rotate(90)" points="0,-6 6,6 -6,6"></polygon></svg></div></div></section><section class="has-light-background" data-background-color="#e7e7ec" data-id="1ad832afe336c7dbb3c34947dddef358"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-id="259e1e7a2405b2bd4c6e886d82538b62"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; color: rgb(171, 142, 205);">
+<h2>Complex Architecture</h2>
+</div></div>
+
+<div class="sl-block" data-block-type="image" data-block-id="f91ffa4fbd4b28ac40cf40da212dbe96" style="min-width: 30px; min-height: 30px; width: 834.783px; height: 420px; left: 63px; top: 140px;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="1600" data-natural-height="805" data-src="deck/3193345-Screen_Shot_2016-11-03_at_12.39.45_PM.png"></div></div></section><section class="has-light-background" data-background-color="#e7e7ec" data-id="b88cd9899c9d555f6a7bb1dbd16d6e9b"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-id="8e26c67684ed0c2378a33a44683e8a74"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; color: rgb(171, 142, 205);">
+<h2>Complex Controls</h2>
+</div></div>
+
+<div class="sl-block" data-block-type="image" data-block-id="e2fe9095dbf5a90d95c4ae7da395312c" style="min-width: 30px; min-height: 30px; width: 527.527px; height: 350px; left: 297.473px; top: 140px;"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="835" data-natural-height="554" style="" data-src="deck/3189426-topic-detail.png"></div></div>
+<div class="sl-block" data-block-type="shape" data-block-id="1d201e55c2929b85d476a6f7f26883fd" style="min-width: 4px; min-height: 4px; width: 640px; height: 226px; left: 241px; top: 202px;"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(121, 88, 159)" data-shape-stretch="true" style="z-index: 10;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 640 226"><rect width="640" height="226" class="shape-element" fill="rgb(121, 88, 159)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 82px; left: 104px; top: 191px;" data-block-id="b146ca6eff17a9c56c10657c8babb5ed"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; color: rgb(64, 143, 236);">
+<p style="text-align:right"><span style="font-size:0.9em"><strong>TOPIC</strong></span></p>
+</div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 191px; top: 215px;" data-block-id="c701d041a3e7e2618d2cc6906ae4ca6d"><div class="sl-block-content" data-line-x1="-63" data-line-y1="200" data-line-x2="38" data-line-y2="200" data-line-color="#408fec" data-line-start-type="none" data-line-end-type="circle" style="z-index: 14;" data-line-width="3px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="101" height="1" viewbox="-63 200 101 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-62.5" y1="200.5" x2="34.5" y2="200.5"></line><line stroke="#408fec" stroke-width="3" x1="-62.5" y1="200.5" x2="34.5" y2="200.5"></line><ellipse rx="4.5" ry="4.5" cx="34" cy="200" fill="#408fec"></ellipse></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 152px; left: 34px; top: 250px;" data-block-id="48ebd4db075348e5c28e494e09cf2fdf"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; color: rgb(64, 143, 236);">
+<p style="text-align:right"><span style="font-size:0.9em"><strong>PARTITION</strong></span></p>
+</div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 266px; top: 254px;" data-block-id="219a2aba54cee4f2814cbb792889d860"><div class="sl-block-content" data-line-x1="-25" data-line-y1="200" data-line-x2="38" data-line-y2="200" data-line-color="#408fec" data-line-start-type="none" data-line-end-type="circle" style="z-index: 17;" data-line-width="3px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="63" height="1" viewbox="-25 200 63 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-24.5" y1="200.5" x2="34.5" y2="200.5"></line><line stroke="#408fec" stroke-width="3" x1="-24.5" y1="200.5" x2="34.5" y2="200.5"></line><ellipse rx="4.5" ry="4.5" cx="34" cy="200" fill="#408fec"></ellipse></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 266px; top: 254px;" data-block-id="8399ba1dd1cf2c9e92781b953c0dbb2a"><div class="sl-block-content" data-line-x1="-25" data-line-y1="194.5" data-line-x2="-25" data-line-y2="175" data-line-color="#408fec" data-line-start-type="none" data-line-end-type="none" style="z-index: 18;" data-line-width="3px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="20" viewbox="-25 175 1 20"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-24.5" y1="195.5" x2="-24.5" y2="175.5"></line><line stroke="#408fec" stroke-width="3" x1="-24.5" y1="195.5" x2="-24.5" y2="175.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 191px; top: 273px;" data-block-id="7b8fcca8f4033b615cf7358c2865d168"><div class="sl-block-content" data-line-x1="-37" data-line-y1="200.5" data-line-x2="38" data-line-y2="200" data-line-color="#408fec" data-line-start-type="none" data-line-end-type="none" style="z-index: 19;" data-line-width="3px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="75" height="1" viewbox="-37 200 75 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-36.5" y1="201.5" x2="38.5" y2="200.5"></line><line stroke="#408fec" stroke-width="3" x1="-36.5" y1="201.5" x2="38.5" y2="200.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 869px; left: 46px; top: 490px;" data-block-id="5a72e8dfc7aaf80546c140a06c245f44"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 20; color: rgb(64, 143, 236); line-height: 1.04;" data-has-line-height="" dir="ui">
+<p style="text-align:left"><strong><span style="font-size:0.7em">Other Kafka primitives to provide structure to Kafka event streams</span></strong></p>
+<p style="text-align:left"><span style="font-size:0.7em">Retention</span></p>
+<p style="text-align:left"><span style="font-size:0.7em">Log compaction</span></p>
+<p style="text-align:left"><span style="font-size:0.7em">Replication factor</span></p>
+<p style="text-align:left"><span style="font-size:0.7em">Delivery guarantees</span></p>
+</div></div></section><section class="has-light-background" data-background-color="#e7e7ec" data-id="33fec031f8b0df822ff7e3f744a3d70d"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-id="dbe5a201c00c675770e669b0f02482b2"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; color: rgb(171, 142, 205);">
+<h2>Interacting with Kafka</h2>
+</div></div>
+
+<div class="sl-block" data-block-type="image" data-block-id="85a87f3f6bc79c16ae8946b747238f6b" style="min-width: 30px; min-height: 30px; width: 134px; height: 134px; left: 630px; top: 406px;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="114" data-natural-height="114" data-src="deck/3189214-scala.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="38a220cd52b033337a371472da856cd1" style="min-width: 30px; min-height: 30px; width: 127px; height: 127px; left: 488px; top: 528px;"><div class="sl-block-content" style="z-index: 13;"><img style="" data-natural-width="114" data-natural-height="114" data-src="deck/3189215-go.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="13bfeda7001eb59901d3e87cf3bc4891" style="min-width: 30px; min-height: 30px; width: 133px; height: 133px; left: 460px; top: 106px;"><div class="sl-block-content" style="z-index: 14;"><img data-natural-width="114" data-natural-height="114" style="" data-src="deck/3189217-python.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="fd357353787534c4598d5cbe1b1524fd" style="min-width: 30px; min-height: 30px; width: 133px; height: 133px; left: 254px; top: 134px;"><div class="sl-block-content" style="z-index: 15;"><img data-natural-width="114" data-natural-height="114" style="" data-src="deck/3189218-clojure.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="4d2bd765565545bb7690b7f34bde941c" style="min-width: 30px; min-height: 30px; width: 100px; height: 101.754px; left: 267px; top: 499px;"><div class="sl-block-content" style="z-index: 16;"><img data-natural-width="114" data-natural-height="116" style="" data-src="deck/3189219-ruby.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="3f1e4dbcb10b451df053139e3bbf521d" style="min-width: 30px; min-height: 30px; width: 133px; height: 133px; left: 160px; top: 304px;"><div class="sl-block-content" style="z-index: 17;"><img data-natural-width="114" data-natural-height="114" style="" data-src="deck/3189220-java.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="a318984a41ca7446e8251daa96d44d95" style="min-width: 30px; min-height: 30px; width: 130.5px; height: 132.789px; left: 615px; top: 200px;"><div class="sl-block-content" style="z-index: 18;"><img style="" data-natural-width="114" data-natural-height="116" data-src="deck/3189221-node.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="59e92c61042de4f39a59a6cdccb22391" style="min-width: 30px; min-height: 30px; width: 178px; height: 193.911px; left: 391px; top: 282px;"><div class="sl-block-content" style="z-index: 19;"><img data-natural-width="358" data-natural-height="390" style="" data-src="deck/3184546-kafka-logo.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="051dfa03d5fd6c201b3a3d76c6db1890" style="height: auto; min-width: 30px; min-height: 30px; width: 320px; left: 640px; top: 650px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 20; color: rgb(83, 74, 147);" data-fragment-index="0">
+<h3 style="text-align: left;">and many more...</h3>
+</div></div></section><section class="has-light-background" data-background-color="#e7e7ec" data-id="cfca796dd86f845557389b223c0d012e"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-id="f797e489e7b34b08dcb75323eabdf442"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; color: rgb(171, 142, 205);">
+<h2>Kafka Connect</h2>
+</div></div>
+
+<div class="sl-block" data-block-type="image" data-block-id="6e51d61f3b750a0a47998e6b0a5ee3a3" style="min-width: 30px; min-height: 30px; width: 842.748px; height: 345px; left: 59px; top: 108px;"><div class="sl-block-content" style="z-index: 13;"><img style="" data-natural-width="1600" data-natural-height="655" data-src="deck/3189466-kafka-connect.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 502px;" data-block-id="40d2d4f81588bfdab35602c0ead84c8c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(83, 74, 147);">
+<p>Some examples: HDFS, JDBC, Elasticsearch, Couchbase, Oracle, MS SQL Server, Cassandra, DynamoDB, Salesforce Streaming API, Splunk</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="fe0a4be6cb481f75801ca574f30f1a5f" style="height: auto; min-width: 30px; min-height: 30px; width: 453px; left: 490px; top: 407px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p><span style="font-size:0.5em">Image credit: <a href="https://www.confluent.io/blog/announcing-kafka-connect-building-large-scale-low-latency-data-pipelines/" target="_blank">Confluent Kafka Connect announcement blog post</a></span></p>
+</div></div></section><section class="has-dark-background" data-background-color="rgb(92,78,159)" data-id="a3d341781d472f79ae9d32a1800ccae4" data-background-image="deck/3184489-slide-background.png">
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 570px; left: 260px; top: 202px;" data-block-id="8318b3a8339f67ae344980ee9da30922"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; color: rgb(207, 215, 230);" dir="ui">
+<h2 style="text-align: left;">Why Apache Kafka on Heroku?</h2>
+</div></div>
+
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 240px; top: 70px;" data-block-id="e1deb34b2bc49312bb2e47faadef0c77"><div class="sl-block-content" data-line-x1="160" data-line-y1="350" data-line-x2="160" data-line-y2="-210" data-line-color="#cfd7e6" data-line-start-type="none" data-line-end-type="none" style="z-index: 11;" data-line-width="2px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="560" viewbox="160 -210 1 560"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="160" y1="350" x2="160" y2="-210"></line><line stroke="#cfd7e6" stroke-width="2" x1="160" y1="350" x2="160" y2="-210"></line></svg></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 161.596px; height: 155px; left: 43px; top: 203px;" data-block-id="3d5340dc9386e19e2182ef068fd1910e"><div class="sl-block-style" style="z-index: 13; opacity: 0.75;"><div class="sl-block-content" style="z-index: 13;" data-inline-svg="false"><img data-natural-width="98" data-natural-height="94" style="" data-src="deck/3184002-heroku-data-kafka-logo.svg"></div></div></div></section><section class="has-light-background" data-background-color="#e7e7ec" data-id="5d5d54c0be0f7677cbe2a062e59dc375"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-id="e09df9f01bb5ad9c52d89c815123b00b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; color: rgb(171, 142, 205);">
+<h2>Without Heroku</h2>
+</div></div>
+
+<div class="sl-block" data-block-type="image" data-block-id="f0b76a9132afa96a5376956be47fc71c" style="min-width: 30px; min-height: 30px; width: 176.246px; height: 192px; left: 22px; top: 152px;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="358" data-natural-height="390" data-src="deck/3184546-kafka-logo.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="54f0849700bf16386e4776884694f4b4" style="min-width: 30px; min-height: 30px; width: 221px; height: 135.224px; left: 166px; top: 344px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="438" data-natural-height="268" style="" data-src="deck/3184553-java-logo.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="beeb76d3da0d0383e38a6a02ec6b21e3" style="min-width: 30px; min-height: 30px; width: 73.8889px; height: 105px; left: 356px; top: 210px;"><div class="sl-block-content" style="z-index: 14;"><img data-natural-width="133" data-natural-height="189" style="" data-src="deck/3184554-zookeeper-logo.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="5ab6b54f43cafca65fbe84831d254d20" style="min-width: 30px; min-height: 30px; width: 142px; height: 142px; left: 190px; top: 195px;"><div class="sl-block-content" style="z-index: 15;"><img data-natural-width="100" data-natural-height="100" style="" data-src="deck/3184564-Compute_AmazonEC2.svg"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="69d985e496a1b4efbb30bbc7d5c95d85" style="min-width: 30px; min-height: 30px; width: 88px; height: 88px; left: 22px; top: 375px;"><div class="sl-block-content" style="z-index: 16;"><img data-natural-width="160" data-natural-height="160" style="" data-src="deck/3184567-os-logo.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="5d4ec4a1d1e290d6bd7abae358379743" style="height: auto; min-width: 30px; min-height: 30px; width: 480px; left: 480px; top: 157px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; color: rgb(83, 74, 147); line-height: 1.04;" data-has-line-height="">
+<p style="text-align:left"><span style="font-size:0.7em"><strong>Apache Kafka</strong><br>
+The heart of the event management system, with a broad variety of configurations and options.</span></p>
+
+<p style="text-align:left"><br>
+<span style="font-size:0.7em"><strong>Apache Zookeeper</strong><br>
+The system’s consensus and coordination cluster is vital for Kafka’s operation.</span></p>
+
+<p style="text-align:left"><br>
+<span style="font-size:0.7em"><strong>OS + JVM Tuning</strong><br>
+Tuning the cluster runtimes can be an art.</span></p>
+
+<p style="text-align:left"><br>
+<span style="font-size:0.7em"><strong>Instances + Networking</strong><br>
+Physical or virtual, the infrastructure behind clusters must be well considered.</span></p>
+
+<p style="text-align:left"> </p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="1055f3baf87662bb8345d119b33d7455" style="height: auto; min-width: 30px; min-height: 30px; width: 480px; left: 480px; top: 101px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18; color: rgb(83, 74, 147);">
+<p style="text-align:left"><span style="font-size:1.2em"><strong>Myriad Moving Pieces</strong></span></p>
+</div></div></section><section class="has-light-background" data-background-color="#e7e7ec" data-id="514d038610427a7320b5594e3a260346"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-id="733286f283ea50b50faf11c409e88459"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; color: rgb(171, 142, 205);">
+<h2 style="color:rgb(171, 142, 205)">Apache Kafka on Heroku</h2>
+
+<h3>Simple Configuration</h3>
+</div></div>
+
+<div class="sl-block" data-block-type="image" data-block-id="3bd949950cfb713c17069c8064a54bbb" style="min-width: 30px; min-height: 30px; width: 800px; height: 453.686px; left: 80px; top: 176.314px;"><a class="sl-block-content" style="z-index: 12;" href="https://vimeo.com/187907039" target="_blank"><img style="" data-natural-width="1587" data-natural-height="900" data-src="deck/3193349-Screen_Shot_2016-11-03_at_12.45.49_PM.png"></a></div></section><section class="has-light-background" data-background-color="#e7e7ec" data-id="84168a05037a8dafaa44105e9409094b"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-id="21d652fea1b3b8a833868ddf7a88e61a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; color: rgb(171, 142, 205);" dir="ui">
+<h2>Apache Kafka on Heroku</h2>
+
+<h3>Automated Operations</h3>
+</div></div>
+
+<div class="sl-block" data-block-type="image" data-block-id="eb269a18e7f626345fcfb9a80012cbd8" style="min-width: 30px; min-height: 30px; width: 756.724px; height: 570px; left: 102.638px; top: 152px;"><div class="sl-block-content" style="z-index: 13;"><img style="" data-natural-width="1155" data-natural-height="870" data-src="deck/3184240-kafka-dashboard.png"></div></div></section><section class="has-light-background" data-background-color="#e7e7ec" data-id="92ca1b1259bfe8c627a8bbe2e8093080"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-id="b4190099f674a970a19daa5adbf05142"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; text-align: left; color: rgb(171, 142, 205);">
+<h2 style="color:rgb(171, 142, 205)">Apache Kafka on Heroku</h2>
+
+<h3>Experienced Staff</h3>
+</div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 390px; left: 80px; top: 210px;" data-block-id="9b902d1da74f7266d01044c5ffb76987"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; color: rgb(121, 88, 159);">
+<ul>
+	<li style="text-align: left;">Self-Healing</li>
+	<li style="text-align: left;">Current Version</li>
+	<li style="text-align: left;">No-Downtime Upgrades</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 440px;" data-block-id="c07dda9080c5a57072e7bda5eec7a9d2"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; color: rgb(121, 88, 159);">
+<h3><em>Heroku engineers have contributed patches to the core open source Kafka project.</em></h3>
+</div></div></section><section class="has-light-background" data-background-color="#e7e7ec" data-id="5643ebf738921cfb2140cc3776d7fc7d"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-id="b7b5dffadf2b2aa150c206a2d4c454b3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; text-align: left; color: rgb(171, 142, 205);" dir="ui">
+<h2 style="color:rgb(171, 142, 205)">Apache Kafka on Heroku</h2>
+
+<h3>Global</h3>
+</div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 225px; left: 32px; top: 172px;" data-block-id="787e692f5757116ed14c25f6671c9974"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; color: rgb(121, 88, 159);">
+<p style="text-align:left">US West</p>
+
+<p style="text-align:left">US East</p>
+
+<p style="text-align:left">Ireland</p>
+
+<p style="text-align:left">Germany</p>
+
+<p style="text-align:left">Japan</p>
+
+<p style="text-align:left">Sydney</p>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="f7a7fdf2f8f9ca1791d9ef93aad5ee47" style="min-width: 30px; min-height: 30px; width: 776.389px; height: 400px; left: 184px; top: 183px;"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="1118" data-natural-height="576" style="" data-src="deck/3184289-world-map.png"></div></div>
+<div class="sl-block" data-block-type="shape" data-block-id="76f698012faf578bd0ba407e5c449981" style="min-width: 4px; min-height: 4px; width: 19px; height: 19px; left: 343px; top: 298px;"><div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(116, 192, 128)" data-shape-stretch="true" style="z-index: 13;" data-shape-stroke-color="#e7e7ec" data-shape-stroke-width="3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 19 19"><defs><clippath id="shape-mask-1-1478201516503"><ellipse rx="9.5" ry="9.5" cx="9.5" cy="9.5"></ellipse></clippath></defs><ellipse rx="9.5" ry="9.5" cx="9.5" cy="9.5" clip-path="url(#shape-mask-1-1478201516503)" class="shape-element" fill="rgb(116, 192, 128)" stroke="#e7e7ec" stroke-width="6"></ellipse></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 19px; height: 19px; left: 247px; top: 271px;" data-block-id="6b5e00835681cb359d64f7d50d2af989"><div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(116, 192, 128)" data-shape-stretch="true" style="z-index: 14;" data-shape-stroke-color="#e7e7ec" data-shape-stroke-width="3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 19 19"><defs><clippath id="shape-mask-2-1478201516504"><ellipse rx="9.5" ry="9.5" cx="9.5" cy="9.5"></ellipse></clippath></defs><ellipse rx="9.5" ry="9.5" cx="9.5" cy="9.5" clip-path="url(#shape-mask-2-1478201516504)" class="shape-element" fill="rgb(116, 192, 128)" stroke="#e7e7ec" stroke-width="6"></ellipse></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 19px; height: 19px; left: 519px; top: 250px;" data-block-id="eea3035180dc545f282ab24c5be6e44e"><div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(116, 192, 128)" data-shape-stretch="true" style="z-index: 15;" data-shape-stroke-color="#e7e7ec" data-shape-stroke-width="3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 19 19"><defs><clippath id="shape-mask-3-1478201516506"><ellipse rx="9.5" ry="9.5" cx="9.5" cy="9.5"></ellipse></clippath></defs><ellipse rx="9.5" ry="9.5" cx="9.5" cy="9.5" clip-path="url(#shape-mask-3-1478201516506)" class="shape-element" fill="rgb(116, 192, 128)" stroke="#e7e7ec" stroke-width="6"></ellipse></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 19px; height: 19px; left: 548px; top: 260px;" data-block-id="9c835e64e19513268907427ef275830c"><div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(116, 192, 128)" data-shape-stretch="true" style="z-index: 16;" data-shape-stroke-color="#e7e7ec" data-shape-stroke-width="3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 19 19"><defs><clippath id="shape-mask-4-1478201516507"><ellipse rx="9.5" ry="9.5" cx="9.5" cy="9.5"></ellipse></clippath></defs><ellipse rx="9.5" ry="9.5" cx="9.5" cy="9.5" clip-path="url(#shape-mask-4-1478201516507)" class="shape-element" fill="rgb(116, 192, 128)" stroke="#e7e7ec" stroke-width="6"></ellipse></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 19px; height: 19px; left: 872px; top: 298px;" data-block-id="5f37c65cfa530cddebd7ecd1ab569940"><div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(116, 192, 128)" data-shape-stretch="true" style="z-index: 17;" data-shape-stroke-color="#e7e7ec" data-shape-stroke-width="3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 19 19"><defs><clippath id="shape-mask-5-1478201516509"><ellipse rx="9.5" ry="9.5" cx="9.5" cy="9.5"></ellipse></clippath></defs><ellipse rx="9.5" ry="9.5" cx="9.5" cy="9.5" clip-path="url(#shape-mask-5-1478201516509)" class="shape-element" fill="rgb(116, 192, 128)" stroke="#e7e7ec" stroke-width="6"></ellipse></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 19px; height: 19px; left: 911px; top: 504px;" data-block-id="f3776fec69c6f526e653634cb9ccfc0c"><div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(116, 192, 128)" data-shape-stretch="true" style="z-index: 19;" data-shape-stroke-color="#e7e7ec" data-shape-stroke-width="3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 19 19"><defs><clippath id="shape-mask-6-1478201516510"><ellipse rx="9.5" ry="9.5" cx="9.5" cy="9.5"></ellipse></clippath></defs><ellipse rx="9.5" ry="9.5" cx="9.5" cy="9.5" clip-path="url(#shape-mask-6-1478201516510)" class="shape-element" fill="rgb(116, 192, 128)" stroke="#e7e7ec" stroke-width="6"></ellipse></svg></div></div></section><section class="has-light-background" data-background-color="#e7e7ec" data-id="2b9a000371f4e616f07287dd990d4d35"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-id="9c2223d015476424b2393ea9b5dda6eb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; color: rgb(171, 142, 205);" dir="ui">
+<h2>Let's Review...</h2>
+
+<h3>...and get you started with Kafka!</h3>
+</div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 875px; left: 44px; top: 147px;" data-block-id="b35beb27efd1a46931492b29b2cf31bb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; color: rgb(83, 74, 147); line-height: 1.04;" dir="ui" data-has-line-height="">
+<p style="text-align:left"><span style="font-size:0.9em">Apache Kafka is a valuable tool for building architectures to support inbound event streams, data processing pipelines, and microservices coordination.</span><br>
+ </p>
+
+<p style="text-align:left"><span style="font-size:0.9em">The primitives provided by Kafka -- topics, partitions, retention duration, log compaction, and replication -- provide the tools to manage structured event streams.</span><br>
+ </p>
+
+<p style="text-align:left"><span style="font-size:0.9em">Apache Kafka on Heroku simplifies operational complexity so that any developer can get started quickly and feel confident that their application is supported by a rock-solid, production service.</span></p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="8da8e12b70d0ec139961220e3a353002" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 182px; top: 541px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; color: rgb(171, 142, 205); background-color: rgb(207, 215, 230);">
+<h2>Get started at</h2>
+
+<h2><a href="https://hrku.co/use-kafka" target="_blank">hrku.co/use-kafka</a></h2>
+</div></div></section><section class="has-dark-background" data-background-color="rgb(92,78,159)" data-id="16648165a59fd763f7ec40dc1d492603" data-background-image="deck/3184489-slide-background.png">
+
+<div class="sl-block" data-block-type="text" data-block-id="8a627f603c02a44b785e14b1bb322d04" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 53px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; color: rgb(207, 215, 230);">
+<h1><span style="font-size:135px">Q&amp;A</span></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="5e043f7797beaf967cb8a9375945381f" style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 80px; top: 240px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; color: rgb(207, 215, 230);">
+<h3>Rand Fitzpatrick, Director of Product</h3>
+
+<h3>Chris Castle, Developer Advocate</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 839px; left: 61px; top: 451px;" data-block-id="bab8f5edd6af997f8b61a877717dbbf7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; color: rgb(207, 215, 230);">
+<p><span style="font-size:1.2em"><em>But first, please take one minute to answer a few quick questions so we can make webinars like this even better for you.</em></span></p>
+</div></div></section><section class="has-light-background" data-background-color="#e7e7ec" data-id="61d4b800195374d1b50539b99de7ffc6"><div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 0px;" data-block-id="8150a9591e6886e4cb38ef2af188f7cb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; color: rgb(171, 142, 205);" dir="ui">
+<h2>Learn More</h2>
+</div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 875px; left: 45px; top: 99px;" data-block-id="c7c7ff4ee55e06a249a365f26b3ee4b9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; color: rgb(83, 74, 147); line-height: 1.04;" dir="ui" data-has-line-height="">
+<p style="text-align:left">Apache Kafka on Heroku</p>
+
+<p style="text-align:left"><a href="https://www.heroku.com/kafka" target="_blank">https://www.heroku.com/kafka</a></p>
+
+<p style="text-align:left"> </p>
+
+<p style="text-align:left"><span style="font-size:0.9em">Get Started</span><br>
+<span style="font-size:0.9em"><a href="https://elements.heroku.com/addons/heroku-kafka" target="_blank">https://elements.heroku.com/addons/heroku-kafka</a></span></p>
+
+<p style="text-align:left"> </p>
+
+<p style="text-align:left"><span style="font-size:0.9em">Documentation</span><br>
+<span style="font-size:0.9em"><a href="https://devcenter.heroku.com/articles/kafka-on-heroku" target="_blank">https://devcenter.heroku.com/articles/kafka-on-heroku</a></span></p>
+
+<p style="text-align:left"> </p>
+
+<p style="text-align:left"><span style="font-size:0.9em">Kafka Event Stream Modeling</span><br>
+<span style="font-size:0.9em"><a href="https://devcenter.heroku.com/articles/kafka-event-stream-modeling" target="_blank">https://devcenter.heroku.com/articles/kafka-event-stream-modeling</a></span></p>
+
+<p style="text-align:left"> </p>
+
+<p style="text-align:left"><span style="font-size:0.9em">Podcast: Managed Kafka with Heroku Engineer Tom Crayford</span><br>
+<span style="font-size:0.9em"><a href="http://softwareengineeringdaily.com/2016/10/25/managed-kafka-with-tom-crayford/" target="_blank">http://softwareengineeringdaily.com/2016/10/25/managed-kafka-with-tom-crayford/</a></span></p>
+</div></div></section><section class="has-dark-background" data-background-color="rgb(92,78,159)" data-id="4621c0bffe09786bcf87b47ef0eb841d" data-background-image="deck/3184489-slide-background.png">
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 302px;" data-block-id="d68de0faec90cc9b3f3e2f19b9d82e37"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; color: rgb(207, 215, 230);">
+<h1><em><span style="font-size:1.0em">Thank you!</span></em></h1>
+</div></div>
+
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 360px; height: 160.079px; left: 280px; top: 26px;" data-block-id="544a3f3c2417cfdb41d9af82209fddda"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="1518" data-natural-height="675" style="" data-src="deck/3189149-salesforce-heroku-white.png"></div></div></section>
+			</div>
+		</div>
+
+		<script>
+			var SLConfig = {"deck": {"id":843467,"slug":"deck","title":"Apache Kafka on Heroku","description":"","visibility":"all","published_at":"2016-11-02T19:17:32.960Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/db8820ae971100379a4255c8fb698654/thumb.jpg","view_count":5,"user":{"id":310048,"username":"christophercastle","name":"Christopher Castle","description":null,"thumbnail_url":"https://lh5.googleusercontent.com/-z4QAcuhiTFE/AAAAAAAAAAI/AAAAAAAAAcc/ykf6slzUsHw/photo.jpg?sz=50","pro":true,"team_id":null,"settings":{"id":138732,"present_controls":true,"present_upsizing":true,"present_notes":true}},"background_transition":"fade","transition":"fade","theme_id":null,"theme_font":"montserrat","theme_color":"white-blue","auto_slide_interval":0,"comments_enabled":false,"forking_enabled":true,"rolling_links":false,"center":false,"should_loop":false,"share_notes":false,"slide_number":false,"rtl":false,"version":2,"collaborative":true,"deck_user_editor_limit":1,"data_updated_at":1478202505795,"font_typekit":null,"font_google":null,"notes":{"e9fea8641bd629b58a8ec276cfefbcdf":"Let's start by taking a step back and defining what we mean when we say \"Event-Driven Architecture\"\n\nREAD DEFINITION","96559e497063aeb29800458379b30e0c":"TODO: Add breakout of two event examples.  What is the context?  What is the operation?  What is the state?","cc93516c24eac6433a08be141069aec8":"But these aren't mutually exclusive","5643ebf738921cfb2140cc3776d7fc7d":"And lastly, you can choose where you want your Kafka cluster deployed.  Kafka on Heroku is available in the east and west coast United States, Dublin, Germany, Japan and Sydney.","514d038610427a7320b5594e3a260346":"Apache Kafka on Heroku offers a set of preconfigured plan options tested and optimized for the most common use cases. Available in both the Common Runtime and within Heroku Private Spaces, Kafka on Heroku can be provisioned with the security and level of network isolation that meets your application needs.","84168a05037a8dafaa44105e9409094b":"Apache Kafka is a complex, multi-node distributed system, providing power but requiring significant operational care and feeding. With Kafka on Heroku, all of those operational burdens disappear. Everything from provisioning, management, and availability is handled automatically.\n\nYou can monitor and manage your Kafka cluster from either the command line or the web dashboard.  Let's take a quick look at those.\n\nheroku kafka -a twitter-ingest\nheroku kafka --help\n\nhttps://data.heroku.com/datastore/c6b4999b-f155-4434-8326-c1a08ece657e","92ca1b1259bfe8c627a8bbe2e8093080":"We have extremely experienced Kafka engineers.  The team are not just operating Kafka, they have contributed code to the project.\n\nThey have spent considerable time tuning Kafka, Zookeeper, the JVM, and the OS.\n\nEvery cluster is self-healing, and, should a problem occur, Heroku staff will immediately investigate.\n\nAdditionally we support new Kafka versions the same day they're released or shortly after.\n\nWhat's even better is that you can upgrade your cluster to these new versions with one CLI command and no downtime -- even at multi-terabyte scale.","15bb8eb1d5394d126e95a599d63958ff":"All of these are examples of what a simple architecture might look like: one producer and one consumer.","1ad832afe336c7dbb3c34947dddef358":"And sometimes an app is *both* a consumer and a producer.  In the Twitter data processing pipeline, the Term Fanout, Term Count Over Time, and Related Terms apps are both consumers and producers.","71ec805dca02e93f28836a01db988145":"Traditionally at Heroku we have integrated services together by having one service call another one through a synchronous HTTP call. This is standard RPC-style architecture but we use REST APIs exposed by each service.\n\nThis works well, but over time as the number of services has grown we have developed lots and lots of these point-to-point integrations. If you need new information to flow from system A to system B, then you generally need to modify both systems to make that happen. And if System B changes then it’s easy to break that link from system A if you’re not careful. \n\nBut over the last year we have been investing in using an asynchronous messaging pattern to integrate our services together, using Kafka as our message transport system. This pattern is pretty common for enterprise architectures. Instead of RPC calls between systems, we have system A publish a stream of event messages, and then one or more downstream systems can subscribe to that stream of messages, either to replicate data from system A or to activate logic based on a request that started in system A. People have been building with this kind of architecture for a long time, and products like Tibco, IBM MQ, and Rabbit MQ are pretty well established for this pattern. But in our case we are using Kafka, which I think offers some pretty unique and compelling advantages around performance and reliability.\n\nFor example,\n- Separate teams can work on Systems A and B independently.\n- System B performance now doesn't impact System A\n- New team can build system C with little to no coordination with team A\n\nLet's look at a consumer of this stream live right now.\nhttps://platstream-demo.herokuapp.com/","d8c6f10a1d9e69a72da66583d4950f49":"Another example is shown here from Heroku's Operational Experience team.\n\nThey provide the Metrics dashboard for your Heroku apps.  Here's an example of what one of those looks like.\n\nIt displays app memory usage, response time, throughput, and CPU load.\n\nYou can also define alerts and see a simulation of various alert configurations on past data instantaneously.","f7c895bcc319abe17b09f843b2fd44ae":"DRAFT SECTION","232ffa42e88ac6f8cb39d53e30eb59fd":"Welcome to our technical session today on Event Driven Architectures with Apache Kafka on Heroku.  I'm Chris Castle, a Developer Advocate and with me is Rand Fitzpatrick, Director of Product.\n\nJust a few logistical points:\n- If you have any audio/visual problems, please use the \"raise hand\" feature in GoToWebinar\n- We will have some time at the end for Q\u0026A, however feel free to submit your questions real-time in the GoToWebinar questions box, and we'll make sure we get to all of them at the end.\n\nAlright, let's get started.","f69638a43e25bacca32bd85375328868":"The main three questions I want to answer for you today are\n- What problems does Apache Kafka solve?\n- What are the basic concepts of Kafka?\nand\n- Why Apache Kafka on Heroku?","1c54150ac09f37158d8ac7964f1fa7b0":"So first, What problems does Apache Kafka solve?","bdd8c76077abdc1760e8b0e44f263fad":"Events represent a change in state.\n\nCLICK\n\nThe important characteristics of an event its context:\n- Context: When was the event?  What produced the event?  Where did the event occur?\n\nCLICK\n\n- Operation: Was it a create or update operation?  What are the unique nuances to the create or update operation?\n\nCLICK\n\n- State: What is the data involved in the event?  A name?  An ID?  IDs for other events associated with this one?","9785f4704f770daee675771f205b3890":"These can be grouped into three categories:\n- Inbound stream management\n- Data processing pipelines\nAND\n- Microservices coordination\n\nEach of these distributed systems comes with a set of challenges.","f349ebb3f90a5d8ac12a157dea020b98":"Kafka can help with all of these challenges.\n\n- Now resources can pull data when ready or, if they fail, Kafka's message durability features ensure messages aren't lost.\n- For data pipelines, kafka's message immutability makes \n- Or for microservices, simplify service discovery such that services only need to know the topic to publish to or read from -- not a service's DNS name or IP address.\n\nSo let's take a look at some real examples of these use cases.","33fec031f8b0df822ff7e3f744a3d70d":"So one question you might be wondering now is how do you, as a developer, connect your code to Kafka.\n\nThere are a number of ways, but the most common way is using one of the many open source client libraries.\n\nThe committers to the main Kafka code base maintain the JVM client.\n\nThere are community-maintained clients available for all of Heroku's officially supported languages -- java, ruby, go, scala, php, python, clojure -- and many more beyond those.","cfca796dd86f845557389b223c0d012e":"The most common use of the client libraries is moving data into and out of Kafka.\n\nKafka Connect is a tool for scalably and reliably streaming data between Apache Kafka and other data systems. It makes it simple to quickly define connectors that move large data sets into and out of Kafka.\n\nBut what's even better is that there are dozens of connectors already built.  HDFS, JDBC, Cassandra, Splunk, even one for the Salesforce Streaming API.","d2555aa854c5bda505c450a8e4d3cfee":"Ok, now we have a clear understanding of events and event-driven architecture, but why should you, as a technology practitioner, care about these things?\n\nWell, take these general technical problems.  You've probably seen some of these issues during your career.","898440a39a0aeccd2438eadb7bb3d71e":"And here's how the architecture of the system that gets those metrics to your dashboard.\n\nThis is an example of a complex data processing pipeline using both raw and compacted topics within Kafka and many producers and consumers.","13becafdaed2c190dc9a1e548dfea081":"The last example we'll talk about is a demo app we created using a more widely recognizable data source: Twitter.\n\n- Tweets are ingested into Kafka in a single topic\n- Then they are fanned-out to keyword-specific topics\n- Then in parallel, aggregate metrics are calculated:\n- Counts and averages are tallied\n- And co-located terms are counted\n- Finally all this is displayed in a web dashboard.\n\nLet's look at that: https://twitter-display.herokuapp.com","e051bf574853acca1a667b93d7812b38":"So going back to the general categories we talked about earlier, we can see how each of those examples can be categorized.\n\nAn important note here is that these categories aren't necessarily mutually exclusive -- nor are the checkmarks binary yes/no's.\n\nMy aim here was to help you link these abstract categories with real-world examples.","250a7ea31829c68c4a28f5caa705c5b3":"Ok, now we've learned about some of the problems Kafka solves.  Let's dig in a bit to how Kafka works.","d0b144d3181d7bd5c8009fe0beaed8c4":"A broker is the Kafka server.  They generally work together in a cluster for redundancy.\n\nProducers and consumers are the applications outside of Kafka that send messages to or read messages from the brokers.\n\nTopics are named streams of events that are replicated across brokers.\n\nPartitions are discrete subsets of topics.","9c6e3ae47ad53cdf9a1f4887ffb1ae54":"Let's make that a little more concrete and go back to our list of example event types from earlier.\n\nHere are examples of producers that would generate these events -- that is, sending them to Kafka, either directly or through a proxy.\n\nProduct view events might be generated by a web server\n\nCompleted sales events might be generated by a payment processor","ae49e1614db1bae630524513a2a55b10":"And on the other side, here are some example consumers that would read these events.\n\nA personalization engine might read product view events.\n\nAn accounting system might read completed sales events.\n\nA reporting dashboard might read web page visits.","b88cd9899c9d555f6a7bb1dbd16d6e9b":"And to support more advanced architectures, Kafka provides additional primitives to apply some structure to your event streams.\n\nTopics, as I mentioned earlier, are named streams of data.  One Kafka cluster can have many topics.\n\nPartitions, also mentioned earlier, are subsets within a partition.  They give you control over parallelism and message order.\n\nRetention period, replication factor, and compaction toggle are configuration options on a topic.\n\nTime-based retention lets you define for how long a message lives.\n\nLog compaction is an alternative to time-based retention.  This mode retains the most recent version of a message for a given key, tombstoning prior messages with the same key.\n\nReplication factor let's you control topic redundancy across brokers.\n\nWe could go into a lot more detail on these concepts, but we don't have time today.  There are many great resources on the internet -- documentation, blog posts, videos -- to learn more about these concepts.","a3d341781d472f79ae9d32a1800ccae4":"So now you have a good understanding of event-driven architecture, some use cases where it shines, and the core Kafka concepts.\n\nLet's talk about why you'd want to use Apache Kafka on Heroku."}}};
+			SLConfig.current_user = {
+				name: "Christopher Castle",
+				username: "christophercastle",
+				pro: true
+			};
+
+
+			// Use the local font path
+			SLConfig.fonts_url = 'lib/fonts/';
+		</script>
+
+		<script src="lib/head.min.js"></script>
+		<script src="lib/reveal.min.js"></script>
+		<script src="lib/offline.js"></script>
+		<script>
+			// Make Slides speaker notes available in the reveal.js speaker view
+			if( SLConfig.deck.notes ) {
+				[].forEach.call( document.querySelectorAll( '.reveal .slides section' ), function( slide ) {
+
+					var value = SLConfig.deck.notes[ slide.getAttribute( 'data-id' ) ];
+					if( value && typeof value === 'string' ) {
+						slide.setAttribute( 'data-notes', value );
+					}
+
+				} );
+			}
+
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				mouseWheel: false,
+				showNotes: SLConfig.deck.share_notes,
+				slideNumber: SLConfig.deck.slide_number,
+
+				autoSlide: SLConfig.deck.auto_slide_interval || 0,
+				autoSlideStoppable: true,
+
+				rolling_links: SLConfig.deck.rolling_links || true,
+				center: SLConfig.deck.center || false,
+				loop: SLConfig.deck.should_loop || false,
+				rtl: SLConfig.deck.rtl || false,
+
+				transition: SLConfig.deck.transition,
+				backgroundTransition: SLConfig.deck.background_transition,
+
+				dependencies: [
+					{ src: 'lib/reveal-plugins/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'lib/reveal-plugins/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'lib/reveal-plugins/highlight/highlight.js', async: true, callback: function() { hljs.initHighlighting(); hljs.initHighlightingOnLoad(); } },
+					{ src: 'lib/reveal-plugins/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+		</script>
+
+		
+
+	</body>
+</html>
